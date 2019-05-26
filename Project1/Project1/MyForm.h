@@ -18,7 +18,7 @@ namespace Project1 {
 		MyForm(void)
 		{
 			InitializeComponent();
-			
+
 		}
 
 	protected:
@@ -39,7 +39,17 @@ namespace Project1 {
 	private: System::Windows::Forms::MenuStrip^  menuStrip1;
 	private: System::Windows::Forms::ToolStripMenuItem^  ìàãàçèíûToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  ñîçäàòüToolStripMenuItem;
-	private: System::Windows::Forms::DataGridView^  dataGridView1;
+	private: System::Windows::Forms::ListView^  listView1;
+
+
+
+	private: System::Windows::Forms::ToolStripMenuItem^  óäàëèòüÂûáðàííûåÝëåìåíòûToolStripMenuItem;
+	private: System::Windows::Forms::ColumnHeader^  columnId;
+	private: System::Windows::Forms::ColumnHeader^  columnName;
+	private: System::Windows::Forms::ToolStripMenuItem^  ïîñòàâùèêèToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  ïîñòóïëåíèåÒîâàðîâToolStripMenuItem;
+
+
 
 
 
@@ -64,14 +74,21 @@ namespace Project1 {
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->ìàãàçèíûToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ñîçäàòüToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->óäàëèòüÂûáðàííûåÝëåìåíòûToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->listView1 = (gcnew System::Windows::Forms::ListView());
+			this->columnId = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnName = (gcnew System::Windows::Forms::ColumnHeader());
+			this->ïîñòàâùèêèToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->ïîñòóïëåíèåÒîâàðîâToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
 			// 
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->ìàãàçèíûToolStripMenuItem });
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+				this->ìàãàçèíûToolStripMenuItem,
+					this->ïîñòàâùèêèToolStripMenuItem, this->ïîñòóïëåíèåÒîâàðîâToolStripMenuItem
+			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
 			this->menuStrip1->Size = System::Drawing::Size(655, 24);
@@ -80,7 +97,10 @@ namespace Project1 {
 			// 
 			// ìàãàçèíûToolStripMenuItem
 			// 
-			this->ìàãàçèíûToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->ñîçäàòüToolStripMenuItem });
+			this->ìàãàçèíûToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->ñîçäàòüToolStripMenuItem,
+					this->óäàëèòüÂûáðàííûåÝëåìåíòûToolStripMenuItem
+			});
 			this->ìàãàçèíûToolStripMenuItem->Name = L"ìàãàçèíûToolStripMenuItem";
 			this->ìàãàçèíûToolStripMenuItem->Size = System::Drawing::Size(75, 20);
 			this->ìàãàçèíûToolStripMenuItem->Text = L"Ìàãàçèíû";
@@ -88,50 +108,65 @@ namespace Project1 {
 			// ñîçäàòüToolStripMenuItem
 			// 
 			this->ñîçäàòüToolStripMenuItem->Name = L"ñîçäàòüToolStripMenuItem";
-			this->ñîçäàòüToolStripMenuItem->Size = System::Drawing::Size(115, 22);
+			this->ñîçäàòüToolStripMenuItem->Size = System::Drawing::Size(243, 22);
 			this->ñîçäàòüToolStripMenuItem->Text = L"ñîçäàòü";
 			// 
-			// dataGridView1
+			// óäàëèòüÂûáðàííûåÝëåìåíòûToolStripMenuItem
 			// 
-			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(12, 27);
-			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->Size = System::Drawing::Size(240, 150);
-			this->dataGridView1->TabIndex = 3;
+			this->óäàëèòüÂûáðàííûåÝëåìåíòûToolStripMenuItem->Name = L"óäàëèòüÂûáðàííûåÝëåìåíòûToolStripMenuItem";
+			this->óäàëèòüÂûáðàííûåÝëåìåíòûToolStripMenuItem->Size = System::Drawing::Size(243, 22);
+			this->óäàëèòüÂûáðàííûåÝëåìåíòûToolStripMenuItem->Text = L"Óäàëèòü âûáðàííûå ýëåìåíòû";
+			// 
+			// listView1
+			// 
+			this->listView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(2) { this->columnId, this->columnName });
+			this->listView1->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->listView1->Location = System::Drawing::Point(0, 24);
+			this->listView1->Name = L"listView1";
+			this->listView1->Size = System::Drawing::Size(655, 526);
+			this->listView1->TabIndex = 4;
+			this->listView1->UseCompatibleStateImageBehavior = false;
+			this->listView1->View = System::Windows::Forms::View::Details;
+			// 
+			// columnId
+			// 
+			this->columnId->Text = L"id";
+			this->columnId->Width = 30;
+			// 
+			// columnName
+			// 
+			this->columnName->Text = L"Íàçâàíèå";
+			// 
+			// ïîñòàâùèêèToolStripMenuItem
+			// 
+			this->ïîñòàâùèêèToolStripMenuItem->Name = L"ïîñòàâùèêèToolStripMenuItem";
+			this->ïîñòàâùèêèToolStripMenuItem->Size = System::Drawing::Size(89, 20);
+			this->ïîñòàâùèêèToolStripMenuItem->Text = L"Ïîñòàâùèêè";
+			// 
+			// ïîñòóïëåíèåÒîâàðîâToolStripMenuItem
+			// 
+			this->ïîñòóïëåíèåÒîâàðîâToolStripMenuItem->Name = L"ïîñòóïëåíèåÒîâàðîâToolStripMenuItem";
+			this->ïîñòóïëåíèåÒîâàðîâToolStripMenuItem->Size = System::Drawing::Size(139, 20);
+			this->ïîñòóïëåíèåÒîâàðîâToolStripMenuItem->Text = L"Ïîñòóïëåíèå òîâàðîâ";
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(655, 550);
-			this->Controls->Add(this->dataGridView1);
+			this->Controls->Add(this->listView1);
 			this->Controls->Add(this->menuStrip1);
-			this->Enabled = false;
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
-			this->ResizeEnd += gcnew System::EventHandler(this, &MyForm::MyForm_ResizeEnd);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	private: System::Void dataGridView1_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
-	}
-	private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e)
-	{
-		
-	}
-	private: System::Void MyForm_AutoSizeChanged(System::Object^  sender, System::EventArgs^  e) {
-		dataGridView1->Width = this->Width;
-	}
-private: System::Void MyForm_ResizeEnd(System::Object^  sender, System::EventArgs^  e) {
-	dataGridView1->Width = this->Width - 40;
-	dataGridView1->Height = this->Height - 80;
-}
 
-};
+
+	};
 }
