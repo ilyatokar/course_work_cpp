@@ -138,6 +138,8 @@
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="Product.cpp" />
     <ClCompile Include="Products.cpp" />
+    <ClCompile Include="Provider.cpp" />
+    <ClCompile Include="Providers.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Magazin.h" />
@@ -146,6 +148,10 @@
     </ClInclude>
     <ClInclude Include="Product.h" />
     <ClInclude Include="Products.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Provider.h" />
+    <ClInclude Include="Providers.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
