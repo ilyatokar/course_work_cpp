@@ -10,3 +10,9 @@ void main(array<String^>^ args) {
 	Project1::MyForm form;
 	Application::Run(%form);
 }
+
+System::Void Project1::MyForm::ProvidersToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	Providers^ f2 = gcnew Providers();
+	f2->Show();
+}

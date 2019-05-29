@@ -47,8 +47,9 @@ namespace Project1 {
 	private: System::Windows::Forms::ColumnHeader^  columnId;
 	private: System::Windows::Forms::ColumnHeader^  columnName;
 	private: System::Windows::Forms::ToolStripMenuItem^ ProvidersToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ documentToolStripMenuItem;
 
-	private: System::Windows::Forms::ToolStripMenuItem^  ïîñòóïëåíèåÒîâàðîâToolStripMenuItem;
+
 
 
 
@@ -77,10 +78,10 @@ namespace Project1 {
 			this->ñîçäàòüToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->óäàëèòüÂûáðàííûåÝëåìåíòûToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ProvidersToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->ïîñòóïëåíèåÒîâàðîâToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->listView1 = (gcnew System::Windows::Forms::ListView());
 			this->columnId = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnName = (gcnew System::Windows::Forms::ColumnHeader());
+			this->documentToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -88,7 +89,7 @@ namespace Project1 {
 			// 
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->ìàãàçèíûToolStripMenuItem,
-					this->ProvidersToolStripMenuItem, this->ïîñòóïëåíèåÒîâàðîâToolStripMenuItem
+					this->ProvidersToolStripMenuItem, this->documentToolStripMenuItem
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
@@ -103,33 +104,27 @@ namespace Project1 {
 					this->óäàëèòüÂûáðàííûåÝëåìåíòûToolStripMenuItem
 			});
 			this->ìàãàçèíûToolStripMenuItem->Name = L"ìàãàçèíûToolStripMenuItem";
-			this->ìàãàçèíûToolStripMenuItem->Size = System::Drawing::Size(75, 20);
+			this->ìàãàçèíûToolStripMenuItem->Size = System::Drawing::Size(69, 20);
 			this->ìàãàçèíûToolStripMenuItem->Text = L"Ìàãàçèíû";
 			// 
 			// ñîçäàòüToolStripMenuItem
 			// 
 			this->ñîçäàòüToolStripMenuItem->Name = L"ñîçäàòüToolStripMenuItem";
-			this->ñîçäàòüToolStripMenuItem->Size = System::Drawing::Size(243, 22);
+			this->ñîçäàòüToolStripMenuItem->Size = System::Drawing::Size(231, 22);
 			this->ñîçäàòüToolStripMenuItem->Text = L"ñîçäàòü";
 			// 
 			// óäàëèòüÂûáðàííûåÝëåìåíòûToolStripMenuItem
 			// 
 			this->óäàëèòüÂûáðàííûåÝëåìåíòûToolStripMenuItem->Name = L"óäàëèòüÂûáðàííûåÝëåìåíòûToolStripMenuItem";
-			this->óäàëèòüÂûáðàííûåÝëåìåíòûToolStripMenuItem->Size = System::Drawing::Size(243, 22);
+			this->óäàëèòüÂûáðàííûåÝëåìåíòûToolStripMenuItem->Size = System::Drawing::Size(231, 22);
 			this->óäàëèòüÂûáðàííûåÝëåìåíòûToolStripMenuItem->Text = L"Óäàëèòü âûáðàííûå ýëåìåíòû";
 			// 
 			// ProvidersToolStripMenuItem
 			// 
 			this->ProvidersToolStripMenuItem->Name = L"ProvidersToolStripMenuItem";
-			this->ProvidersToolStripMenuItem->Size = System::Drawing::Size(89, 20);
+			this->ProvidersToolStripMenuItem->Size = System::Drawing::Size(82, 20);
 			this->ProvidersToolStripMenuItem->Text = L"Ïîñòàâùèêè";
 			this->ProvidersToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::ProvidersToolStripMenuItem_Click);
-			// 
-			// ïîñòóïëåíèåÒîâàðîâToolStripMenuItem
-			// 
-			this->ïîñòóïëåíèåÒîâàðîâToolStripMenuItem->Name = L"ïîñòóïëåíèåÒîâàðîâToolStripMenuItem";
-			this->ïîñòóïëåíèåÒîâàðîâToolStripMenuItem->Size = System::Drawing::Size(139, 20);
-			this->ïîñòóïëåíèåÒîâàðîâToolStripMenuItem->Text = L"Ïîñòóïëåíèå òîâàðîâ";
 			// 
 			// listView1
 			// 
@@ -151,6 +146,12 @@ namespace Project1 {
 			// 
 			this->columnName->Text = L"Íàçâàíèå";
 			// 
+			// documentToolStripMenuItem
+			// 
+			this->documentToolStripMenuItem->Name = L"documentToolStripMenuItem";
+			this->documentToolStripMenuItem->Size = System::Drawing::Size(77, 20);
+			this->documentToolStripMenuItem->Text = L"Äîêóìåíòû";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -170,10 +171,6 @@ namespace Project1 {
 #pragma endregion
 
 
-	private: System::Void ProvidersToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		Providers^ f2 = gcnew Providers(this);
-		f2->Show();
-		this->Hide();
-	}
+	private: System::Void ProvidersToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }
