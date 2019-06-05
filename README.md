@@ -3,7 +3,7 @@
 
 **Библиотеки:**
 
-1.JSON for Modern C++([ссылка](https://nlohmann.github.io/json/))
+1.JSON for Modern C++([ссылка](https://github.com/nlohmann/json))
 
 ### Постановка задачи
 

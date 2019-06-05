@@ -136,6 +136,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="addMagazin.cpp" />
     <ClCompile Include="Document.cpp" />
     <ClCompile Include="Documents.cpp" />
     <ClCompile Include="Magazin.cpp" />
@@ -146,6 +147,9 @@
     <ClCompile Include="Providers.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="addMagazin.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Document.h" />
     <ClInclude Include="Documents.h">
       <FileType>CppForm</FileType>
@@ -164,6 +168,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="addMagazin.resx">
+      <DependentUpon>addMagazin.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Documents.resx">
       <DependentUpon>Documents.h</DependentUpon>
     </EmbeddedResource>

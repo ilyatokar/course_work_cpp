@@ -12,5 +12,6 @@ public:
 	~Magazin();
 	void SetName(string Name);
 	string GetName();
+	void save();
 };
 
