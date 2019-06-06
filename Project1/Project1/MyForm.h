@@ -221,6 +221,7 @@ namespace Project1 {
 
 
 	private: System::Void AddedMagazinToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		std::cout << "hello, world!" << std::endl;
 		addMagazin^ form = gcnew addMagazin();
 		form->Show();
 	}

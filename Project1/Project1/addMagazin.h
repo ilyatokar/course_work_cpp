@@ -121,32 +121,57 @@ namespace Project1 {
 
 	private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		using json = nlohmann::json;
-		int id = 0;
-		
-		std::fstream file("db/magazins.json");
-		if (!file.is_open())
+		/*int id = 0;
+
+		std::ifstream i("db/magazins.json", std::ios::out | std::ios::app);
+		if (!i.is_open())
 			return;
 		json j;
-	
-		file >> j;
-		if (j.size()) {
-		
-			id = j[j.size()-1]["id"];
-		}
-		file.close();
+		i >> j;
+		i.close();
 		json magazin;
 		magazin["id"] = id + 1;
 		System::String^ managedString = textBox1->Text;
 		msclr::interop::marshal_context context;
 		std::string name = context.marshal_as<std::string>(managedString);
-		
-		magazin["name"] = L"Тестовый магазин";
-		
+		magazin["name"] = 1;
 		j.push_back(magazin);
-
-		std::fstream outFile("db/magazins.json");
+		std::cout << j.dump() << std::endl;
+		std::ofstream outFile("db/magazins.json");
 		outFile << j << std::endl;
-		this->Close();
+		outFile.close();*/
+		System::String^ managedString = textBox1->Text;
+		msclr::interop::marshal_context context;
+		std::string name = context.marshal_as<std::string>(managedString);
+		json magazin;
+		magazin["id"] = 1;
+		std::wstring wname(name.begin(), name.end());
+		magazin["name"] = wname;
+		json j;
+		j.push_back(magazin);
+		j.push_back(magazin);
+		j.push_back(magazin);
+		std::cout << j.dump() << std::endl;
+		std::fstream jsonFile("db/magazins.json", std::ios::out |std::ios::app);
+		jsonFile << j << std::endl;
+		jsonFile.close();
+		String^ str3 = gcnew String(this->converWstringToString(wname));
+		textBox1->Text = str3;
+		std::cout << this->converWstringToString(wname) << std::endl;
+		//this->Close();
+	}
+
+	private: std::string converWstringToString(std::wstring str) {
+		const std::locale locale("");
+		typedef std::codecvt<wchar_t, char, std::mbstate_t> converter_type;
+		const converter_type& converter = std::use_facet<converter_type>(locale);
+		std::vector<char> to(str.length() * converter.max_length());
+		std::mbstate_t state;
+		const wchar_t* from_next;
+		char* to_next;
+		const converter_type::result result = converter.out(state, str.data(), str.data() + str.length(), from_next, &to[0], &to[0] + to.size(), to_next);
+		std::string s(&to[0], to_next);
+		return s;
 	}
 };
 }
