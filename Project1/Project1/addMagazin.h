@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include "Magazin.h"
 
 #include <msclr\marshal_cppstd.h>
 
@@ -14,6 +15,7 @@ namespace Project1 {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace Newtonsoft::Json;
 
 	/// <summary>
 	/// Сводка для addMagazin
@@ -77,6 +79,8 @@ namespace Project1 {
 			// 
 			// textBox1
 			// 
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->textBox1->Location = System::Drawing::Point(15, 35);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(257, 20);
@@ -120,48 +124,12 @@ namespace Project1 {
 
 
 	private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		using json = nlohmann::json;
-		/*int id = 0;
 
-		std::ifstream i("db/magazins.json", std::ios::out | std::ios::app);
-		if (!i.is_open())
-			return;
-		json j;
-		i >> j;
-		i.close();
-		json magazin;
-		magazin["id"] = id + 1;
-		System::String^ managedString = textBox1->Text;
-		msclr::interop::marshal_context context;
-		std::string name = context.marshal_as<std::string>(managedString);
-		magazin["name"] = 1;
-		j.push_back(magazin);
-		std::cout << j.dump() << std::endl;
-		std::ofstream outFile("db/magazins.json");
-		outFile << j << std::endl;
-		outFile.close();*/
-		System::String^ managedString = textBox1->Text;
-		msclr::interop::marshal_context context;
-		std::string name = context.marshal_as<std::string>(managedString);
-		json magazin;
-		magazin["id"] = 1;
-		std::wstring wname(name.begin(), name.end());
-		magazin["name"] = wname;
-		json j;
-		j.push_back(magazin);
-		j.push_back(magazin);
-		j.push_back(magazin);
-		std::cout << j.dump() << std::endl;
-		std::fstream jsonFile("db/magazins.json", std::ios::out |std::ios::app);
-		jsonFile << j << std::endl;
-		jsonFile.close();
-		String^ str3 = gcnew String(this->converWstringToString(wname));
-		textBox1->Text = str3;
-		std::cout << this->converWstringToString(wname) << std::endl;
-		//this->Close();
+		this->Close();
 	}
 
 	private: std::string converWstringToString(std::wstring str) {
+		
 		const std::locale locale("");
 		typedef std::codecvt<wchar_t, char, std::mbstate_t> converter_type;
 		const converter_type& converter = std::use_facet<converter_type>(locale);

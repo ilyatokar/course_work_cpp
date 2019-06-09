@@ -3,8 +3,8 @@
 using namespace System;
 using namespace System::Windows::Forms;
 [STAThreadAttribute]
-void main(array<String^>^ args) {
-	std::setlocale(LC_ALL, "");
+void main(cli::array<String^>^ args) {
+	std::setlocale(LC_ALL, "RUS");
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 	Project1::MyForm form;
