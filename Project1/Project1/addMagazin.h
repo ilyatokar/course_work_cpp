@@ -1,11 +1,5 @@
 #pragma once
-#include "json.hpp"
-#include <fstream>
-#include <iostream>
-#include <string>
 #include "Magazin.h"
-
-#include <msclr\marshal_cppstd.h>
 
 namespace Project1 {
 
@@ -124,22 +118,13 @@ namespace Project1 {
 
 
 	private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
-
+		Magazin^ t = gcnew Magazin();
+		t->id = 1;
+		t->Name = "название магазина";
+		String^ str = JsonConvert::SerializeObject(t);
+		Console::WriteLine(str);
 		this->Close();
 	}
 
-	private: std::string converWstringToString(std::wstring str) {
-		
-		const std::locale locale("");
-		typedef std::codecvt<wchar_t, char, std::mbstate_t> converter_type;
-		const converter_type& converter = std::use_facet<converter_type>(locale);
-		std::vector<char> to(str.length() * converter.max_length());
-		std::mbstate_t state;
-		const wchar_t* from_next;
-		char* to_next;
-		const converter_type::result result = converter.out(state, str.data(), str.data() + str.length(), from_next, &to[0], &to[0] + to.size(), to_next);
-		std::string s(&to[0], to_next);
-		return s;
-	}
-};
+	};
 }

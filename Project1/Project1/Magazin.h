@@ -1,19 +1,9 @@
 #pragma once
-#include <iostream>
-#include <string>
-using namespace std;
+using namespace System;
 
-class Magazin
+public ref class Magazin
 {
-private:
-	int id;
-	string Name;
-public:
-	Magazin();
-	Magazin(int id, string Name);
-	~Magazin();
-	void SetName(string Name);
-	string GetName();
-	void save();
+	public: int id;
+	public: String^ Name;
 };
 
