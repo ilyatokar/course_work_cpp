@@ -10,6 +10,7 @@ namespace Project1 {
 	using namespace System::Data;
 	using namespace System::Drawing;
 	using namespace Newtonsoft::Json;
+	using namespace System::IO;
 
 	/// <summary>
 	/// Сводка для addMagazin
@@ -118,10 +119,21 @@ namespace Project1 {
 
 
 	private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		Magazin^ t = gcnew Magazin();
+		Magazin^ t = (gcnew Magazin());
 		t->id = 1;
-		t->Name = "название магазина";
+		t->Name = textBox1->Text;
 		String^ str = JsonConvert::SerializeObject(t);
+
+		String^ fileName = Application::StartupPath + "/db/magazins.json";
+		FileStream^ file = gcnew FileStream(fileName, FileMode::OpenOrCreate);
+		
+		StreamWriter^ writer = gcnew StreamWriter(file);
+		writer->Write(str);
+
+		writer->Close();
+		file->Close();
+
+		Console::Write(Application::StartupPath);
 		Console::WriteLine(str);
 		this->Close();
 	}

@@ -5,5 +5,6 @@ public ref class Magazin
 {
 	public: int id;
 	public: String^ Name;
+
 };
 
