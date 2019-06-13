@@ -19,7 +19,7 @@ namespace Project1 {
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
-		MyForm(void)
+		MyForm()
 		{
 			InitializeComponent();
 		}
@@ -211,9 +211,9 @@ namespace Project1 {
 
 
 	private: System::Void AddedMagazinToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		addMagazin^ form = gcnew addMagazin(this);
+		addMagazin^ form = gcnew addMagazin();
 		form->ShowDialog();
-			}
+	}
 
 	private: System::Void ProvidersToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		Providers^ form = gcnew Providers();

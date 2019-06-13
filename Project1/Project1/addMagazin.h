@@ -2,7 +2,7 @@
 #include "Magazin.h"
 #include "MyForm.h"
 
-namespace Project1 {
+namespace Project1{
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -20,15 +20,14 @@ namespace Project1 {
 	/// </summary>
 	public ref class addMagazin : public System::Windows::Forms::Form
 	{
-	private: MyForm^ form;
-	public: addMagazin(MyForm^ form)
-		{
-			InitializeComponent();
-			this->form = form;
-			//
-			//TODO: добавьте код конструктора
-			//
-		}
+	
+	public: addMagazin()
+	{
+		InitializeComponent();
+		//
+		//TODO: добавьте код конструктора
+		//
+	}
 
 	
 
@@ -47,7 +46,7 @@ namespace Project1 {
 	private: System::Windows::Forms::TextBox^ textBox1;
 	private: System::Windows::Forms::Label^ label1;	
 	private: System::Windows::Forms::Button^ button2;
-	protected:
+
 
 	private:
 		/// <summary>
@@ -104,7 +103,6 @@ namespace Project1 {
 			this->button2->TabIndex = 3;
 			this->button2->Text = L"button2";
 			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &addMagazin::Button2_Click);
 			// 
 			// addMagazin
 			// 
@@ -127,6 +125,7 @@ namespace Project1 {
 	/// Метод для дабавления нового магазина 
 	/// </summary>
 	private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		Form^ frm = Application::OpenForms[0];
 		if (textBox1->Text != "")
 		{
 			int id = 1;
@@ -162,7 +161,6 @@ namespace Project1 {
 
 			writer->Close();
 			fileWriter->Close();
-
 			this->Close();
 		}
 		else {
@@ -170,14 +168,6 @@ namespace Project1 {
 		}
 	}
 
-	private: System::Void Button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		ListViewItem^ Id = gcnew ListViewItem();
-		Id->Text = "1";
-		ListViewItem::ListViewSubItem^ Name = gcnew ListViewItem::ListViewSubItem();
-		Name->Text = L"магазин 1";
-		Id->SubItems->Add(Name);
-		this->form->listView1->Items->Add(Id);
-	}
 };
 
 
