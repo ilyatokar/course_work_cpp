@@ -20,7 +20,7 @@ namespace Project1{
 	/// </summary>
 	public ref class addMagazin : public System::Windows::Forms::Form
 	{
-	
+
 	public: addMagazin()
 	{
 		InitializeComponent();
@@ -125,7 +125,6 @@ namespace Project1{
 	/// Метод для дабавления нового магазина 
 	/// </summary>
 	private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		Form^ frm = Application::OpenForms[0];
 		if (textBox1->Text != "")
 		{
 			int id = 1;
