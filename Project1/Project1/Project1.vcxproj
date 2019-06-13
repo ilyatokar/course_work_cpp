@@ -87,7 +87,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
@@ -139,14 +139,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="addMagazin.cpp" />
-    <ClCompile Include="Document.cpp" />
     <ClCompile Include="Documents.cpp" />
-    <ClCompile Include="Magazin.cpp" />
     <ClCompile Include="MyForm.cpp" />
-    <ClCompile Include="Product.cpp" />
     <ClCompile Include="Products.cpp" />
-    <ClCompile Include="Provider.cpp" />
     <ClCompile Include="Providers.cpp" />
   </ItemGroup>
   <ItemGroup>

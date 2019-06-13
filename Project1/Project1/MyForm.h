@@ -58,16 +58,6 @@ namespace Project1 {
 	private: System::Windows::Forms::ToolStripMenuItem^ ExitToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ ïîêàçàòüÒîâàðûToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ EditToolStripMenuItem;
-
-
-
-
-
-
-
-
-
-
 	private: System::ComponentModel::IContainer^ components;
 
 	private:
@@ -221,9 +211,9 @@ namespace Project1 {
 
 
 	private: System::Void AddedMagazinToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		addMagazin^ form = gcnew addMagazin();
-		form->Show();
-	}
+		addMagazin^ form = gcnew addMagazin(this);
+		form->ShowDialog();
+			}
 
 	private: System::Void ProvidersToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		Providers^ form = gcnew Providers();

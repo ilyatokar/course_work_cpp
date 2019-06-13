@@ -1,17 +1,14 @@
 #pragma once
-#include <iostream>
 using namespace std;
+using namespace System;
 
-class Provider
+ref class Provider
 {
-private:
-	string Name;
-
-public:
-	Provider();
-	Provider(string Name);
-	~Provider();
-	void SetName(string Name);
-	string GetName();
+public: int id;
+public: String^ Name;
+public: Provider(int id, String^ Name) {
+	this->id = id;
+	this->Name = Name;
+}
 };
 

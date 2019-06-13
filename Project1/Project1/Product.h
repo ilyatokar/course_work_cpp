@@ -1,16 +1,14 @@
 #pragma once
-#include <iostream>
 using namespace std;
+using namespace System;
 
-class Product
+ref class Product
 {
-private:
-	string Name;
-public:
-	Product();
-	Product(string Name);
-	~Product();
-	void SetName(string Name);
-	string GetName();
+public: int id;
+public: String^ Name;
+public: Product(int id, String^ Name){
+	this->id = id;
+	this->Name = Name;
+}
 };
 

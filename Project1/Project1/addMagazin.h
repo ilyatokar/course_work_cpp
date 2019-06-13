@@ -1,15 +1,18 @@
 #pragma once
 #include "Magazin.h"
+#include "MyForm.h"
 
 namespace Project1 {
 
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
+	using namespace System::Collections::Generic;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
 	using namespace Newtonsoft::Json;
+	using namespace Newtonsoft::Json::Linq;
 	using namespace System::IO;
 
 	/// <summary>
@@ -17,14 +20,17 @@ namespace Project1 {
 	/// </summary>
 	public ref class addMagazin : public System::Windows::Forms::Form
 	{
-	public:
-		addMagazin(void)
+	private: MyForm^ form;
+	public: addMagazin(MyForm^ form)
 		{
 			InitializeComponent();
+			this->form = form;
 			//
 			//TODO: добавьте код конструктора
 			//
 		}
+
+	
 
 	protected:
 		/// <summary>
@@ -39,8 +45,8 @@ namespace Project1 {
 		}
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Label^ label1;	
+	private: System::Windows::Forms::Button^ button2;
 	protected:
 
 	private:
@@ -59,7 +65,7 @@ namespace Project1 {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// button1
@@ -90,22 +96,22 @@ namespace Project1 {
 			this->label1->TabIndex = 2;
 			this->label1->Text = L"¬ведите название";
 			// 
-			// label2
+			// button2
 			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(113, 77);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(100, 13);
-			this->label2->TabIndex = 3;
-			this->label2->Text = L"¬ведите название";
-			this->label2->Visible = false;
+			this->button2->Location = System::Drawing::Point(141, 71);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(75, 23);
+			this->button2->TabIndex = 3;
+			this->button2->Text = L"button2";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &addMagazin::Button2_Click);
 			// 
 			// addMagazin
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(284, 121);
-			this->Controls->Add(this->label2);
+			this->Controls->Add(this->button2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->button1);
@@ -117,26 +123,63 @@ namespace Project1 {
 		}
 #pragma endregion
 
-
+	/// <summary>
+	/// ћетод дл€ дабавлени€ нового магазина 
+	/// </summary>
 	private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		Magazin^ t = (gcnew Magazin());
-		t->id = 1;
-		t->Name = textBox1->Text;
-		String^ str = JsonConvert::SerializeObject(t);
+		if (textBox1->Text != "")
+		{
+			int id = 1;
+			String^ fileName = Application::StartupPath + "/db/magazins.json";
+			
+			FileStream^ fileReader = gcnew FileStream(fileName, FileMode::OpenOrCreate);
+			StreamReader^ reader = gcnew StreamReader(fileReader);
+			
+			String^ jsonstr = reader->ReadLine();
+			
+			reader->Close();
+			fileReader->Close();
+			
+			List<Magazin^>^ data;
+			if (!String::IsNullOrEmpty(jsonstr))
+			{
+				data = JsonConvert::DeserializeObject<List<Magazin^>^>(jsonstr);
+				id = data[data->Count - 1]->id + 1;
+			}
+			else
+			{
+				data = gcnew List<Magazin^>();
+			}
 
-		String^ fileName = Application::StartupPath + "/db/magazins.json";
-		FileStream^ file = gcnew FileStream(fileName, FileMode::OpenOrCreate);
-		
-		StreamWriter^ writer = gcnew StreamWriter(file);
-		writer->Write(str);
+			data->Add(gcnew Magazin(id, textBox1->Text));
 
-		writer->Close();
-		file->Close();
+			String^ str = JsonConvert::SerializeObject(data);
 
-		Console::Write(Application::StartupPath);
-		Console::WriteLine(str);
-		this->Close();
+			FileStream^ fileWriter = gcnew FileStream(fileName, FileMode::OpenOrCreate);
+			StreamWriter^ writer = gcnew StreamWriter(fileWriter);
+
+			writer->Write(str);
+
+			writer->Close();
+			fileWriter->Close();
+
+			this->Close();
+		}
+		else {
+			MessageBox::Show("¬вод пустого значени€!", "ќшибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
 	}
 
-	};
+	private: System::Void Button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		ListViewItem^ Id = gcnew ListViewItem();
+		Id->Text = "1";
+		ListViewItem::ListViewSubItem^ Name = gcnew ListViewItem::ListViewSubItem();
+		Name->Text = L"магазин 1";
+		Id->SubItems->Add(Name);
+		this->form->listView1->Items->Add(Id);
+	}
+};
+
+
+
 }
