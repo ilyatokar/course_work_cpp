@@ -273,76 +273,50 @@ namespace Project1 {
 
 	private: System::Void RemoveItemsSelectedToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ fileName = Application::StartupPath + "/db/magazins.json";
-		FileStream^ fileReader = gcnew FileStream(fileName, FileMode::OpenOrCreate);
-		StreamReader^ reader = gcnew StreamReader(fileReader);
+		List<Magazin^>^ data = JsonConvert::DeserializeObject<List<Magazin^>^>(File::ReadAllText(fileName));
 
-		String^ jsonstr = reader->ReadLine();
-
-		reader->Close();
-		fileReader->Close();
-
-		List<Magazin^>^ data;
-		if (!String::IsNullOrEmpty(jsonstr))
+		if (data != nullptr)
 		{
-			data = JsonConvert::DeserializeObject<List<Magazin^>^>(jsonstr);
-		}
-		int id = Convert::ToInt32(listView1->SelectedItems[0]->SubItems[0]->Text);
-		for (int i = 0; i < data->Count; i++)
-		{
-			if (data[i]->id == id)
+			int id = Convert::ToInt32(listView1->SelectedItems[0]->SubItems[0]->Text);
+			for (int i = 0; i < data->Count; i++)
 			{
-				data->RemoveRange(i,1);
+				if (data[i]->id == id)
+				{
+					data->Remove(data[i]);
+				}
 			}
+
+			while (listView1->Items->Count > 0) {
+				listView1->Items->Remove(listView1->Items[0]);
+			}
+
+			for (int i = 0; i < data->Count; i++) {
+				ListViewItem^ Id = gcnew ListViewItem();
+				Id->Text = data[i]->id.ToString();
+				ListViewItem::ListViewSubItem^ Name = gcnew ListViewItem::ListViewSubItem();
+				Name->Text = data[i]->Name;
+				Id->SubItems->Add(Name);
+				listView1->Items->Add(Id);
+			}
+
+			File::WriteAllText(fileName, JsonConvert::SerializeObject(data));
 		}
-
-		while (listView1->Items->Count > 0) {
-			listView1->Items->Remove(listView1->Items[0]);
-		}
-
-		for (int i = 0; i < data->Count; i++) {
-			ListViewItem^ Id = gcnew ListViewItem();
-			Id->Text = data[i]->id.ToString();
-			ListViewItem::ListViewSubItem^ Name = gcnew ListViewItem::ListViewSubItem();
-			Name->Text = data[i]->Name;
-			Id->SubItems->Add(Name);
-			listView1->Items->Add(Id);
-		}
-
-		String^ str = JsonConvert::SerializeObject(data);
-
-		FileStream^ fileWriter = gcnew FileStream(fileName, FileMode::OpenOrCreate);
-		StreamWriter^ writer = gcnew StreamWriter(fileWriter);
-
-		writer->Write(str);
-
-		writer->Close();
-		fileWriter->Close();
-	
+		
 	}
 
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		String^ fileName = Application::StartupPath + "/db/magazins.json";
-		FileStream^ fileReader = gcnew FileStream(fileName, FileMode::OpenOrCreate);
-		StreamReader^ reader = gcnew StreamReader(fileReader);
+		List<Magazin^>^ data = JsonConvert::DeserializeObject<List<Magazin^>^>(File::ReadAllText(fileName));
 
-		String^ jsonstr = reader->ReadLine();
-
-		reader->Close();
-		fileReader->Close();
-
-		List<Magazin^>^ data;
-		if (!String::IsNullOrEmpty(jsonstr))
-		{
-			data = JsonConvert::DeserializeObject<List<Magazin^>^>(jsonstr);
-		}
-
-		for (int i = 0; i < data->Count; i++) {
-			ListViewItem^ Id = gcnew ListViewItem();
-			Id->Text = data[i]->id.ToString();
-			ListViewItem::ListViewSubItem^ Name = gcnew ListViewItem::ListViewSubItem();
-			Name->Text = data[i]->Name;
-			Id->SubItems->Add(Name);
-			listView1->Items->Add(Id);
+		if (data != nullptr){
+			for (int i = 0; i < data->Count; i++) {
+				ListViewItem^ Id = gcnew ListViewItem();
+				Id->Text = data[i]->id.ToString();
+				ListViewItem::ListViewSubItem^ Name = gcnew ListViewItem::ListViewSubItem();
+				Name->Text = data[i]->Name;
+				Id->SubItems->Add(Name);
+				listView1->Items->Add(Id);
+			}
 		}
 	}
 };

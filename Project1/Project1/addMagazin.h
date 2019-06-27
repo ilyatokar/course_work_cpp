@@ -129,19 +129,11 @@ namespace Project1{
 		{
 			int id = 1;
 			String^ fileName = Application::StartupPath + "/db/magazins.json";
+			List<Magazin^>^ data = JsonConvert::DeserializeObject<List<Magazin^>^>(File::ReadAllText(fileName));	
 			
-			FileStream^ fileReader = gcnew FileStream(fileName, FileMode::OpenOrCreate);
-			StreamReader^ reader = gcnew StreamReader(fileReader);
-			
-			String^ jsonstr = reader->ReadLine();
-			
-			reader->Close();
-			fileReader->Close();
-			
-			List<Magazin^>^ data;
-			if (!String::IsNullOrEmpty(jsonstr))
+			if (data != nullptr)
 			{
-				data = JsonConvert::DeserializeObject<List<Magazin^>^>(jsonstr);
+				if(data->Count != 0)
 				id = data[data->Count - 1]->id + 1;
 			}
 			else
@@ -151,15 +143,9 @@ namespace Project1{
 
 			data->Add(gcnew Magazin(id, textBox1->Text));
 
-			String^ str = JsonConvert::SerializeObject(data);
 
-			FileStream^ fileWriter = gcnew FileStream(fileName, FileMode::OpenOrCreate);
-			StreamWriter^ writer = gcnew StreamWriter(fileWriter);
-
-			writer->Write(str);
-
-			writer->Close();
-			fileWriter->Close();
+			File::WriteAllText(fileName, JsonConvert::SerializeObject(data));
+			
 			this->Close();
 		}
 		else {
