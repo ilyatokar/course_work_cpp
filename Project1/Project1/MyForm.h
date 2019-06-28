@@ -175,6 +175,7 @@ namespace Project1 {
 			this->listView1->TabIndex = 4;
 			this->listView1->UseCompatibleStateImageBehavior = false;
 			this->listView1->View = System::Windows::Forms::View::Details;
+			this->listView1->ColumnClick += gcnew System::Windows::Forms::ColumnClickEventHandler(this, &MyForm::ListView1_ColumnClick);
 			// 
 			// columnId
 			// 
@@ -318,6 +319,9 @@ namespace Project1 {
 				listView1->Items->Add(Id);
 			}
 		}
+	}
+	private: System::Void ListView1_ColumnClick(System::Object^ sender, System::Windows::Forms::ColumnClickEventArgs^ e) {
+		Console::WriteLine("click column"+" "+e->Column);//вывод номер колонки
 	}
 };
 }

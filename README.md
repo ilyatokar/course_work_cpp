@@ -3,7 +3,7 @@
 
 **Библиотеки:**
 
-1.JSON.net([ссылка](https://www.newtonsoft.com/json)
+1.JSON.net([ссылка](https://www.newtonsoft.com/json))
 
 ### Постановка задачи
 

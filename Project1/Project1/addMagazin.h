@@ -154,7 +154,4 @@ namespace Project1{
 	}
 
 };
-
-
-
 }
