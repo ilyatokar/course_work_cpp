@@ -3,7 +3,6 @@
 #include "MyForm.h"
 
 namespace Project1{
-
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -21,6 +20,7 @@ namespace Project1{
 	public ref class addMagazin : public System::Windows::Forms::Form
 	{
 
+	public: String^ fileName = Application::StartupPath + "/db/magazin.json";
 	public: addMagazin()
 	{
 		InitializeComponent();
@@ -29,7 +29,6 @@ namespace Project1{
 		//
 	}
 
-	
 
 	protected:
 		/// <summary>
@@ -128,23 +127,22 @@ namespace Project1{
 		if (textBox1->Text != "")
 		{
 			int id = 1;
-			String^ fileName = Application::StartupPath + "/db/magazins.json";
-			List<Magazin^>^ data = JsonConvert::DeserializeObject<List<Magazin^>^>(File::ReadAllText(fileName));	
+			//List<Magazin^>^ data = JsonConvert::DeserializeObject<List<Magazin^>^>(File::ReadAllText(fileName));	
 			
-			if (data != nullptr)
-			{
-				if(data->Count != 0)
-				id = data[data->Count - 1]->id + 1;
-			}
-			else
-			{
-				data = gcnew List<Magazin^>();
-			}
+			//if (data != nullptr)
+			//{
+			//	if(data->Count != 0)
+			//	id = data[data->Count - 1]->id + 1;
+			//}
+			//else
+			//{
+			//	data = gcnew List<Magazin^>();
+			//}
 
-			data->Add(gcnew Magazin(id, textBox1->Text));
+			//data->Add(gcnew Magazin(id, textBox1->Text));
 
-
-			File::WriteAllText(fileName, JsonConvert::SerializeObject(data));
+			
+			//File::WriteAllText(fileName, JsonConvert::SerializeObject(data));
 			
 			this->Close();
 		}
@@ -152,6 +150,5 @@ namespace Project1{
 			MessageBox::Show("Ввод пустого значения!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
-
 };
 }

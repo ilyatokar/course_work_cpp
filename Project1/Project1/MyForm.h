@@ -3,6 +3,8 @@
 #include "addMagazin.h"
 #include "Providers.h"
 #include "Documents.h"
+#include "AddClient.h"
+#include "CLient.h"
 
 namespace Project1 {
 
@@ -18,9 +20,12 @@ namespace Project1 {
 	/// </summary>
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
+	public: Magazin^ mgz;
 	public:
 		MyForm()
 		{
+			mgz = gcnew Magazin();
+			mgz->ArrayClient = gcnew List<Client^>();
 			InitializeComponent();
 		}
 
@@ -50,7 +55,7 @@ namespace Project1 {
 
 
 
-	private: System::Windows::Forms::ColumnHeader^ columnId;
+
 	private: System::Windows::Forms::ColumnHeader^ columnName;
 	private: System::Windows::Forms::ToolStripMenuItem^ ProvidersToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ documentToolStripMenuItem;
@@ -58,6 +63,16 @@ namespace Project1 {
 	private: System::Windows::Forms::ToolStripMenuItem^ ExitToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ ïîêàçàòüÒîâàðûToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ EditToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ èìïîðòÄàíûõÈçÔàéëàToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ ýêñïîðòÄàííûõÈçÔàéëàToolStripMenuItem;
+	private: System::Windows::Forms::ColumnHeader^ columnHeader1;
+	private: System::Windows::Forms::ColumnHeader^ columnHeader2;
+
+
+	private: System::Windows::Forms::ColumnHeader^ columnHeader5;
+	private: System::Windows::Forms::ColumnHeader^ columnHeader6;
+	private: System::Windows::Forms::ColumnHeader^ columnHeader7;
+	private: System::Windows::Forms::ColumnHeader^ columnHeader8;
 	private: System::ComponentModel::IContainer^ components;
 
 	private:
@@ -82,22 +97,30 @@ namespace Project1 {
 			this->EditToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ProvidersToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->documentToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->èìïîðòÄàíûõÈçÔàéëàToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->ýêñïîðòÄàííûõÈçÔàéëàToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ExitToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->listView1 = (gcnew System::Windows::Forms::ListView());
-			this->columnId = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnName = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader1 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader2 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader5 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader6 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader7 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader8 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
 			// 
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(6) {
 				this->ìàãàçèíûToolStripMenuItem,
-					this->ProvidersToolStripMenuItem, this->documentToolStripMenuItem, this->ExitToolStripMenuItem
+					this->ProvidersToolStripMenuItem, this->documentToolStripMenuItem, this->èìïîðòÄàíûõÈçÔàéëàToolStripMenuItem, this->ýêñïîðòÄàííûõÈçÔàéëàToolStripMenuItem,
+					this->ExitToolStripMenuItem
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(655, 24);
+			this->menuStrip1->Size = System::Drawing::Size(781, 24);
 			this->menuStrip1->TabIndex = 2;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -158,6 +181,18 @@ namespace Project1 {
 			this->documentToolStripMenuItem->Text = L"Äîêóìåíòû";
 			this->documentToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::DocumentToolStripMenuItem_Click);
 			// 
+			// èìïîðòÄàíûõÈçÔàéëàToolStripMenuItem
+			// 
+			this->èìïîðòÄàíûõÈçÔàéëàToolStripMenuItem->Name = L"èìïîðòÄàíûõÈçÔàéëàToolStripMenuItem";
+			this->èìïîðòÄàíûõÈçÔàéëàToolStripMenuItem->Size = System::Drawing::Size(141, 20);
+			this->èìïîðòÄàíûõÈçÔàéëàToolStripMenuItem->Text = L"Èìïîðò äàíûõ èç ôàéëà";
+			// 
+			// ýêñïîðòÄàííûõÈçÔàéëàToolStripMenuItem
+			// 
+			this->ýêñïîðòÄàííûõÈçÔàéëàToolStripMenuItem->Name = L"ýêñïîðòÄàííûõÈçÔàéëàToolStripMenuItem";
+			this->ýêñïîðòÄàííûõÈçÔàéëàToolStripMenuItem->Size = System::Drawing::Size(152, 20);
+			this->ýêñïîðòÄàííûõÈçÔàéëàToolStripMenuItem->Text = L"Ýêñïîðò äàííûõ èç ôàéëà";
+			// 
 			// ExitToolStripMenuItem
 			// 
 			this->ExitToolStripMenuItem->Name = L"ExitToolStripMenuItem";
@@ -167,31 +202,56 @@ namespace Project1 {
 			// 
 			// listView1
 			// 
-			this->listView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(2) { this->columnId, this->columnName });
+			this->listView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(7) {
+				this->columnName, this->columnHeader1,
+					this->columnHeader2, this->columnHeader5, this->columnHeader6, this->columnHeader7, this->columnHeader8
+			});
 			this->listView1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->listView1->Location = System::Drawing::Point(0, 24);
 			this->listView1->Name = L"listView1";
-			this->listView1->Size = System::Drawing::Size(655, 318);
+			this->listView1->Size = System::Drawing::Size(781, 318);
 			this->listView1->TabIndex = 4;
 			this->listView1->UseCompatibleStateImageBehavior = false;
 			this->listView1->View = System::Windows::Forms::View::Details;
 			this->listView1->ColumnClick += gcnew System::Windows::Forms::ColumnClickEventHandler(this, &MyForm::ListView1_ColumnClick);
-			// 
-			// columnId
-			// 
-			this->columnId->Text = L"id";
-			this->columnId->Width = 30;
 			// 
 			// columnName
 			// 
 			this->columnName->Text = L"Íàçâàíèå";
 			this->columnName->Width = 118;
 			// 
+			// columnHeader1
+			// 
+			this->columnHeader1->Text = L"Äàòà";
+			// 
+			// columnHeader2
+			// 
+			this->columnHeader2->Text = L"Íîìåð íîìåêëàòóðû";
+			this->columnHeader2->Width = 145;
+			// 
+			// columnHeader5
+			// 
+			this->columnHeader5->Text = L"Ïîêóïàòåëü";
+			// 
+			// columnHeader6
+			// 
+			this->columnHeader6->Text = L"Åäåíèöû èçìåðåíèÿ";
+			// 
+			// columnHeader7
+			// 
+			this->columnHeader7->Text = L"Êîëè÷åñòâî";
+			this->columnHeader7->Width = 90;
+			// 
+			// columnHeader8
+			// 
+			this->columnHeader8->Text = L"Ñòîèìîñòü";
+			this->columnHeader8->Width = 74;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(655, 342);
+			this->ClientSize = System::Drawing::Size(781, 342);
 			this->Controls->Add(this->listView1);
 			this->Controls->Add(this->menuStrip1);
 			this->MainMenuStrip = this->menuStrip1;
@@ -210,37 +270,39 @@ namespace Project1 {
 	private: System::Void AddedMagazinToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ fileName = Application::StartupPath + "/db/magazins.json";
 
-		addMagazin^ f2 = gcnew addMagazin();
-		f2->ShowDialog();
-		ListViewItem^ Id = gcnew ListViewItem();
+		AddClient^ f2 = gcnew AddClient();
+		mgz = f2->Shown(mgz);
+		Console::WriteLine(mgz->ArrayClient[0]->Addres);
 		
-		while (listView1->Items->Count > 0) {
-			ListViewItem^ item = listView1->Items[0];
-			listView1->Items->Remove(item);
-		}
-		
-		FileStream^ fileReader = gcnew FileStream(fileName, FileMode::OpenOrCreate);
-		StreamReader^ reader = gcnew StreamReader(fileReader);
+		//ListViewItem^ Id = gcnew ListViewItem();
 
-		String^ jsonstr = reader->ReadLine();
+		//while (listView1->Items->Count > 0) {
+		//	ListViewItem^ item = listView1->Items[0];
+		//	listView1->Items->Remove(item);
+		//}
 
-		reader->Close();
-		fileReader->Close();
+		//FileStream^ fileReader = gcnew FileStream(fileName, FileMode::OpenOrCreate);
+		//StreamReader^ reader = gcnew StreamReader(fileReader);
 
-		List<Magazin^>^ data;
-		if (!String::IsNullOrEmpty(jsonstr))
-		{
-			data = JsonConvert::DeserializeObject<List<Magazin^>^>(jsonstr);
-		}
+		//String^ jsonstr = reader->ReadLine();
 
-		for (int i = 0; i < data->Count; i++) {
-			ListViewItem^ Id = gcnew ListViewItem();
-			Id->Text = data[i]->id.ToString();
-			ListViewItem::ListViewSubItem^ Name = gcnew ListViewItem::ListViewSubItem();
-			Name->Text = data[i]->Name;
-			Id->SubItems->Add(Name);
-			listView1->Items->Add(Id);
-		}
+		//reader->Close();
+		//fileReader->Close();
+
+		//List<Magazin^>^ data;
+		//if (!String::IsNullOrEmpty(jsonstr))
+		//{
+		//	data = JsonConvert::DeserializeObject<List<Magazin^>^>(jsonstr);
+		//}
+
+		//for (int i = 0; i < data->Count; i++) {
+		//	ListViewItem^ Id = gcnew ListViewItem();
+		//	Id->Text = data[i]->id.ToString();
+		//	ListViewItem::ListViewSubItem^ Name = gcnew ListViewItem::ListViewSubItem();
+		//	Name->Text = data[i]->Name;
+		//	Id->SubItems->Add(Name);
+		//	listView1->Items->Add(Id);
+		//}
 
 
 	}
@@ -279,49 +341,50 @@ namespace Project1 {
 		if (data != nullptr)
 		{
 			int id = Convert::ToInt32(listView1->SelectedItems[0]->SubItems[0]->Text);
-			for (int i = 0; i < data->Count; i++)
-			{
-				if (data[i]->id == id)
-				{
-					data->Remove(data[i]);
-				}
-			}
+			//for (int i = 0; i < data->Count; i++)
+			//{
+			//	if (data[i]->id == id)
+			//	{
+			//		data->Remove(data[i]);
+			//	}
+			//}
 
 			while (listView1->Items->Count > 0) {
 				listView1->Items->Remove(listView1->Items[0]);
 			}
 
-			for (int i = 0; i < data->Count; i++) {
-				ListViewItem^ Id = gcnew ListViewItem();
-				Id->Text = data[i]->id.ToString();
-				ListViewItem::ListViewSubItem^ Name = gcnew ListViewItem::ListViewSubItem();
-				Name->Text = data[i]->Name;
-				Id->SubItems->Add(Name);
-				listView1->Items->Add(Id);
-			}
+			//for (int i = 0; i < data->Count; i++) {
+			//	ListViewItem^ Id = gcnew ListViewItem();
+			//	Id->Text = data[i]->id.ToString();
+			//	ListViewItem::ListViewSubItem^ Name = gcnew ListViewItem::ListViewSubItem();
+			//	Name->Text = data[i]->Name;
+			//	Id->SubItems->Add(Name);
+			//	listView1->Items->Add(Id);
+			//}
 
 			File::WriteAllText(fileName, JsonConvert::SerializeObject(data));
 		}
-		
+
 	}
 
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		String^ fileName = Application::StartupPath + "/db/magazins.json";
 		List<Magazin^>^ data = JsonConvert::DeserializeObject<List<Magazin^>^>(File::ReadAllText(fileName));
 
-		if (data != nullptr){
-			for (int i = 0; i < data->Count; i++) {
-				ListViewItem^ Id = gcnew ListViewItem();
-				Id->Text = data[i]->id.ToString();
-				ListViewItem::ListViewSubItem^ Name = gcnew ListViewItem::ListViewSubItem();
-				Name->Text = data[i]->Name;
-				Id->SubItems->Add(Name);
-				listView1->Items->Add(Id);
-			}
-		}
+		//if (data != nullptr) {
+		//	for (int i = 0; i < data->Count; i++) {
+		//		ListViewItem^ Id = gcnew ListViewItem();
+		//		Id->Text = data[i]->id.ToString();
+		//		ListViewItem::ListViewSubItem^ Name = gcnew ListViewItem::ListViewSubItem();
+		//		Name->Text = data[i]->Name;
+		//		Id->SubItems->Add(Name);
+		//		listView1->Items->Add(Id);
+		//	}
+		//}
 	}
 	private: System::Void ListView1_ColumnClick(System::Object^ sender, System::Windows::Forms::ColumnClickEventArgs^ e) {
-		Console::WriteLine("click column"+" "+e->Column);//âûâîä íîìåð êîëîíêè
+		Console::WriteLine("click column" + " " + e->Column);//âûâîä íîìåð êîëîíêè
 	}
 };
 }
+

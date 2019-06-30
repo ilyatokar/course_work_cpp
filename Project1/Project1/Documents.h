@@ -75,7 +75,7 @@ namespace Project1 {
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->documentsToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(284, 24);
+			this->menuStrip1->Size = System::Drawing::Size(492, 24);
 			this->menuStrip1->TabIndex = 0;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -89,7 +89,7 @@ namespace Project1 {
 			// addToolStripMenuItem
 			// 
 			this->addToolStripMenuItem->Name = L"addToolStripMenuItem";
-			this->addToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->addToolStripMenuItem->Size = System::Drawing::Size(123, 22);
 			this->addToolStripMenuItem->Text = L"добавить";
 			// 
 			// contextMenuStrip1
@@ -106,7 +106,7 @@ namespace Project1 {
 			this->listView1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->listView1->Location = System::Drawing::Point(0, 24);
 			this->listView1->Name = L"listView1";
-			this->listView1->Size = System::Drawing::Size(284, 241);
+			this->listView1->Size = System::Drawing::Size(492, 241);
 			this->listView1->TabIndex = 2;
 			this->listView1->UseCompatibleStateImageBehavior = false;
 			this->listView1->View = System::Windows::Forms::View::Details;
@@ -118,16 +118,18 @@ namespace Project1 {
 			// columnHeader2
 			// 
 			this->columnHeader2->Text = L"Номер";
+			this->columnHeader2->Width = 108;
 			// 
 			// columnHeader3
 			// 
 			this->columnHeader3->Text = L"Наклодная";
+			this->columnHeader3->Width = 99;
 			// 
 			// Documents
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(284, 265);
+			this->ClientSize = System::Drawing::Size(492, 265);
 			this->Controls->Add(this->listView1);
 			this->Controls->Add(this->menuStrip1);
 			this->MainMenuStrip = this->menuStrip1;

@@ -90,6 +90,7 @@
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <EnableModules>false</EnableModules>
     </ClCompile>
     <Link>
       <AdditionalDependencies />
@@ -139,17 +140,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Documents.cpp" />
     <ClCompile Include="MyForm.cpp" />
-    <ClCompile Include="Products.cpp" />
-    <ClCompile Include="Providers.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AddClient.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="addMagazin.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AddProduct.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AddProvider.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="CLient.h" />
+    <ClInclude Include="Clients.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Comings.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Document.h" />
     <ClInclude Include="Documents.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EditClient.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EditProduct.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EditProvider.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Magazin.h" />
@@ -167,11 +190,29 @@
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AddClient.resx">
+      <DependentUpon>AddClient.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="addMagazin.resx">
       <DependentUpon>addMagazin.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddProduct.resx">
+      <DependentUpon>AddProduct.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddProvider.resx">
+      <DependentUpon>AddProvider.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Documents.resx">
       <DependentUpon>Documents.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditClient.resx">
+      <DependentUpon>EditClient.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditProduct.resx">
+      <DependentUpon>EditProduct.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditProvider.resx">
+      <DependentUpon>EditProvider.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>

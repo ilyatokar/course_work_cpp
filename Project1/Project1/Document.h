@@ -1,14 +1,9 @@
 #pragma once
-#include <iostream>
-using namespace std;
+using namespace System;
 
-class Document
+ref class Document
 {
-private:
-	string NumberDogovor;
-	string Naklodnaya;
-public:
-	Document();
-	Document(string NumberDogovor, string Naklodnaya);
+public: String^ NumberDogovor;
+public: String^ Naklodnaya;
 };
 
