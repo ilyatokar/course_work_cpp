@@ -96,10 +96,10 @@ namespace Project1 {
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->магазиныToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->addedMagazinToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->EditToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->RemoveItemsSelectedToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->listviewToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->показать“оварыToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->EditToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ProvidersToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->documentToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->импортƒаных»з‘айлаToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -146,6 +146,12 @@ namespace Project1 {
 			this->addedMagazinToolStripMenuItem->Text = L"ƒобавить";
 			this->addedMagazinToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::AddedMagazinToolStripMenuItem_Click);
 			// 
+			// EditToolStripMenuItem
+			// 
+			this->EditToolStripMenuItem->Name = L"EditToolStripMenuItem";
+			this->EditToolStripMenuItem->Size = System::Drawing::Size(231, 22);
+			this->EditToolStripMenuItem->Text = L"–едактировать";
+			// 
 			// RemoveItemsSelectedToolStripMenuItem
 			// 
 			this->RemoveItemsSelectedToolStripMenuItem->Name = L"RemoveItemsSelectedToolStripMenuItem";
@@ -165,12 +171,6 @@ namespace Project1 {
 			this->показать“оварыToolStripMenuItem->Name = L"показать“оварыToolStripMenuItem";
 			this->показать“оварыToolStripMenuItem->Size = System::Drawing::Size(231, 22);
 			this->показать“оварыToolStripMenuItem->Text = L"ѕоказать товары";
-			// 
-			// EditToolStripMenuItem
-			// 
-			this->EditToolStripMenuItem->Name = L"EditToolStripMenuItem";
-			this->EditToolStripMenuItem->Size = System::Drawing::Size(231, 22);
-			this->EditToolStripMenuItem->Text = L"–едактировать";
 			// 
 			// ProvidersToolStripMenuItem
 			// 
@@ -197,6 +197,7 @@ namespace Project1 {
 			this->экспортƒанных»з‘айлаToolStripMenuItem->Name = L"экспортƒанных»з‘айлаToolStripMenuItem";
 			this->экспортƒанных»з‘айлаToolStripMenuItem->Size = System::Drawing::Size(147, 20);
 			this->экспортƒанных»з‘айлаToolStripMenuItem->Text = L"Ёкспорт данных в файла";
+			this->экспортƒанных»з‘айлаToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::Ёкспортƒанных»з‘айлаToolStripMenuItem_Click);
 			// 
 			// ExitToolStripMenuItem
 			// 
@@ -390,6 +391,8 @@ namespace Project1 {
 	private: System::Void ListView1_ColumnClick(System::Object^ sender, System::Windows::Forms::ColumnClickEventArgs^ e) {
 		Console::WriteLine("click column" + " " + e->Column);//вывод номер колонки
 	}
+private: System::Void Ёкспортƒанных»з‘айлаToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
 
