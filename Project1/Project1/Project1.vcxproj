@@ -146,6 +146,9 @@
     <ClInclude Include="AddClient.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="AddDocument.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="addMagazin.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -167,6 +170,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="EditClient.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EditdDocument.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="EditProduct.h">
@@ -193,6 +199,9 @@
     <EmbeddedResource Include="AddClient.resx">
       <DependentUpon>AddClient.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddDocument.resx">
+      <DependentUpon>AddDocument.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="addMagazin.resx">
       <DependentUpon>addMagazin.h</DependentUpon>
     </EmbeddedResource>
@@ -202,11 +211,17 @@
     <EmbeddedResource Include="AddProvider.resx">
       <DependentUpon>AddProvider.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Clients.resx">
+      <DependentUpon>Clients.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Documents.resx">
       <DependentUpon>Documents.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditClient.resx">
       <DependentUpon>EditClient.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditdDocument.resx">
+      <DependentUpon>EditdDocument.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditProduct.resx">
       <DependentUpon>EditProduct.h</DependentUpon>

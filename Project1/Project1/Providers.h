@@ -103,7 +103,7 @@ namespace Project1 {
 			this->удалитьToolStripMenuItem->Name = L"удалитьToolStripMenuItem";
 			this->удалитьToolStripMenuItem->Size = System::Drawing::Size(66, 20);
 			this->удалитьToolStripMenuItem->Text = L" Удалить";
-			this->удалитьToolStripMenuItem->Click += gcnew System::EventHandler(this, &Providers::УдалитьToolStripMenuItem_Click);
+			this->удалитьToolStripMenuItem->Click += gcnew System::EventHandler(this, &Providers::RemoveToolStripMenuItem_Click);
 			// 
 			// listView1
 			// 
@@ -161,7 +161,6 @@ namespace Project1 {
 	public: Magazin^ magz;
 	public: Magazin^ Provider_Shown(Magazin^ marr) {
 		magz = marr;
-		this->magz = marr;
 		listView1->Items->Clear();
 		this->ShowDialog();
 		return magz;
@@ -169,97 +168,54 @@ namespace Project1 {
 	private: System::Void CreateToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		AddProvider^ form = gcnew AddProvider();
 		magz = form->AddProvider_Shown(this->magz);
-		listView1->Items->Clear();
-		for (int i = 0; i < this->magz->ArrayProvider->Count; i++) {
-			ListViewItem^ Id = gcnew ListViewItem();
-			Id->Text = this->magz->ArrayProvider[i]->id.ToString();
-			ListViewItem::ListViewSubItem^ Name = gcnew ListViewItem::ListViewSubItem();
-			Name->Text = this->magz->ArrayProvider[i]->Name;
-			Id->SubItems->Add(Name);
-			ListViewItem::ListViewSubItem^ Adress = gcnew ListViewItem::ListViewSubItem();
-			Adress->Text = this->magz->ArrayProvider[i]->Addres;
-			Id->SubItems->Add(Adress);
-			ListViewItem::ListViewSubItem^ Comment = gcnew ListViewItem::ListViewSubItem();
-			Comment->Text = this->magz->ArrayProvider[i]->Comment;
-			Id->SubItems->Add(Comment);
-			listView1->Items->Add(Id);
-		}
-		
+		this->UpdateListView();
 	}
 	private: System::Void Providers_Load(System::Object^ sender, System::EventArgs^ e) {
-		listView1->Items->Clear();
-		for (int i = 0; i < this->magz->ArrayProvider->Count; i++) {
-			ListViewItem^ Id = gcnew ListViewItem();
-			Id->Text = this->magz->ArrayProvider[i]->id.ToString();
-			ListViewItem::ListViewSubItem^ Name = gcnew ListViewItem::ListViewSubItem();
-			Name->Text = this->magz->ArrayProvider[i]->Name;
-			Id->SubItems->Add(Name);
-			ListViewItem::ListViewSubItem^ Adress = gcnew ListViewItem::ListViewSubItem();
-			Adress->Text = this->magz->ArrayProvider[i]->Addres;
-			Id->SubItems->Add(Adress);
-			ListViewItem::ListViewSubItem^ Comment = gcnew ListViewItem::ListViewSubItem();
-			Comment->Text = this->magz->ArrayProvider[i]->Comment;
-			Id->SubItems->Add(Comment);
-			listView1->Items->Add(Id);
+		this->UpdateListView();
+	}
+	private: System::Void EditToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (listView1->SelectedItems->Count > 0 &&
+			listView1->SelectedItems->Count < 2) {
+			EditProvider^ form = gcnew EditProvider();
+			magz = form->EditProvider_Shown(this->magz, (int)Convert::ToInt32(listView1->SelectedItems[0]->SubItems[0]->Text));
+			this->UpdateListView();
+		}
+		else if (listView1->SelectedItems->Count >= 2) {
+			MessageBox::Show("Выбрано много элементов для редактирования!!!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		else {
+			MessageBox::Show("Не выбран элемент для редактирования!!!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
-private: System::Void EditToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (listView1->SelectedItems->Count > 0 &&
-		listView1->SelectedItems->Count < 2) {
-		EditProvider^ form = gcnew EditProvider();
-		Console::WriteLine(listView1->SelectedItems[0]->SubItems[0]->Text);
-		magz = form->EditProvider_Shown(this->magz, (int)Convert::ToInt32(listView1->SelectedItems[0]->SubItems[0]->Text));
-		listView1->Items->Clear();
-		for (int i = 0; i < this->magz->ArrayProvider->Count; i++) {
-			ListViewItem^ Id = gcnew ListViewItem();
-			Id->Text = this->magz->ArrayProvider[i]->id.ToString();
-			ListViewItem::ListViewSubItem^ Name = gcnew ListViewItem::ListViewSubItem();
-			Name->Text = this->magz->ArrayProvider[i]->Name;
-			Id->SubItems->Add(Name);
-			ListViewItem::ListViewSubItem^ Adress = gcnew ListViewItem::ListViewSubItem();
-			Adress->Text = this->magz->ArrayProvider[i]->Addres;
-			Id->SubItems->Add(Adress);
-			ListViewItem::ListViewSubItem^ Comment = gcnew ListViewItem::ListViewSubItem();
-			Comment->Text = this->magz->ArrayProvider[i]->Comment;
-			Id->SubItems->Add(Comment);
-			listView1->Items->Add(Id);
-		}
-	}
-	else if (listView1->SelectedItems->Count >= 2) {
-		MessageBox::Show("Выбрано много элементов для редактирования!!!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
-	}
-	else{
-		MessageBox::Show("Не выбран элемент для редактирования!!!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
-	}
-}
-private: System::Void УдалитьToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	for (int i = 0; i < listView1->SelectedItems->Count; i++) {
-		int id = Convert::ToInt32(listView1->SelectedItems[i]->SubItems[0]->Text);
-		for (int i = 0; i < magz->ArrayProvider->Count; i++)
-		{
-			if (magz->ArrayProvider[i]->id == id)
+	private: System::Void RemoveToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		for (int i = 0; i < listView1->SelectedItems->Count; i++) {
+			int id = Convert::ToInt32(listView1->SelectedItems[i]->SubItems[0]->Text);
+			for (int i = 0; i < magz->ArrayProvider->Count; i++)
 			{
-				magz->ArrayProvider->Remove(magz->ArrayProvider[i]);
+				if (magz->ArrayProvider[i]->id == id)
+				{
+					magz->ArrayProvider->Remove(magz->ArrayProvider[i]);
+				}
 			}
 		}
+		this->UpdateListView();
 	}
-
-	listView1->Items->Clear();
-	for (int i = 0; i < this->magz->ArrayProvider->Count; i++) {
-		ListViewItem^ Id = gcnew ListViewItem();
-		Id->Text = this->magz->ArrayProvider[i]->id.ToString();
-		ListViewItem::ListViewSubItem^ Name = gcnew ListViewItem::ListViewSubItem();
-		Name->Text = this->magz->ArrayProvider[i]->Name;
-		Id->SubItems->Add(Name);
-		ListViewItem::ListViewSubItem^ Adress = gcnew ListViewItem::ListViewSubItem();
-		Adress->Text = this->magz->ArrayProvider[i]->Addres;
-		Id->SubItems->Add(Adress);
-		ListViewItem::ListViewSubItem^ Comment = gcnew ListViewItem::ListViewSubItem();
-		Comment->Text = this->magz->ArrayProvider[i]->Comment;
-		Id->SubItems->Add(Comment);
-		listView1->Items->Add(Id);
+	private: System::Void UpdateListView() {
+		listView1->Items->Clear();
+		for (int i = 0; i < this->magz->ArrayProvider->Count; i++) {
+			ListViewItem^ Id = gcnew ListViewItem();
+			Id->Text = this->magz->ArrayProvider[i]->id.ToString();
+			ListViewItem::ListViewSubItem^ Name = gcnew ListViewItem::ListViewSubItem();
+			Name->Text = this->magz->ArrayProvider[i]->Name;
+			Id->SubItems->Add(Name);
+			ListViewItem::ListViewSubItem^ Adress = gcnew ListViewItem::ListViewSubItem();
+			Adress->Text = this->magz->ArrayProvider[i]->Addres;
+			Id->SubItems->Add(Adress);
+			ListViewItem::ListViewSubItem^ Comment = gcnew ListViewItem::ListViewSubItem();
+			Comment->Text = this->magz->ArrayProvider[i]->Comment;
+			Id->SubItems->Add(Comment);
+			listView1->Items->Add(Id);
+		}
 	}
-
-}
-};
+	};
 }

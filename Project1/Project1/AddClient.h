@@ -48,7 +48,7 @@ namespace Project1 {
 		/// <summary>
 		/// Обязательная переменная конструктора.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -142,25 +142,32 @@ namespace Project1 {
 			this->PerformLayout();
 
 		}
-		
-		public: Client^ client;
 
-		#pragma endregion
 
-		public: Magazin^ Shown(Magazin^ arr) {
-			 client = gcnew Client();
-			 this->ShowDialog();
-			 Console::WriteLine(client->Addres);
-			 arr->ArrayClient->Add(client);
-			 return arr;
+#pragma endregion
+	public: Client^ client;
+	public: Magazin^ magz;
+	public: Magazin^ AddClient_Shown(Magazin^ m) {
+		client = gcnew Client();
+		this->magz = m;
+		this->ShowDialog();
+		//сделать проверку на существующий элемент
+		m->ArrayClient->Add(client);
+		return m;
+	}
+
+	private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		int id = 1;
+		if (magz->ArrayClient->Count != 0) {
+			id = (int)magz->ArrayClient[magz->ArrayClient->Count - 1]->id;
+			id = id + 1;
 		}
-
-		private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
-			client->id = 1;
-			client->Name = textBox1->Text;
-			client->Addres = textBox2->Text;
-			client->Comment = textBox3->Text;
-			this->Close();
-		}
-};
+		//сделать проверку на введенные данные
+		client->id = id;
+		client->Name = textBox1->Text;
+		client->Addres = textBox2->Text;
+		client->Comment = textBox3->Text;
+		this->Close();
+	}
+	};
 }

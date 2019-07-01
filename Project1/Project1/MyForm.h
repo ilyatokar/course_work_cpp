@@ -5,7 +5,9 @@
 #include "Documents.h"
 #include "AddClient.h"
 #include "Client.h"
+#include "Clients.h"
 #include "Product.h"
+#include "Products.h"
 
 namespace Project1 {
 
@@ -50,12 +52,13 @@ namespace Project1 {
 
 
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
-	private: System::Windows::Forms::ToolStripMenuItem^ ìàãàçèíûToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ addedMagazinToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ ClientsToolStripMenuItem;
+
+
 
 
 	private: System::Windows::Forms::ListView^ listView1;
-	private: System::Windows::Forms::ToolStripMenuItem^ RemoveItemsSelectedToolStripMenuItem;
+
 
 
 
@@ -64,12 +67,12 @@ namespace Project1 {
 	private: System::Windows::Forms::ColumnHeader^ columnName;
 	private: System::Windows::Forms::ToolStripMenuItem^ ProvidersToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ documentToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ listviewToolStripMenuItem;
+
 	private: System::Windows::Forms::ToolStripMenuItem^ ExitToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ ïîêàçàòüÒîâàðûToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ EditToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ èìïîðòÄàíûõÈçÔàéëàToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ ýêñïîðòÄàííûõÈçÔàéëàToolStripMenuItem;
+
+
+
+
 	private: System::Windows::Forms::ColumnHeader^ columnHeader1;
 	private: System::Windows::Forms::ColumnHeader^ columnHeader2;
 
@@ -78,6 +81,12 @@ namespace Project1 {
 	private: System::Windows::Forms::ColumnHeader^ columnHeader6;
 	private: System::Windows::Forms::ColumnHeader^ columnHeader7;
 	private: System::Windows::Forms::ColumnHeader^ columnHeader8;
+	private: System::Windows::Forms::ToolStripMenuItem^ òîâàðToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ ïðèõîäToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ ðàñõîäToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ ôàéëToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ èìïîðòToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ ýêñïîðòToolStripMenuItem;
 	private: System::ComponentModel::IContainer^ components;
 
 	private:
@@ -94,16 +103,15 @@ namespace Project1 {
 		void InitializeComponent(void)
 		{
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
-			this->ìàãàçèíûToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->addedMagazinToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->EditToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->RemoveItemsSelectedToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->listviewToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->ïîêàçàòüÒîâàðûToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->òîâàðToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->ClientsToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ProvidersToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->documentToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->èìïîðòÄàíûõÈçÔàéëàToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->ýêñïîðòÄàííûõÈçÔàéëàToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->ïðèõîäToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->ðàñõîäToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->ôàéëToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->èìïîðòToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->ýêñïîðòToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ExitToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->listView1 = (gcnew System::Windows::Forms::ListView());
 			this->columnName = (gcnew System::Windows::Forms::ColumnHeader());
@@ -118,10 +126,10 @@ namespace Project1 {
 			// 
 			// menuStrip1
 			// 
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(6) {
-				this->ìàãàçèíûToolStripMenuItem,
-					this->ProvidersToolStripMenuItem, this->documentToolStripMenuItem, this->èìïîðòÄàíûõÈçÔàéëàToolStripMenuItem, this->ýêñïîðòÄàííûõÈçÔàéëàToolStripMenuItem,
-					this->ExitToolStripMenuItem
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(8) {
+				this->òîâàðToolStripMenuItem,
+					this->ClientsToolStripMenuItem, this->ProvidersToolStripMenuItem, this->documentToolStripMenuItem, this->ïðèõîäToolStripMenuItem,
+					this->ðàñõîäToolStripMenuItem, this->ôàéëToolStripMenuItem, this->ExitToolStripMenuItem
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
@@ -129,48 +137,19 @@ namespace Project1 {
 			this->menuStrip1->TabIndex = 2;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
-			// ìàãàçèíûToolStripMenuItem
+			// òîâàðToolStripMenuItem
 			// 
-			this->ìàãàçèíûToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(5) {
-				this->addedMagazinToolStripMenuItem,
-					this->EditToolStripMenuItem, this->RemoveItemsSelectedToolStripMenuItem, this->listviewToolStripMenuItem, this->ïîêàçàòüÒîâàðûToolStripMenuItem
-			});
-			this->ìàãàçèíûToolStripMenuItem->Name = L"ìàãàçèíûToolStripMenuItem";
-			this->ìàãàçèíûToolStripMenuItem->Size = System::Drawing::Size(67, 20);
-			this->ìàãàçèíûToolStripMenuItem->Text = L" Êëèåíòû";
+			this->òîâàðToolStripMenuItem->Name = L"òîâàðToolStripMenuItem";
+			this->òîâàðToolStripMenuItem->Size = System::Drawing::Size(57, 20);
+			this->òîâàðToolStripMenuItem->Text = L"Òîâàðû";
+			this->òîâàðToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::ÒîâàðToolStripMenuItem_Click);
 			// 
-			// addedMagazinToolStripMenuItem
+			// ClientsToolStripMenuItem
 			// 
-			this->addedMagazinToolStripMenuItem->Name = L"addedMagazinToolStripMenuItem";
-			this->addedMagazinToolStripMenuItem->Size = System::Drawing::Size(231, 22);
-			this->addedMagazinToolStripMenuItem->Text = L"Äîáàâèòü";
-			this->addedMagazinToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::AddedMagazinToolStripMenuItem_Click);
-			// 
-			// EditToolStripMenuItem
-			// 
-			this->EditToolStripMenuItem->Name = L"EditToolStripMenuItem";
-			this->EditToolStripMenuItem->Size = System::Drawing::Size(231, 22);
-			this->EditToolStripMenuItem->Text = L"Ðåäàêòèðîâàòü";
-			// 
-			// RemoveItemsSelectedToolStripMenuItem
-			// 
-			this->RemoveItemsSelectedToolStripMenuItem->Name = L"RemoveItemsSelectedToolStripMenuItem";
-			this->RemoveItemsSelectedToolStripMenuItem->Size = System::Drawing::Size(231, 22);
-			this->RemoveItemsSelectedToolStripMenuItem->Text = L"Óäàëèòü âûáðàííûå ýëåìåíòû";
-			this->RemoveItemsSelectedToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::RemoveItemsSelectedToolStripMenuItem_Click);
-			// 
-			// listviewToolStripMenuItem
-			// 
-			this->listviewToolStripMenuItem->Name = L"listviewToolStripMenuItem";
-			this->listviewToolStripMenuItem->Size = System::Drawing::Size(231, 22);
-			this->listviewToolStripMenuItem->Text = L"listview";
-			this->listviewToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::ListviewToolStripMenuItem_Click);
-			// 
-			// ïîêàçàòüÒîâàðûToolStripMenuItem
-			// 
-			this->ïîêàçàòüÒîâàðûToolStripMenuItem->Name = L"ïîêàçàòüÒîâàðûToolStripMenuItem";
-			this->ïîêàçàòüÒîâàðûToolStripMenuItem->Size = System::Drawing::Size(231, 22);
-			this->ïîêàçàòüÒîâàðûToolStripMenuItem->Text = L"Ïîêàçàòü òîâàðû";
+			this->ClientsToolStripMenuItem->Name = L"ClientsToolStripMenuItem";
+			this->ClientsToolStripMenuItem->Size = System::Drawing::Size(64, 20);
+			this->ClientsToolStripMenuItem->Text = L"Êëèåíòû";
+			this->ClientsToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::ClientsToolStripMenuItem_Click);
 			// 
 			// ProvidersToolStripMenuItem
 			// 
@@ -186,18 +165,39 @@ namespace Project1 {
 			this->documentToolStripMenuItem->Text = L"Äîêóìåíòû";
 			this->documentToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::DocumentToolStripMenuItem_Click);
 			// 
-			// èìïîðòÄàíûõÈçÔàéëàToolStripMenuItem
+			// ïðèõîäToolStripMenuItem
 			// 
-			this->èìïîðòÄàíûõÈçÔàéëàToolStripMenuItem->Name = L"èìïîðòÄàíûõÈçÔàéëàToolStripMenuItem";
-			this->èìïîðòÄàíûõÈçÔàéëàToolStripMenuItem->Size = System::Drawing::Size(141, 20);
-			this->èìïîðòÄàíûõÈçÔàéëàToolStripMenuItem->Text = L"Èìïîðò äàíûõ èç ôàéëà";
+			this->ïðèõîäToolStripMenuItem->Name = L"ïðèõîäToolStripMenuItem";
+			this->ïðèõîäToolStripMenuItem->Size = System::Drawing::Size(57, 20);
+			this->ïðèõîäToolStripMenuItem->Text = L"Ïðèõîä";
 			// 
-			// ýêñïîðòÄàííûõÈçÔàéëàToolStripMenuItem
+			// ðàñõîäToolStripMenuItem
 			// 
-			this->ýêñïîðòÄàííûõÈçÔàéëàToolStripMenuItem->Name = L"ýêñïîðòÄàííûõÈçÔàéëàToolStripMenuItem";
-			this->ýêñïîðòÄàííûõÈçÔàéëàToolStripMenuItem->Size = System::Drawing::Size(147, 20);
-			this->ýêñïîðòÄàííûõÈçÔàéëàToolStripMenuItem->Text = L"Ýêñïîðò äàííûõ â ôàéëà";
-			this->ýêñïîðòÄàííûõÈçÔàéëàToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::ÝêñïîðòÄàííûõÈçÔàéëàToolStripMenuItem_Click);
+			this->ðàñõîäToolStripMenuItem->Name = L"ðàñõîäToolStripMenuItem";
+			this->ðàñõîäToolStripMenuItem->Size = System::Drawing::Size(55, 20);
+			this->ðàñõîäToolStripMenuItem->Text = L"Ðàñõîä";
+			// 
+			// ôàéëToolStripMenuItem
+			// 
+			this->ôàéëToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->èìïîðòToolStripMenuItem,
+					this->ýêñïîðòToolStripMenuItem
+			});
+			this->ôàéëToolStripMenuItem->Name = L"ôàéëToolStripMenuItem";
+			this->ôàéëToolStripMenuItem->Size = System::Drawing::Size(45, 20);
+			this->ôàéëToolStripMenuItem->Text = L"Ôàéë";
+			// 
+			// èìïîðòToolStripMenuItem
+			// 
+			this->èìïîðòToolStripMenuItem->Name = L"èìïîðòToolStripMenuItem";
+			this->èìïîðòToolStripMenuItem->Size = System::Drawing::Size(116, 22);
+			this->èìïîðòToolStripMenuItem->Text = L"Èìïîðò";
+			// 
+			// ýêñïîðòToolStripMenuItem
+			// 
+			this->ýêñïîðòToolStripMenuItem->Name = L"ýêñïîðòToolStripMenuItem";
+			this->ýêñïîðòToolStripMenuItem->Size = System::Drawing::Size(116, 22);
+			this->ýêñïîðòToolStripMenuItem->Text = L"Ýêñïîðò";
 			// 
 			// ExitToolStripMenuItem
 			// 
@@ -262,7 +262,7 @@ namespace Project1 {
 			this->Controls->Add(this->menuStrip1);
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"MyForm";
-			this->Text = L"MyForm";
+			this->Text = L"Ó÷åò òîâàðîâ â ìàãàçèíå";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
@@ -276,10 +276,10 @@ namespace Project1 {
 	private: System::Void AddedMagazinToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ fileName = Application::StartupPath + "/db/magazins.json";
 
-		AddClient^ f2 = gcnew AddClient();
-		mgz = f2->Shown(mgz);
-		Console::WriteLine(JsonConvert::SerializeObject(mgz));
-		
+		//AddClient^ f2 = gcnew AddClient();
+		//mgz = f2->Shown(mgz);
+		//Console::WriteLine(JsonConvert::SerializeObject(mgz));
+
 		//ListViewItem^ Id = gcnew ListViewItem();
 
 		//while (listView1->Items->Count > 0) {
@@ -315,15 +315,14 @@ namespace Project1 {
 
 	private: System::Void ProvidersToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		Providers^ form = gcnew Providers();
-		form->Provider_Shown(mgz);
+		mgz = form->Provider_Shown(mgz);
 	}
 
 	private: System::Void DocumentToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		Documents^ form = gcnew Documents();
-		form->Show();
+		mgz = form->Document_Shown(mgz);
+
 	}
-
-
 
 	private: System::Void ListviewToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		ListViewItem^ Id = gcnew ListViewItem();
@@ -333,8 +332,6 @@ namespace Project1 {
 		Id->SubItems->Add(Name);
 		listView1->Items->Add(Id);
 	}
-
-
 
 	private: System::Void ExitToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		Application::Exit();
@@ -391,8 +388,14 @@ namespace Project1 {
 	private: System::Void ListView1_ColumnClick(System::Object^ sender, System::Windows::Forms::ColumnClickEventArgs^ e) {
 		Console::WriteLine("click column" + " " + e->Column);//âûâîä íîìåð êîëîíêè
 	}
-private: System::Void ÝêñïîðòÄàííûõÈçÔàéëàToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-};
+	private: System::Void ÒîâàðToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		Products^ form = gcnew Products();
+	}
+	private: System::Void ClientsToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		Clients^ form = gcnew Clients();
+		mgz = form->Client_Shown(mgz);
+
+	}
+	};
 }
 

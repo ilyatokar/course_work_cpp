@@ -1,4 +1,8 @@
 #pragma once
+#include "AddClient.h"
+#include "EditClient.h"
+#include "CLient.h"
+#include "Magazin.h"
 
 namespace Project1 {
 
@@ -34,6 +38,16 @@ namespace Project1 {
 				delete components;
 			}
 		}
+	private: System::Windows::Forms::MenuStrip^ menuStrip1;
+	private: System::Windows::Forms::ToolStripMenuItem^ äîáàâèòüToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ ğåäàêòèğîâàòüToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ óäàëèòüToolStripMenuItem;
+	private: System::Windows::Forms::ListView^ listView1;
+	private: System::Windows::Forms::ColumnHeader^ columnHeader1;
+	private: System::Windows::Forms::ColumnHeader^ columnHeader2;
+	private: System::Windows::Forms::ColumnHeader^ columnHeader3;
+	private: System::Windows::Forms::ColumnHeader^ columnHeader4;
+	protected:
 
 	private:
 		/// <summary>
@@ -48,12 +62,156 @@ namespace Project1 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = gcnew System::ComponentModel::Container();
-			this->Size = System::Drawing::Size(300,300);
-			this->Text = L"Clients";
-			this->Padding = System::Windows::Forms::Padding(0);
+			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
+			this->äîáàâèòüToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->ğåäàêòèğîâàòüToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->óäàëèòüToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->listView1 = (gcnew System::Windows::Forms::ListView());
+			this->columnHeader1 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader2 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader3 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader4 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->menuStrip1->SuspendLayout();
+			this->SuspendLayout();
+			// 
+			// menuStrip1
+			// 
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+				this->äîáàâèòüToolStripMenuItem,
+					this->ğåäàêòèğîâàòüToolStripMenuItem, this->óäàëèòüToolStripMenuItem
+			});
+			this->menuStrip1->Location = System::Drawing::Point(0, 0);
+			this->menuStrip1->Name = L"menuStrip1";
+			this->menuStrip1->Size = System::Drawing::Size(325, 24);
+			this->menuStrip1->TabIndex = 0;
+			this->menuStrip1->Text = L"menuStrip1";
+			// 
+			// äîáàâèòüToolStripMenuItem
+			// 
+			this->äîáàâèòüToolStripMenuItem->Name = L"äîáàâèòüToolStripMenuItem";
+			this->äîáàâèòüToolStripMenuItem->Size = System::Drawing::Size(69, 20);
+			this->äîáàâèòüToolStripMenuItem->Text = L"Äîáàâèòü";
+			this->äîáàâèòüToolStripMenuItem->Click += gcnew System::EventHandler(this, &Clients::CreateToolStripMenuItem_Click);
+			// 
+			// ğåäàêòèğîâàòüToolStripMenuItem
+			// 
+			this->ğåäàêòèğîâàòüToolStripMenuItem->Name = L"ğåäàêòèğîâàòüToolStripMenuItem";
+			this->ğåäàêòèğîâàòüToolStripMenuItem->Size = System::Drawing::Size(98, 20);
+			this->ğåäàêòèğîâàòüToolStripMenuItem->Text = L"Ğåäàêòèğîâàòü";
+			this->ğåäàêòèğîâàòüToolStripMenuItem->Click += gcnew System::EventHandler(this, &Clients::EditToolStripMenuItem_Click);
+			// 
+			// óäàëèòüToolStripMenuItem
+			// 
+			this->óäàëèòüToolStripMenuItem->Name = L"óäàëèòüToolStripMenuItem";
+			this->óäàëèòüToolStripMenuItem->Size = System::Drawing::Size(63, 20);
+			this->óäàëèòüToolStripMenuItem->Text = L"Óäàëèòü";
+			this->óäàëèòüToolStripMenuItem->Click += gcnew System::EventHandler(this, &Clients::ÓäàëèòüToolStripMenuItem_Click);
+			// 
+			// listView1
+			// 
+			this->listView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(4) {
+				this->columnHeader1, this->columnHeader2,
+					this->columnHeader3, this->columnHeader4
+			});
+			this->listView1->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->listView1->Location = System::Drawing::Point(0, 24);
+			this->listView1->Name = L"listView1";
+			this->listView1->Size = System::Drawing::Size(325, 241);
+			this->listView1->TabIndex = 1;
+			this->listView1->UseCompatibleStateImageBehavior = false;
+			this->listView1->View = System::Windows::Forms::View::Details;
+			// 
+			// columnHeader1
+			// 
+			this->columnHeader1->Text = L"id";
+			// 
+			// columnHeader2
+			// 
+			this->columnHeader2->Text = L"Íàçâàíèå";
+			// 
+			// columnHeader3
+			// 
+			this->columnHeader3->Text = L"Àäğåñ";
+			// 
+			// columnHeader4
+			// 
+			this->columnHeader4->Text = L"Êîìåíòàğèé";
+			// 
+			// Clients
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(325, 265);
+			this->Controls->Add(this->listView1);
+			this->Controls->Add(this->menuStrip1);
+			this->MainMenuStrip = this->menuStrip1;
+			this->Name = L"Clients";
+			this->Text = L"Clients";
+			this->menuStrip1->ResumeLayout(false);
+			this->menuStrip1->PerformLayout();
+			this->ResumeLayout(false);
+			this->PerformLayout();
+
 		}
 #pragma endregion
-	};
+	public: Client^ ct;
+	public: Magazin^ magz;
+	public: Magazin^ Client_Shown(Magazin^ m) {
+		magz = m;
+		listView1->Items->Clear();
+		this->ShowDialog();
+		return magz;
+	}
+
+	private: System::Void CreateToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		AddClient^ form = gcnew AddClient();
+		magz = form->AddClient_Shown(magz);
+		this->UpdateListView();
+	}
+
+	private: System::Void UpdateListView() {
+		listView1->Items->Clear();
+		for (int i = 0; i < this->magz->ArrayClient->Count; i++) {
+			ListViewItem^ Id = gcnew ListViewItem();
+			Id->Text = this->magz->ArrayClient[i]->id.ToString();
+			ListViewItem::ListViewSubItem^ Name = gcnew ListViewItem::ListViewSubItem();
+			Name->Text = this->magz->ArrayClient[i]->Name;
+			Id->SubItems->Add(Name);
+			ListViewItem::ListViewSubItem^ Adress = gcnew ListViewItem::ListViewSubItem();
+			Adress->Text = this->magz->ArrayClient[i]->Addres;
+			Id->SubItems->Add(Adress);
+			ListViewItem::ListViewSubItem^ Comment = gcnew ListViewItem::ListViewSubItem();
+			Comment->Text = this->magz->ArrayClient[i]->Comment;
+			Id->SubItems->Add(Comment);
+			listView1->Items->Add(Id);
+		}
+	}
+private: System::Void EditToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (listView1->SelectedItems->Count > 0 &&
+		listView1->SelectedItems->Count < 2) {
+		EditClient^ form = gcnew EditClient();
+		magz = form->EditClient_Shown(this->magz, (int)Convert::ToInt32(listView1->SelectedItems[0]->SubItems[0]->Text));
+		this->UpdateListView();
+	}
+	else if (listView1->SelectedItems->Count >= 2) {
+		MessageBox::Show("Âûáğàíî ìíîãî ıëåìåíòîâ äëÿ ğåäàêòèğîâàíèÿ!!!", "Îøèáêà!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
+	else {
+		MessageBox::Show("Íå âûáğàí ıëåìåíò äëÿ ğåäàêòèğîâàíèÿ!!!", "Îøèáêà!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
+}
+private: System::Void ÓäàëèòüToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	for (int i = 0; i < listView1->SelectedItems->Count; i++) {
+		int id = Convert::ToInt32(listView1->SelectedItems[i]->SubItems[0]->Text);
+		for (int i = 0; i < magz->ArrayClient->Count; i++)
+		{
+			if (magz->ArrayClient[i]->id == id)
+			{
+				magz->ArrayClient->Remove(magz->ArrayClient[i]);
+			}
+		}
+	}
+	this->UpdateListView();
+}
+};
 }

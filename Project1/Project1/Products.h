@@ -154,6 +154,7 @@ namespace Project1 {
 
 		}
 #pragma endregion
-
+		public: Product^ pr;
+		public: Magazin^ mgz;
 };
 }
