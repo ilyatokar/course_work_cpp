@@ -1,4 +1,5 @@
 #pragma once
+#include "Provider.h"
 
 namespace Project1 {
 
@@ -73,6 +74,7 @@ namespace Project1 {
 			this->button1->TabIndex = 13;
 			this->button1->Text = L" Добавить";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &AddProvider::Button1_Click);
 			// 
 			// label3
 			// 
@@ -141,5 +143,28 @@ namespace Project1 {
 
 		}
 #pragma endregion
-	};
+	public: Provider^ Prov;
+	public: Magazin^ magz;
+	public: Magazin^ AddProvider_Shown(Magazin^ arr) {
+		Prov = gcnew Provider();
+		this->magz = arr;
+		this->ShowDialog();
+		magz->ArrayProvider->Add(Prov);
+		arr = this->magz;
+		return arr;
+	}
+		
+	private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		int id = 1;
+		if (magz->ArrayProvider->Count != 0) {
+			id = (int)magz->ArrayProvider[magz->ArrayProvider->Count - 1]->id;
+			id = id + 1;
+		}
+		Prov->id = id;
+		Prov->Name = textBox1->Text;
+		Prov->Addres = textBox2->Text;
+		Prov->Comment = textBox3->Text;
+		this->Close();
+	}
+};
 }

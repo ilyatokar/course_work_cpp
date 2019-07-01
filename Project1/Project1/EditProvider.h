@@ -1,4 +1,6 @@
 #pragma once
+#include "Provider.h"
+#include "Magazin.h"
 
 namespace Project1 {
 
@@ -73,6 +75,7 @@ namespace Project1 {
 			this->button1->TabIndex = 13;
 			this->button1->Text = L"Сохранить";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &EditProvider::Button1_Click);
 			// 
 			// label3
 			// 
@@ -136,10 +139,47 @@ namespace Project1 {
 			this->Controls->Add(this->textBox1);
 			this->Name = L"EditProvider";
 			this->Text = L"EditProvider";
+			this->Load += gcnew System::EventHandler(this, &EditProvider::EditProvider_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	};
+
+		public: Provider^ Prov;
+		public: Magazin^ EditProvider_Shown(Magazin^ magz, int id) {
+			for (int i = 0; i < magz->ArrayProvider->Count; i++)
+			{
+				if (magz->ArrayProvider[i]->id == id)
+				{
+					Prov = magz->ArrayProvider[i];
+					break;
+				}
+			}
+			if (Prov != nullptr)
+			{
+				this->ShowDialog();
+				for (int i = 0; i < magz->ArrayProvider->Count; i++)
+				{
+					if (magz->ArrayProvider[i]->id == id)
+					{
+						magz->ArrayProvider[i] = Prov;
+						break;
+					}
+				}
+			}
+			return magz;
+		}
+	private: System::Void EditProvider_Load(System::Object^ sender, System::EventArgs^ e) {
+		textBox1->Text = Prov->Name;
+		textBox2->Text = Prov->Addres;
+		textBox3->Text = Prov->Comment;
+	}
+private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	Prov->Name = textBox1->Text;
+	Prov->Addres = textBox2->Text;
+	Prov->Comment = textBox3->Text;
+	this->Close();
+}
+};
 }

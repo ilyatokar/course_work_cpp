@@ -6,9 +6,7 @@ ref class Provider
 {
 public: int id;
 public: String^ Name;
-public: Provider(int id, String^ Name) {
-	this->id = id;
-	this->Name = Name;
-}
+public: String^ Addres;
+public: String^ Comment;
 };
 

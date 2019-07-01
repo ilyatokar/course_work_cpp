@@ -1,5 +1,5 @@
 #pragma once
-#include "CLient.h"
+#include "Client.h"
 namespace Project1 {
 
 	using namespace System;

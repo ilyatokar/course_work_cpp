@@ -155,7 +155,7 @@
     <ClInclude Include="AddProvider.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="CLient.h" />
+    <ClInclude Include="Client.h" />
     <ClInclude Include="Clients.h">
       <FileType>CppForm</FileType>
     </ClInclude>

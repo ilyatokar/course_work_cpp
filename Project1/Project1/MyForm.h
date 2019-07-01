@@ -4,7 +4,8 @@
 #include "Providers.h"
 #include "Documents.h"
 #include "AddClient.h"
-#include "CLient.h"
+#include "Client.h"
+#include "Product.h"
 
 namespace Project1 {
 
@@ -26,6 +27,10 @@ namespace Project1 {
 		{
 			mgz = gcnew Magazin();
 			mgz->ArrayClient = gcnew List<Client^>();
+			mgz->ArrayProvider = gcnew List<Provider^>();
+			mgz->ArrayDocument = gcnew List<Document^>();
+			mgz->ArrayProduct = gcnew List<Product^>();
+
 			InitializeComponent();
 		}
 
@@ -128,11 +133,11 @@ namespace Project1 {
 			// 
 			this->ìàãàçèíûToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(5) {
 				this->addedMagazinToolStripMenuItem,
-					this->RemoveItemsSelectedToolStripMenuItem, this->listviewToolStripMenuItem, this->ïîêàçàòüÒîâàðûToolStripMenuItem, this->EditToolStripMenuItem
+					this->EditToolStripMenuItem, this->RemoveItemsSelectedToolStripMenuItem, this->listviewToolStripMenuItem, this->ïîêàçàòüÒîâàðûToolStripMenuItem
 			});
 			this->ìàãàçèíûToolStripMenuItem->Name = L"ìàãàçèíûToolStripMenuItem";
-			this->ìàãàçèíûToolStripMenuItem->Size = System::Drawing::Size(69, 20);
-			this->ìàãàçèíûToolStripMenuItem->Text = L"Ìàãàçèíû";
+			this->ìàãàçèíûToolStripMenuItem->Size = System::Drawing::Size(67, 20);
+			this->ìàãàçèíûToolStripMenuItem->Text = L" Êëèåíòû";
 			// 
 			// addedMagazinToolStripMenuItem
 			// 
@@ -190,8 +195,8 @@ namespace Project1 {
 			// ýêñïîðòÄàííûõÈçÔàéëàToolStripMenuItem
 			// 
 			this->ýêñïîðòÄàííûõÈçÔàéëàToolStripMenuItem->Name = L"ýêñïîðòÄàííûõÈçÔàéëàToolStripMenuItem";
-			this->ýêñïîðòÄàííûõÈçÔàéëàToolStripMenuItem->Size = System::Drawing::Size(152, 20);
-			this->ýêñïîðòÄàííûõÈçÔàéëàToolStripMenuItem->Text = L"Ýêñïîðò äàííûõ èç ôàéëà";
+			this->ýêñïîðòÄàííûõÈçÔàéëàToolStripMenuItem->Size = System::Drawing::Size(147, 20);
+			this->ýêñïîðòÄàííûõÈçÔàéëàToolStripMenuItem->Text = L"Ýêñïîðò äàííûõ â ôàéëà";
 			// 
 			// ExitToolStripMenuItem
 			// 
@@ -272,7 +277,7 @@ namespace Project1 {
 
 		AddClient^ f2 = gcnew AddClient();
 		mgz = f2->Shown(mgz);
-		Console::WriteLine(mgz->ArrayClient[0]->Addres);
+		Console::WriteLine(JsonConvert::SerializeObject(mgz));
 		
 		//ListViewItem^ Id = gcnew ListViewItem();
 
@@ -309,7 +314,7 @@ namespace Project1 {
 
 	private: System::Void ProvidersToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		Providers^ form = gcnew Providers();
-		form->Show();
+		form->Provider_Shown(mgz);
 	}
 
 	private: System::Void DocumentToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
