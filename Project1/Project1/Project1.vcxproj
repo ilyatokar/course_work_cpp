@@ -140,10 +140,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AddComing.cpp" />
+    <ClCompile Include="Coming.cpp" />
+    <ClCompile Include="EditComing.cpp" />
     <ClCompile Include="MyForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddClient.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AddComing.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="AddDocument.h">
@@ -162,6 +168,7 @@
     <ClInclude Include="Clients.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Coming.h" />
     <ClInclude Include="Comings.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -170,6 +177,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="EditClient.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EditComing.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="EditdDocument.h">
@@ -199,6 +209,9 @@
     <EmbeddedResource Include="AddClient.resx">
       <DependentUpon>AddClient.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddComing.resx">
+      <DependentUpon>AddComing.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddDocument.resx">
       <DependentUpon>AddDocument.h</DependentUpon>
     </EmbeddedResource>
@@ -214,11 +227,17 @@
     <EmbeddedResource Include="Clients.resx">
       <DependentUpon>Clients.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Comings.resx">
+      <DependentUpon>Comings.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Documents.resx">
       <DependentUpon>Documents.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditClient.resx">
       <DependentUpon>EditClient.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditComing.resx">
+      <DependentUpon>EditComing.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditdDocument.resx">
       <DependentUpon>EditdDocument.h</DependentUpon>

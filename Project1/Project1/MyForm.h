@@ -3,11 +3,11 @@
 #include "addMagazin.h"
 #include "Providers.h"
 #include "Documents.h"
-#include "AddClient.h"
 #include "Client.h"
 #include "Clients.h"
 #include "Product.h"
 #include "Products.h"
+#include "Comings.h"
 
 namespace Project1 {
 
@@ -32,6 +32,7 @@ namespace Project1 {
 			mgz->ArrayProvider = gcnew List<Provider^>();
 			mgz->ArrayDocument = gcnew List<Document^>();
 			mgz->ArrayProduct = gcnew List<Product^>();
+			mgz->ArrayComing = gcnew List<Coming^>();
 
 			InitializeComponent();
 		}
@@ -170,6 +171,7 @@ namespace Project1 {
 			this->ïðèõîäToolStripMenuItem->Name = L"ïðèõîäToolStripMenuItem";
 			this->ïðèõîäToolStripMenuItem->Size = System::Drawing::Size(57, 20);
 			this->ïðèõîäToolStripMenuItem->Text = L"Ïðèõîä";
+			this->ïðèõîäToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::ComingToolStripMenuItem_Click);
 			// 
 			// ðàñõîäToolStripMenuItem
 			// 
@@ -390,12 +392,16 @@ namespace Project1 {
 	}
 	private: System::Void ÒîâàðToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		Products^ form = gcnew Products();
+		mgz = form->Products_Shown(mgz);
 	}
 	private: System::Void ClientsToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		Clients^ form = gcnew Clients();
 		mgz = form->Client_Shown(mgz);
-
 	}
-	};
+	private: System::Void ComingToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		Comings^ form = gcnew Comings();
+		mgz = form->Coming_Shown(mgz);
+	}
+};
 }
 

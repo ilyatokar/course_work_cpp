@@ -53,7 +53,7 @@ namespace Project1 {
 		/// <summary>
 		/// Обязательная переменная конструктора.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -147,6 +147,7 @@ namespace Project1 {
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"Clients";
 			this->Text = L"Clients";
+			this->Load += gcnew System::EventHandler(this, &Clients::Clients_Load);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			this->ResumeLayout(false);
@@ -186,32 +187,35 @@ namespace Project1 {
 			listView1->Items->Add(Id);
 		}
 	}
-private: System::Void EditToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (listView1->SelectedItems->Count > 0 &&
-		listView1->SelectedItems->Count < 2) {
-		EditClient^ form = gcnew EditClient();
-		magz = form->EditClient_Shown(this->magz, (int)Convert::ToInt32(listView1->SelectedItems[0]->SubItems[0]->Text));
-		this->UpdateListView();
-	}
-	else if (listView1->SelectedItems->Count >= 2) {
-		MessageBox::Show("Выбрано много элементов для редактирования!!!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
-	}
-	else {
-		MessageBox::Show("Не выбран элемент для редактирования!!!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
-	}
-}
-private: System::Void УдалитьToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	for (int i = 0; i < listView1->SelectedItems->Count; i++) {
-		int id = Convert::ToInt32(listView1->SelectedItems[i]->SubItems[0]->Text);
-		for (int i = 0; i < magz->ArrayClient->Count; i++)
-		{
-			if (magz->ArrayClient[i]->id == id)
-			{
-				magz->ArrayClient->Remove(magz->ArrayClient[i]);
-			}
+	private: System::Void EditToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (listView1->SelectedItems->Count > 0 &&
+			listView1->SelectedItems->Count < 2) {
+			EditClient^ form = gcnew EditClient();
+			magz = form->EditClient_Shown(this->magz, (int)Convert::ToInt32(listView1->SelectedItems[0]->SubItems[0]->Text));
+			this->UpdateListView();
+		}
+		else if (listView1->SelectedItems->Count >= 2) {
+			MessageBox::Show("Выбрано много элементов для редактирования!!!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		else {
+			MessageBox::Show("Не выбран элемент для редактирования!!!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
-	this->UpdateListView();
-}
-};
+	private: System::Void УдалитьToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		for (int i = 0; i < listView1->SelectedItems->Count; i++) {
+			int id = Convert::ToInt32(listView1->SelectedItems[i]->SubItems[0]->Text);
+			for (int i = 0; i < magz->ArrayClient->Count; i++)
+			{
+				if (magz->ArrayClient[i]->id == id)
+				{
+					magz->ArrayClient->Remove(magz->ArrayClient[i]);
+				}
+			}
+		}
+		this->UpdateListView();
+	}
+	private: System::Void Clients_Load(System::Object^ sender, System::EventArgs^ e) {
+		this->UpdateListView();
+	}
+	};
 }
