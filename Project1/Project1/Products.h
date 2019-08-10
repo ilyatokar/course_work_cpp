@@ -60,15 +60,15 @@ namespace Project1 {
 		void InitializeComponent(void)
 		{
 			this->listView1 = (gcnew System::Windows::Forms::ListView());
-			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
-			this->продуктыToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->добавитьToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->удалитьВыбранноеToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->columnHeader1 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader2 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader3 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader4 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader5 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
+			this->продуктыToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->добавитьToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->удалитьВыбранноеToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -85,6 +85,29 @@ namespace Project1 {
 			this->listView1->TabIndex = 0;
 			this->listView1->UseCompatibleStateImageBehavior = false;
 			this->listView1->View = System::Windows::Forms::View::Details;
+			this->listView1->SelectedIndexChanged += gcnew System::EventHandler(this, &Products::ListView1_SelectedIndexChanged);
+			// 
+			// columnHeader1
+			// 
+			this->columnHeader1->Text = L"№";
+			this->columnHeader1->Width = 32;
+			// 
+			// columnHeader2
+			// 
+			this->columnHeader2->Text = L"Название";
+			this->columnHeader2->Width = 139;
+			// 
+			// columnHeader3
+			// 
+			this->columnHeader3->Text = L"Производитель";
+			// 
+			// columnHeader4
+			// 
+			this->columnHeader4->Text = L"Поступление товара";
+			// 
+			// columnHeader5
+			// 
+			this->columnHeader5->Text = L"реализация товара";
 			// 
 			// menuStrip1
 			// 
@@ -102,41 +125,20 @@ namespace Project1 {
 					this->удалитьВыбранноеToolStripMenuItem
 			});
 			this->продуктыToolStripMenuItem->Name = L"продуктыToolStripMenuItem";
-			this->продуктыToolStripMenuItem->Size = System::Drawing::Size(72, 20);
+			this->продуктыToolStripMenuItem->Size = System::Drawing::Size(70, 20);
 			this->продуктыToolStripMenuItem->Text = L"продукты";
 			// 
 			// добавитьToolStripMenuItem
 			// 
 			this->добавитьToolStripMenuItem->Name = L"добавитьToolStripMenuItem";
-			this->добавитьToolStripMenuItem->Size = System::Drawing::Size(182, 22);
+			this->добавитьToolStripMenuItem->Size = System::Drawing::Size(176, 22);
 			this->добавитьToolStripMenuItem->Text = L"добавить";
 			// 
 			// удалитьВыбранноеToolStripMenuItem
 			// 
 			this->удалитьВыбранноеToolStripMenuItem->Name = L"удалитьВыбранноеToolStripMenuItem";
-			this->удалитьВыбранноеToolStripMenuItem->Size = System::Drawing::Size(182, 22);
+			this->удалитьВыбранноеToolStripMenuItem->Size = System::Drawing::Size(176, 22);
 			this->удалитьВыбранноеToolStripMenuItem->Text = L"удалить выбранное";
-			// 
-			// columnHeader1
-			// 
-			this->columnHeader1->Text = L"id";
-			// 
-			// columnHeader2
-			// 
-			this->columnHeader2->Text = L"Название";
-			this->columnHeader2->Width = 80;
-			// 
-			// columnHeader3
-			// 
-			this->columnHeader3->Text = L"Производитель";
-			// 
-			// columnHeader4
-			// 
-			this->columnHeader4->Text = L"Поступление товара";
-			// 
-			// columnHeader5
-			// 
-			this->columnHeader5->Text = L"реализация товара";
 			// 
 			// Products
 			// 
@@ -155,5 +157,7 @@ namespace Project1 {
 		}
 #pragma endregion
 
+private: System::Void ListView1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

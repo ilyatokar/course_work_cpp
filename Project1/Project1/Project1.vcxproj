@@ -159,7 +159,11 @@
     <ClInclude Include="Clients.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Coming.h" />
     <ClInclude Include="Comings.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Consumptions.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Document.h" />

@@ -36,12 +36,14 @@ namespace Project1 {
 		}
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
 	private: System::Windows::Forms::ToolStripMenuItem^ documentsToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ addToolStripMenuItem;
+
 	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
 	private: System::Windows::Forms::ListView^ listView1;
 	private: System::Windows::Forms::ColumnHeader^ columnHeader1;
 	private: System::Windows::Forms::ColumnHeader^ columnHeader2;
 	private: System::Windows::Forms::ColumnHeader^ columnHeader3;
+	private: System::Windows::Forms::ToolStripMenuItem^ ðåäàêòèðîâàòüToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ óäàëèòüToolStripMenuItem;
 	private: System::ComponentModel::IContainer^ components;
 	protected:
 
@@ -61,18 +63,22 @@ namespace Project1 {
 			this->components = (gcnew System::ComponentModel::Container());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->documentsToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->addToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->listView1 = (gcnew System::Windows::Forms::ListView());
 			this->columnHeader1 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader2 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader3 = (gcnew System::Windows::Forms::ColumnHeader());
+			this->ðåäàêòèðîâàòüToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->óäàëèòüToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
 			// 
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->documentsToolStripMenuItem });
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+				this->documentsToolStripMenuItem,
+					this->ðåäàêòèðîâàòüToolStripMenuItem, this->óäàëèòüToolStripMenuItem
+			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
 			this->menuStrip1->Size = System::Drawing::Size(492, 24);
@@ -81,16 +87,9 @@ namespace Project1 {
 			// 
 			// documentsToolStripMenuItem
 			// 
-			this->documentsToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->addToolStripMenuItem });
 			this->documentsToolStripMenuItem->Name = L"documentsToolStripMenuItem";
-			this->documentsToolStripMenuItem->Size = System::Drawing::Size(77, 20);
-			this->documentsToolStripMenuItem->Text = L"Äîêóìåíòû";
-			// 
-			// addToolStripMenuItem
-			// 
-			this->addToolStripMenuItem->Name = L"addToolStripMenuItem";
-			this->addToolStripMenuItem->Size = System::Drawing::Size(123, 22);
-			this->addToolStripMenuItem->Text = L"äîáàâèòü";
+			this->documentsToolStripMenuItem->Size = System::Drawing::Size(69, 20);
+			this->documentsToolStripMenuItem->Text = L"Äîáàâèòü";
 			// 
 			// contextMenuStrip1
 			// 
@@ -113,7 +112,8 @@ namespace Project1 {
 			// 
 			// columnHeader1
 			// 
-			this->columnHeader1->Text = L"id";
+			this->columnHeader1->Text = L" ¹";
+			this->columnHeader1->Width = 28;
 			// 
 			// columnHeader2
 			// 
@@ -125,6 +125,18 @@ namespace Project1 {
 			this->columnHeader3->Text = L"Íàêëîäíàÿ";
 			this->columnHeader3->Width = 99;
 			// 
+			// ðåäàêòèðîâàòüToolStripMenuItem
+			// 
+			this->ðåäàêòèðîâàòüToolStripMenuItem->Name = L"ðåäàêòèðîâàòüToolStripMenuItem";
+			this->ðåäàêòèðîâàòüToolStripMenuItem->Size = System::Drawing::Size(98, 20);
+			this->ðåäàêòèðîâàòüToolStripMenuItem->Text = L"Ðåäàêòèðîâàòü";
+			// 
+			// óäàëèòüToolStripMenuItem
+			// 
+			this->óäàëèòüToolStripMenuItem->Name = L"óäàëèòüToolStripMenuItem";
+			this->óäàëèòüToolStripMenuItem->Size = System::Drawing::Size(63, 20);
+			this->óäàëèòüToolStripMenuItem->Text = L"Óäàëèòü";
+			// 
 			// Documents
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -134,7 +146,7 @@ namespace Project1 {
 			this->Controls->Add(this->menuStrip1);
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"Documents";
-			this->Text = L"Documents";
+			this->Text = L"Äîêóìåíò";
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			this->ResumeLayout(false);

@@ -121,8 +121,8 @@ namespace Project1 {
 			// 
 			// columnHeader1
 			// 
-			this->columnHeader1->Text = L"id";
-			this->columnHeader1->Width = 31;
+			this->columnHeader1->Text = L"¹";
+			this->columnHeader1->Width = 27;
 			// 
 			// columnHeader2
 			// 
