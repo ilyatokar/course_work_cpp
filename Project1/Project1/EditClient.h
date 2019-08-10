@@ -1,4 +1,6 @@
 #pragma once
+#include "Client.h"
+#include "Magazin.h"
 
 namespace Project1 {
 
@@ -47,7 +49,7 @@ namespace Project1 {
 		/// <summary>
 		/// Обязательная переменная конструктора.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -73,6 +75,7 @@ namespace Project1 {
 			this->button1->TabIndex = 13;
 			this->button1->Text = L" Сохранить";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &EditClient::Button1_Click);
 			// 
 			// label3
 			// 
@@ -136,10 +139,47 @@ namespace Project1 {
 			this->Controls->Add(this->textBox1);
 			this->Name = L"EditClient";
 			this->Text = L"EditClient";
+			this->Load += gcnew System::EventHandler(this, &EditClient::EditClient_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
+	public: Client^ ct;
+	public: Magazin^ EditClient_Shown(Magazin^ magz, int id) {
+		for (int i = 0; i < magz->ArrayClient->Count; i++)
+		{
+			if (magz->ArrayClient[i]->id == id)
+			{
+				ct = magz->ArrayClient[i];
+				break;
+			}
+		}
+		if (ct != nullptr)
+		{
+			this->ShowDialog();
+			for (int i = 0; i < magz->ArrayClient->Count; i++)
+			{
+				if (magz->ArrayClient[i]->id == id)
+				{
+					magz->ArrayClient[i] = ct;
+					break;
+				}
+			}
+		}
+		return magz;
+	}
+	private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		//сделать проверку введеных данных
+		ct->Name = textBox1->Text;
+		ct->Addres = textBox2->Text;
+		ct->Comment = textBox3->Text;
+		this->Close();
+	}
+	private: System::Void EditClient_Load(System::Object^ sender, System::EventArgs^ e) {
+		textBox1->Text = ct->Name;
+		textBox2->Text = ct->Addres;
+		textBox3->Text = ct->Comment;
+	}
 	};
 }

@@ -1,4 +1,5 @@
 #pragma once
+#include "Product.h"
 
 namespace Project1 {
 
@@ -36,13 +37,13 @@ namespace Project1 {
 		}
 	private: System::Windows::Forms::Button^ button1;
 	protected:
-	private: System::Windows::Forms::Label^ label4;
-	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::Label^ label2;
+
+
+
 	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::TextBox^ textBox4;
-	private: System::Windows::Forms::TextBox^ textBox3;
-	private: System::Windows::Forms::TextBox^ textBox2;
+
+
+
 	private: System::Windows::Forms::TextBox^ textBox1;
 
 	private:
@@ -59,51 +60,19 @@ namespace Project1 {
 		void InitializeComponent(void)
 		{
 			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(12, 128);
+			this->button1->Location = System::Drawing::Point(12, 51);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 17;
 			this->button1->Text = L"Сохранить";
 			this->button1->UseVisualStyleBackColor = true;
-			// 
-			// label4
-			// 
-			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(12, 99);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(80, 13);
-			this->label4->TabIndex = 16;
-			this->label4->Text = L" Комментарий";
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(12, 73);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(93, 13);
-			this->label3->TabIndex = 15;
-			this->label3->Text = L" Характеристика";
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(12, 47);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(111, 13);
-			this->label2->TabIndex = 14;
-			this->label2->Text = L"Еденицы измерения";
+			this->button1->Click += gcnew System::EventHandler(this, &EditProduct::Button1_Click);
 			// 
 			// label1
 			// 
@@ -113,27 +82,6 @@ namespace Project1 {
 			this->label1->Size = System::Drawing::Size(83, 13);
 			this->label1->TabIndex = 13;
 			this->label1->Text = L"Наименование";
-			// 
-			// textBox4
-			// 
-			this->textBox4->Location = System::Drawing::Point(126, 70);
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(146, 20);
-			this->textBox4->TabIndex = 12;
-			// 
-			// textBox3
-			// 
-			this->textBox3->Location = System::Drawing::Point(126, 96);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(146, 20);
-			this->textBox3->TabIndex = 11;
-			// 
-			// textBox2
-			// 
-			this->textBox2->Location = System::Drawing::Point(126, 44);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(146, 20);
-			this->textBox2->TabIndex = 10;
 			// 
 			// textBox1
 			// 
@@ -146,22 +94,51 @@ namespace Project1 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(284, 167);
+			this->ClientSize = System::Drawing::Size(284, 89);
 			this->Controls->Add(this->button1);
-			this->Controls->Add(this->label4);
-			this->Controls->Add(this->label3);
-			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->textBox4);
-			this->Controls->Add(this->textBox3);
-			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->textBox1);
 			this->Name = L"EditProduct";
 			this->Text = L"EditProduct";
+			this->Load += gcnew System::EventHandler(this, &EditProduct::EditProduct_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
+
+	public: Product^ pd;
+	public: Magazin^ EditProduct_Shown(Magazin^ magz, int id) {
+		for (int i = 0; i < magz->ArrayProduct->Count; i++)
+		{
+			if (magz->ArrayProduct[i]->id == id)
+			{
+				pd = magz->ArrayProduct[i];
+				break;
+			}
+		}
+		if (pd != nullptr)
+		{
+			this->ShowDialog();
+			for (int i = 0; i < magz->ArrayProduct->Count; i++)
+			{
+				if (magz->ArrayProduct[i]->id == id)
+				{
+					magz->ArrayProduct[i] = pd;
+					break;
+				}
+			}
+		}
+		return magz;
+	}
+
+	private: System::Void EditProduct_Load(System::Object^ sender, System::EventArgs^ e) {
+		textBox1->Text = pd->Name;
+	}
+	private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		//сделать проверку введенных данных	
+		pd->Name = textBox1->Text;
+		this->Close();
+	}
 	};
 }

@@ -49,7 +49,7 @@ namespace Project1 {
 		/// <summary>
 		/// Обязательная переменная конструктора.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -146,40 +146,41 @@ namespace Project1 {
 		}
 #pragma endregion
 
-		public: Provider^ Prov;
-		public: Magazin^ EditProvider_Shown(Magazin^ magz, int id) {
+	public: Provider^ Prov;
+	public: Magazin^ EditProvider_Shown(Magazin^ magz, int id) {
+		for (int i = 0; i < magz->ArrayProvider->Count; i++)
+		{
+			if (magz->ArrayProvider[i]->id == id)
+			{
+				Prov = magz->ArrayProvider[i];
+				break;
+			}
+		}
+		if (Prov != nullptr)
+		{
+			this->ShowDialog();
 			for (int i = 0; i < magz->ArrayProvider->Count; i++)
 			{
 				if (magz->ArrayProvider[i]->id == id)
 				{
-					Prov = magz->ArrayProvider[i];
+					magz->ArrayProvider[i] = Prov;
 					break;
 				}
 			}
-			if (Prov != nullptr)
-			{
-				this->ShowDialog();
-				for (int i = 0; i < magz->ArrayProvider->Count; i++)
-				{
-					if (magz->ArrayProvider[i]->id == id)
-					{
-						magz->ArrayProvider[i] = Prov;
-						break;
-					}
-				}
-			}
-			return magz;
 		}
+		return magz;
+	}
 	private: System::Void EditProvider_Load(System::Object^ sender, System::EventArgs^ e) {
 		textBox1->Text = Prov->Name;
 		textBox2->Text = Prov->Addres;
 		textBox3->Text = Prov->Comment;
 	}
-private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	Prov->Name = textBox1->Text;
-	Prov->Addres = textBox2->Text;
-	Prov->Comment = textBox3->Text;
-	this->Close();
-}
-};
+	private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		//сделать проверку введенных данных	
+		Prov->Name = textBox1->Text;
+		Prov->Addres = textBox2->Text;
+		Prov->Comment = textBox3->Text;
+		this->Close();
+	}
+	};
 }

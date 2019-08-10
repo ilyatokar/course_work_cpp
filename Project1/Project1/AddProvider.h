@@ -149,6 +149,7 @@ namespace Project1 {
 		Prov = gcnew Provider();
 		this->magz = arr;
 		this->ShowDialog();
+		//сделать проверку на cуществующий элемент
 		magz->ArrayProvider->Add(Prov);
 		arr = this->magz;
 		return arr;
@@ -160,6 +161,7 @@ namespace Project1 {
 			id = (int)magz->ArrayProvider[magz->ArrayProvider->Count - 1]->id;
 			id = id + 1;
 		}
+		//сделать проверку на введенные данные
 		Prov->id = id;
 		Prov->Name = textBox1->Text;
 		Prov->Addres = textBox2->Text;
