@@ -1,7 +1,6 @@
 #pragma once
 #include "Product.h"
 #include "Provider.h"
-#include "Client.h"
 #include "Document.h"
 #include "Coming.h"
 using namespace System;
@@ -12,7 +11,6 @@ public ref class Magazin
 {
 public: List<Provider^>^ ArrayProvider;
 public: List<Product^>^ ArrayProduct;
-public: List<Client^>^ ArrayClient;
 public: List<Document^>^ ArrayDocument;
 public: List<Coming^>^ ArrayComing;
 

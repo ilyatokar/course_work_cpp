@@ -199,7 +199,7 @@ namespace Project1 {
 
 private: System::Void EditToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	EditComing^ form = gcnew EditComing();
-	magz = form->EditComing_Shown(magz);
+	//magz = form->EditComing_Shown(magz);
 }
 private: System::Void RemoveToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	for (int i = 0; i < listView1->SelectedItems->Count; i++) {

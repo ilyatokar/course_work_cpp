@@ -3,8 +3,6 @@
 #include "addMagazin.h"
 #include "Providers.h"
 #include "Documents.h"
-#include "Client.h"
-#include "Clients.h"
 #include "Product.h"
 #include "Products.h"
 #include "Comings.h"
@@ -28,7 +26,6 @@ namespace Project1 {
 		MyForm()
 		{
 			mgz = gcnew Magazin();
-			mgz->ArrayClient = gcnew List<Client^>();
 			mgz->ArrayProvider = gcnew List<Provider^>();
 			mgz->ArrayDocument = gcnew List<Document^>();
 			mgz->ArrayProduct = gcnew List<Product^>();
@@ -53,7 +50,7 @@ namespace Project1 {
 
 
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
-	private: System::Windows::Forms::ToolStripMenuItem^ ClientsToolStripMenuItem;
+
 
 
 
@@ -85,9 +82,9 @@ namespace Project1 {
 	private: System::Windows::Forms::ToolStripMenuItem^ òîâàðToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ ïðèõîäToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ ðàñõîäToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ ôàéëToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ èìïîðòToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ ýêñïîðòToolStripMenuItem;
+
+
+
 	private: System::ComponentModel::IContainer^ components;
 
 	private:
@@ -105,14 +102,10 @@ namespace Project1 {
 		{
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->òîâàðToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->ClientsToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ProvidersToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->documentToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ïðèõîäToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ðàñõîäToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->ôàéëToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->èìïîðòToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->ýêñïîðòToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ExitToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->listView1 = (gcnew System::Windows::Forms::ListView());
 			this->columnName = (gcnew System::Windows::Forms::ColumnHeader());
@@ -127,10 +120,10 @@ namespace Project1 {
 			// 
 			// menuStrip1
 			// 
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(8) {
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(6) {
 				this->òîâàðToolStripMenuItem,
-					this->ClientsToolStripMenuItem, this->ProvidersToolStripMenuItem, this->documentToolStripMenuItem, this->ïðèõîäToolStripMenuItem,
-					this->ðàñõîäToolStripMenuItem, this->ôàéëToolStripMenuItem, this->ExitToolStripMenuItem
+					this->ProvidersToolStripMenuItem, this->documentToolStripMenuItem, this->ïðèõîäToolStripMenuItem, this->ðàñõîäToolStripMenuItem,
+					this->ExitToolStripMenuItem
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
@@ -144,13 +137,6 @@ namespace Project1 {
 			this->òîâàðToolStripMenuItem->Size = System::Drawing::Size(57, 20);
 			this->òîâàðToolStripMenuItem->Text = L"Òîâàðû";
 			this->òîâàðToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::ÒîâàðToolStripMenuItem_Click);
-			// 
-			// ClientsToolStripMenuItem
-			// 
-			this->ClientsToolStripMenuItem->Name = L"ClientsToolStripMenuItem";
-			this->ClientsToolStripMenuItem->Size = System::Drawing::Size(64, 20);
-			this->ClientsToolStripMenuItem->Text = L"Êëèåíòû";
-			this->ClientsToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::ClientsToolStripMenuItem_Click);
 			// 
 			// ProvidersToolStripMenuItem
 			// 
@@ -178,28 +164,6 @@ namespace Project1 {
 			this->ðàñõîäToolStripMenuItem->Name = L"ðàñõîäToolStripMenuItem";
 			this->ðàñõîäToolStripMenuItem->Size = System::Drawing::Size(55, 20);
 			this->ðàñõîäToolStripMenuItem->Text = L"Ðàñõîä";
-			// 
-			// ôàéëToolStripMenuItem
-			// 
-			this->ôàéëToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
-				this->èìïîðòToolStripMenuItem,
-					this->ýêñïîðòToolStripMenuItem
-			});
-			this->ôàéëToolStripMenuItem->Name = L"ôàéëToolStripMenuItem";
-			this->ôàéëToolStripMenuItem->Size = System::Drawing::Size(45, 20);
-			this->ôàéëToolStripMenuItem->Text = L"Ôàéë";
-			// 
-			// èìïîðòToolStripMenuItem
-			// 
-			this->èìïîðòToolStripMenuItem->Name = L"èìïîðòToolStripMenuItem";
-			this->èìïîðòToolStripMenuItem->Size = System::Drawing::Size(116, 22);
-			this->èìïîðòToolStripMenuItem->Text = L"Èìïîðò";
-			// 
-			// ýêñïîðòToolStripMenuItem
-			// 
-			this->ýêñïîðòToolStripMenuItem->Name = L"ýêñïîðòToolStripMenuItem";
-			this->ýêñïîðòToolStripMenuItem->Size = System::Drawing::Size(116, 22);
-			this->ýêñïîðòToolStripMenuItem->Text = L"Ýêñïîðò";
 			// 
 			// ExitToolStripMenuItem
 			// 
@@ -231,6 +195,7 @@ namespace Project1 {
 			// columnHeader1
 			// 
 			this->columnHeader1->Text = L"Äàòà";
+			this->columnHeader1->Width = 145;
 			// 
 			// columnHeader2
 			// 
@@ -240,10 +205,12 @@ namespace Project1 {
 			// columnHeader5
 			// 
 			this->columnHeader5->Text = L"Ïîêóïàòåëü";
+			this->columnHeader5->Width = 90;
 			// 
 			// columnHeader6
 			// 
 			this->columnHeader6->Text = L"Åäåíèöû èçìåðåíèÿ";
+			this->columnHeader6->Width = 90;
 			// 
 			// columnHeader7
 			// 
@@ -393,10 +360,6 @@ namespace Project1 {
 	private: System::Void ÒîâàðToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		Products^ form = gcnew Products();
 		mgz = form->Products_Shown(mgz);
-	}
-	private: System::Void ClientsToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		Clients^ form = gcnew Clients();
-		mgz = form->Client_Shown(mgz);
 	}
 	private: System::Void ComingToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		Comings^ form = gcnew Comings();
