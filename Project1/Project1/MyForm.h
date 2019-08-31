@@ -15,7 +15,7 @@ namespace Project1 {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-		using namespace Newtonsoft::Json;
+	using namespace Newtonsoft::Json;
 	using namespace Newtonsoft::Json::Linq;
 	using namespace System::IO;
 
@@ -53,43 +53,17 @@ namespace Project1 {
 
 
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
-
-
-
-
-
 	private: System::Windows::Forms::ListView^ listView1;
-
-
-
-
-
-
 	private: System::Windows::Forms::ColumnHeader^ columnName;
 	private: System::Windows::Forms::ToolStripMenuItem^ ProvidersToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ documentToolStripMenuItem;
-
 	private: System::Windows::Forms::ToolStripMenuItem^ ExitToolStripMenuItem;
-
-
-
-
-
 	private: System::Windows::Forms::ColumnHeader^ columnHeader2;
-
-
-
-
 	private: System::Windows::Forms::ColumnHeader^ columnHeader7;
 	private: System::Windows::Forms::ColumnHeader^ columnHeader8;
 	private: System::Windows::Forms::ToolStripMenuItem^ òîâàðToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ ïðèõîäToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ ðàñõîäToolStripMenuItem;
-
-
-
-
-
 	private: System::ComponentModel::IContainer^ components;
 
 	private:
@@ -124,8 +98,8 @@ namespace Project1 {
 			// 
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(6) {
 				this->òîâàðToolStripMenuItem,
-					this->ProvidersToolStripMenuItem, this->documentToolStripMenuItem, this->ïðèõîäToolStripMenuItem, this->ðàñõîäToolStripMenuItem,
-					this->ExitToolStripMenuItem
+				this->ProvidersToolStripMenuItem, this->documentToolStripMenuItem, this->ïðèõîäToolStripMenuItem, this->ðàñõîäToolStripMenuItem,
+				this->ExitToolStripMenuItem
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
