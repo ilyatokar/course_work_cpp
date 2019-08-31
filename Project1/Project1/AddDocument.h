@@ -126,11 +126,9 @@ namespace Project1 {
 		public: Document^ doc;
 		public: Magazin^ magz;
 		public: Magazin^ AddDocument_Shown(Magazin^ m) {
-			doc = gcnew Document();
 			this->magz = m;
-			this->ShowDialog();
-			magz->ArrayDocument->Add(doc);
-			return m;
+			this->ShowDialog();	
+			return this->magz;
 		}
 
 		private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -142,9 +140,11 @@ namespace Project1 {
 					id = (int)magz->ArrayDocument[magz->ArrayDocument->Count - 1]->id;
 					id = id + 1;
 				}
+				doc = gcnew Document();
 				doc->id = id;
 				doc->NumberDogovor = textBox1->Text;
 				doc->Naklodnaya = textBox2->Text;
+				magz->ArrayDocument->Add(doc);
 				this->Close();
 
 			}

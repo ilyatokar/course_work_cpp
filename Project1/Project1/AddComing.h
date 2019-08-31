@@ -1,4 +1,8 @@
 #pragma once
+#include "Magazin.h"
+#include "Product.h"
+#include "Provider.h"
+#include "Document.h"
 
 namespace Project1 {
 
@@ -48,6 +52,8 @@ namespace Project1 {
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::DateTimePicker^ dateTimePicker1;
+	private: System::Windows::Forms::Label^ label5;
 
 	private:
 		/// <summary>
@@ -73,16 +79,19 @@ namespace Project1 {
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->dateTimePicker1 = (gcnew System::Windows::Forms::DateTimePicker());
+			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(15, 168);
+			this->button1->Location = System::Drawing::Point(15, 200);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 25;
 			this->button1->Text = L"Добавить";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &AddComing::Button1_Click);
 			// 
 			// textBox3
 			// 
@@ -167,11 +176,30 @@ namespace Project1 {
 			this->label1->TabIndex = 13;
 			this->label1->Text = L"Товар";
 			// 
+			// dateTimePicker1
+			// 
+			this->dateTimePicker1->Location = System::Drawing::Point(131, 153);
+			this->dateTimePicker1->Name = L"dateTimePicker1";
+			this->dateTimePicker1->Size = System::Drawing::Size(141, 20);
+			this->dateTimePicker1->TabIndex = 26;
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(12, 157);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(100, 13);
+			this->label5->TabIndex = 27;
+			this->label5->Text = L"Дата поступления";
+			this->label5->Click += gcnew System::EventHandler(this, &AddComing::Label5_Click);
+			// 
 			// AddComing
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(284, 206);
+			this->ClientSize = System::Drawing::Size(284, 235);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->dateTimePicker1);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->textBox3);
 			this->Controls->Add(this->textBox1);
@@ -190,5 +218,75 @@ namespace Project1 {
 
 		}
 #pragma endregion
-	};
+	public: Coming^ coming;
+	public: Magazin^ magaz;
+
+	public:  Magazin^ AddComing_Shown(Magazin^ m) {
+		if (m->ArrayDocument->Count == 0 ||
+			m->ArrayProduct->Count == 0 ||
+			m->ArrayProvider->Count == 0
+			) {
+			MessageBox::Show("Товары, Документы, Постащики не должны быть пустыми!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return m;
+		}
+		this->magaz = m;
+		//добавление элементов в combobox
+		for each (Product^ item in this->magaz->ArrayProduct)
+		{
+			comboBox1->Items->Add(item->Name);
+			comboBox1->SelectedIndex = 0;
+		}
+		for each (Provider^ item in this->magaz->ArrayProvider)
+		{
+			comboBox2->Items->Add(item->Name);
+			comboBox2->SelectedIndex = 0;
+		}
+		for each (Document^ item in this->magaz->ArrayDocument)
+		{
+			comboBox3->Items->Add(item->NumberDogovor);
+			comboBox3->SelectedIndex = 0;
+		}
+		this->ShowDialog();
+		return this->magaz;
+	}
+
+	private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (true)
+		{
+			this->Close();
+		}
+		else {
+			MessageBox::Show("Неправильно введены данные", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+	}
+
+	private: Product^ getObjProductByName(String^ name) {
+		for each (Product^ item in this->magaz->ArrayProduct)
+		{
+			if (item->Name == name)
+				return item;
+		}
+		return nullptr;
+	}
+
+	private: Provider^ getObjProviderByName(String^ name) {
+		for each (Provider^ item in this->magaz->ArrayProvider)
+		{
+			if (item->Name == name)
+				return item;
+		}
+		return nullptr;
+	}
+
+	private: Document^ getObjDocumentByNumberDogovor(String^ ndog) {
+		for each (Document ^ item in this->magaz->ArrayDocument)
+		{
+			if (item->NumberDogovor == ndog)
+				return item;
+		}
+		return nullptr;
+	}
+private: System::Void Label5_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+};
 }

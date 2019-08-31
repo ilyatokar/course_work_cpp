@@ -49,7 +49,7 @@ namespace Project1 {
 	private: System::Windows::Forms::ColumnHeader^ columnHeader3;
 	private: System::Windows::Forms::ColumnHeader^ columnHeader4;
 	private: System::Windows::Forms::ColumnHeader^ columnHeader5;
-	private: System::Windows::Forms::ColumnHeader^ columnHeader6;
+
 	private: System::Windows::Forms::ColumnHeader^ columnHeader7;
 	private: System::ComponentModel::IContainer^ components;
 	protected:
@@ -79,7 +79,6 @@ namespace Project1 {
 			this->columnHeader3 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader4 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader5 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader6 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader7 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
@@ -124,9 +123,9 @@ namespace Project1 {
 			// 
 			// listView1
 			// 
-			this->listView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(7) {
+			this->listView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(6) {
 				this->columnHeader1, this->columnHeader2,
-					this->columnHeader3, this->columnHeader4, this->columnHeader5, this->columnHeader6, this->columnHeader7
+					this->columnHeader3, this->columnHeader4, this->columnHeader5, this->columnHeader7
 			});
 			this->listView1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->listView1->Location = System::Drawing::Point(0, 24);
@@ -159,11 +158,6 @@ namespace Project1 {
 			// 
 			this->columnHeader5->Text = L"Колличество";
 			this->columnHeader5->Width = 84;
-			// 
-			// columnHeader6
-			// 
-			this->columnHeader6->Text = L"Цена";
-			this->columnHeader6->Width = 40;
 			// 
 			// columnHeader7
 			// 
@@ -201,6 +195,7 @@ private: System::Void EditToolStripMenuItem_Click(System::Object^ sender, System
 	EditComing^ form = gcnew EditComing();
 	//magz = form->EditComing_Shown(magz);
 }
+
 private: System::Void RemoveToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	for (int i = 0; i < listView1->SelectedItems->Count; i++) {
 		int id = Convert::ToInt32(listView1->SelectedItems[i]->SubItems[0]->Text);
@@ -214,26 +209,35 @@ private: System::Void RemoveToolStripMenuItem_Click(System::Object^ sender, Syst
 	}
 	this->UpdateListView();
 }
+
 private: System::Void CreateToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	AddProduct^ form = gcnew AddProduct();
-	magz = form->AddProduct_Shown(magz);
+	AddComing ^form = gcnew AddComing();
+	magz = form->AddComing_Shown(magz);
 }
+
 private: System::Void Comings_Load(System::Object^ sender, System::EventArgs^ e) {
 	this->UpdateListView();
 }
+
 private: System::Void UpdateListView() {
-	for (int i = 0; i < this->magz->ArrayProvider->Count; i++) {
+	for (int i = 0; i < this->magz->ArrayComing->Count; i++) {
 		ListViewItem^ Id = gcnew ListViewItem();
-		Id->Text = this->magz->ArrayProvider[i]->id.ToString();
-		ListViewItem::ListViewSubItem^ Name = gcnew ListViewItem::ListViewSubItem();
-		Name->Text = this->magz->ArrayProvider[i]->Name;
-		Id->SubItems->Add(Name);
-		ListViewItem::ListViewSubItem^ Adress = gcnew ListViewItem::ListViewSubItem();
-		Adress->Text = this->magz->ArrayProvider[i]->Addres;
-		Id->SubItems->Add(Adress);
-		ListViewItem::ListViewSubItem^ Comment = gcnew ListViewItem::ListViewSubItem();
-		Comment->Text = this->magz->ArrayProvider[i]->Comment;
-		Id->SubItems->Add(Comment);
+		Id->Text = this->magz->ArrayComing[i]->id.ToString();
+		ListViewItem::ListViewSubItem^ Product = gcnew ListViewItem::ListViewSubItem();
+		Product->Text = this->magz->ArrayComing[i]->objProduct->Name;
+		Id->SubItems->Add(Product);
+		ListViewItem::ListViewSubItem^ Provider = gcnew ListViewItem::ListViewSubItem();
+		Provider->Text = this->magz->ArrayComing[i]->objProvider->Name;
+		Id->SubItems->Add(Provider);
+		ListViewItem::ListViewSubItem^ Document = gcnew ListViewItem::ListViewSubItem();
+		Document->Text = this->magz->ArrayComing[i]->objDocument->NumberDogovor->ToString();
+		Id->SubItems->Add(Document);
+		ListViewItem::ListViewSubItem^ Count = gcnew ListViewItem::ListViewSubItem();
+		Count->Text = this->magz->ArrayComing[i]->count.ToString();
+		Id->SubItems->Add(Count);
+		ListViewItem::ListViewSubItem^ Price = gcnew ListViewItem::ListViewSubItem();
+		Price->Text = this->magz->ArrayComing[i]->price.ToString();
+		Id->SubItems->Add(Price);
 		listView1->Items->Add(Id);
 	}
 }

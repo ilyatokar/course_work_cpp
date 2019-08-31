@@ -38,13 +38,13 @@ namespace Project1 {
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label4;
-	private: System::Windows::Forms::Label^ label5;
+
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::ComboBox^ comboBox1;
 	private: System::Windows::Forms::ComboBox^ comboBox2;
 	private: System::Windows::Forms::ComboBox^ comboBox3;
 	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::TextBox^ textBox2;
+
 	private: System::Windows::Forms::TextBox^ textBox3;
 	private: System::Windows::Forms::Button^ button1;
 	protected:
@@ -66,13 +66,11 @@ namespace Project1 {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
 			this->comboBox3 = (gcnew System::Windows::Forms::ComboBox());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
@@ -113,19 +111,10 @@ namespace Project1 {
 			this->label4->TabIndex = 3;
 			this->label4->Text = L"Колличество";
 			// 
-			// label5
-			// 
-			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(12, 133);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(33, 13);
-			this->label5->TabIndex = 4;
-			this->label5->Text = L"Цена";
-			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(12, 159);
+			this->label6->Location = System::Drawing::Point(12, 133);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(62, 13);
 			this->label6->TabIndex = 5;
@@ -162,23 +151,16 @@ namespace Project1 {
 			this->textBox1->Size = System::Drawing::Size(179, 20);
 			this->textBox1->TabIndex = 9;
 			// 
-			// textBox2
-			// 
-			this->textBox2->Location = System::Drawing::Point(93, 130);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(179, 20);
-			this->textBox2->TabIndex = 10;
-			// 
 			// textBox3
 			// 
-			this->textBox3->Location = System::Drawing::Point(93, 156);
+			this->textBox3->Location = System::Drawing::Point(93, 130);
 			this->textBox3->Name = L"textBox3";
 			this->textBox3->Size = System::Drawing::Size(179, 20);
 			this->textBox3->TabIndex = 11;
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(15, 194);
+			this->button1->Location = System::Drawing::Point(15, 171);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 12;
@@ -189,16 +171,14 @@ namespace Project1 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(284, 239);
+			this->ClientSize = System::Drawing::Size(284, 215);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->textBox3);
-			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->comboBox3);
 			this->Controls->Add(this->comboBox2);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->label6);
-			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
