@@ -8,6 +8,5 @@ public: unsigned long idProvider;
 public: unsigned long idDocument;
 public: int count;
 public: long price;
-public: long summ;
 };
 

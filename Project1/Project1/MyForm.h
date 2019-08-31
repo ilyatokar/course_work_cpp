@@ -1,6 +1,6 @@
 #pragma once
 #include <windows.h>
-#include "addMagazin.h"
+#include "Magazin.h"
 #include "Providers.h"
 #include "Documents.h"
 #include "Product.h"
@@ -15,6 +15,9 @@ namespace Project1 {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+		using namespace Newtonsoft::Json;
+	using namespace Newtonsoft::Json::Linq;
+	using namespace System::IO;
 
 	/// <summary>
 	/// Ñâîäêà äëÿ MyForm
@@ -71,17 +74,19 @@ namespace Project1 {
 
 
 
-	private: System::Windows::Forms::ColumnHeader^ columnHeader1;
+
 	private: System::Windows::Forms::ColumnHeader^ columnHeader2;
 
 
-	private: System::Windows::Forms::ColumnHeader^ columnHeader5;
-	private: System::Windows::Forms::ColumnHeader^ columnHeader6;
+
+
 	private: System::Windows::Forms::ColumnHeader^ columnHeader7;
 	private: System::Windows::Forms::ColumnHeader^ columnHeader8;
 	private: System::Windows::Forms::ToolStripMenuItem^ òîâàðToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ ïðèõîäToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ ðàñõîäToolStripMenuItem;
+
+
 
 
 
@@ -109,10 +114,7 @@ namespace Project1 {
 			this->ExitToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->listView1 = (gcnew System::Windows::Forms::ListView());
 			this->columnName = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader1 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader2 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader5 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader6 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader7 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader8 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->menuStrip1->SuspendLayout();
@@ -174,9 +176,9 @@ namespace Project1 {
 			// 
 			// listView1
 			// 
-			this->listView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(7) {
-				this->columnName, this->columnHeader1,
-					this->columnHeader2, this->columnHeader5, this->columnHeader6, this->columnHeader7, this->columnHeader8
+			this->listView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(4) {
+				this->columnName, this->columnHeader2,
+					this->columnHeader7, this->columnHeader8
 			});
 			this->listView1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->listView1->Location = System::Drawing::Point(0, 24);
@@ -192,25 +194,10 @@ namespace Project1 {
 			this->columnName->Text = L"Íàçâàíèå";
 			this->columnName->Width = 118;
 			// 
-			// columnHeader1
-			// 
-			this->columnHeader1->Text = L"Äàòà";
-			this->columnHeader1->Width = 145;
-			// 
 			// columnHeader2
 			// 
 			this->columnHeader2->Text = L"Íîìåð íîìåêëàòóðû";
 			this->columnHeader2->Width = 145;
-			// 
-			// columnHeader5
-			// 
-			this->columnHeader5->Text = L"Ïîêóïàòåëü";
-			this->columnHeader5->Width = 90;
-			// 
-			// columnHeader6
-			// 
-			this->columnHeader6->Text = L"Åäåíèöû èçìåðåíèÿ";
-			this->columnHeader6->Width = 90;
 			// 
 			// columnHeader7
 			// 

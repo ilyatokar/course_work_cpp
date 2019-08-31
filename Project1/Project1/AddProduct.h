@@ -1,5 +1,6 @@
 #pragma once
 #include "Product.h"
+#include "Magazin.h"
 
 namespace Project1 {
 
@@ -108,25 +109,30 @@ namespace Project1 {
 	public: Product^ pd;
 	public: Magazin^ magz;
 	public: Magazin^ AddProduct_Shown(Magazin^ arr) {
-		pd = gcnew Product();
 		this->magz = arr;
 		this->ShowDialog();
 		//сделать проверку на cуществующий элемент
-		magz->ArrayProduct->Add(pd);
-		arr = this->magz;
-		return arr;
+		return this->magz;
 	}
 
 	private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		int id = 1;
-		if (magz->ArrayProduct->Count != 0) {
-			id = (int)magz->ArrayProduct[magz->ArrayProduct->Count - 1]->id;
-			id = id + 1;
+		int id = 1;	
+		if (textBox1->Text != "") {
+			if (magz->ArrayProduct->Count != 0) {
+				id = (int)magz->ArrayProduct[magz->ArrayProduct->Count - 1]->id;
+				id = id + 1;
+			}
+			//сделать проверку на введенные данные
+			pd = gcnew Product();	
+			pd->id = id;
+			pd->Name = textBox1->Text;
+			magz->ArrayProduct->Add(pd);
+			this->Close();
 		}
-		//сделать проверку на введенные данные
-		pd->id = id;
-		pd->Name = textBox1->Text;
-		this->Close();
+		else {
+			MessageBox::Show("Неправильно введены данные", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		
 	}
 	};
 }

@@ -135,14 +135,22 @@ namespace Project1 {
 
 		private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
 			int id = 1;
-			if (magz->ArrayDocument->Count != 0) {
-				id = (int)magz->ArrayDocument[magz->ArrayDocument->Count - 1]->id;
-				id = id + 1;
+			if (textBox1->Text != "" &&
+				textBox2->Text != "" ) {
+
+				if (magz->ArrayDocument->Count != 0) {
+					id = (int)magz->ArrayDocument[magz->ArrayDocument->Count - 1]->id;
+					id = id + 1;
+				}
+				doc->id = id;
+				doc->NumberDogovor = textBox1->Text;
+				doc->Naklodnaya = textBox2->Text;
+				this->Close();
+
 			}
-			doc->id = id;
-			doc->NumberDogovor = textBox1->Text;
-			doc->Naklodnaya = textBox2->Text;
-			this->Close();
+			else {
+				MessageBox::Show("Неправильно введены данные", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
 		}
 };
 }

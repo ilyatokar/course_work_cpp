@@ -1,5 +1,6 @@
 #pragma once
 #include "Provider.h"
+#include "Magazin.h"
 
 namespace Project1 {
 
@@ -145,28 +146,35 @@ namespace Project1 {
 #pragma endregion
 	public: Provider^ Prov;
 	public: Magazin^ magz;
-	public: Magazin^ AddProvider_Shown(Magazin^ arr) {
-		Prov = gcnew Provider();
+	public: Magazin^ AddProvider_Shown(Magazin^ arr) {	
 		this->magz = arr;
 		this->ShowDialog();
-		//сделать проверку на cуществующий элемент
-		magz->ArrayProvider->Add(Prov);
-		arr = this->magz;
-		return arr;
+		return this->magz;
 	}
 		
 	private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		int id = 1;
-		if (magz->ArrayProvider->Count != 0) {
-			id = (int)magz->ArrayProvider[magz->ArrayProvider->Count - 1]->id;
-			id = id + 1;
+		if (textBox1->Text != "" &&
+			textBox2->Text != "" &&
+			textBox3->Text != ""
+		) {
+			if (magz->ArrayProvider->Count != 0) {
+				id = (int)magz->ArrayProvider[magz->ArrayProvider->Count - 1]->id;
+				id = id + 1;
+			}
+			Prov = gcnew Provider();
+			Prov->id = id;
+			Prov->Name = textBox1->Text;
+			Prov->Addres = textBox2->Text;
+			Prov->Comment = textBox3->Text;
+			magz->ArrayProvider->Add(Prov);
+			this->Close();
 		}
-		//сделать проверку на введенные данные
-		Prov->id = id;
-		Prov->Name = textBox1->Text;
-		Prov->Addres = textBox2->Text;
-		Prov->Comment = textBox3->Text;
-		this->Close();
+		else {
+			MessageBox::Show("Неправильно введены данные", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+
+
 	}
 };
 }
