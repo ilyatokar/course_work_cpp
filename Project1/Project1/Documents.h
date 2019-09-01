@@ -39,8 +39,6 @@ namespace Project1 {
 			}
 		}
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
-
-
 	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
 	private: System::Windows::Forms::ListView^ listView1;
 	private: System::Windows::Forms::ColumnHeader^ columnHeader1;

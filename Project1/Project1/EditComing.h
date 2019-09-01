@@ -1,4 +1,6 @@
 #pragma once
+#include "Coming.h"
+#include "Magazin.h"
 
 namespace Project1 {
 
@@ -38,13 +40,11 @@ namespace Project1 {
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label4;
-
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::ComboBox^ comboBox1;
 	private: System::Windows::Forms::ComboBox^ comboBox2;
 	private: System::Windows::Forms::ComboBox^ comboBox3;
 	private: System::Windows::Forms::TextBox^ textBox1;
-
 	private: System::Windows::Forms::TextBox^ textBox3;
 	private: System::Windows::Forms::Button^ button1;
 	protected:
@@ -150,6 +150,7 @@ namespace Project1 {
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(179, 20);
 			this->textBox1->TabIndex = 9;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &EditComing::TextBox1_TextChanged);
 			// 
 			// textBox3
 			// 
@@ -157,6 +158,7 @@ namespace Project1 {
 			this->textBox3->Name = L"textBox3";
 			this->textBox3->Size = System::Drawing::Size(179, 20);
 			this->textBox3->TabIndex = 11;
+			this->textBox3->TextChanged += gcnew System::EventHandler(this, &EditComing::TextBox3_TextChanged);
 			// 
 			// button1
 			// 
@@ -166,6 +168,7 @@ namespace Project1 {
 			this->button1->TabIndex = 12;
 			this->button1->Text = L"Сохранить";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &EditComing::Button1_Click);
 			// 
 			// EditComing
 			// 
@@ -185,10 +188,124 @@ namespace Project1 {
 			this->Controls->Add(this->label1);
 			this->Name = L"EditComing";
 			this->Text = L"EditComing";
+			this->Load += gcnew System::EventHandler(this, &EditComing::EditComing_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
+	public: Coming^ coming;
+	public: Magazin^ magaz;
+	public: Magazin^ EditComing_Shown(Magazin^ magaz, int id) {
+		this->magaz = magaz;
+		for (int i = 0; i < magaz->ArrayComing->Count; i++)
+		{
+			if (magaz->ArrayComing[i]->id == id) {
+				coming = magaz->ArrayComing[i];
+				break;
+			}
+		}
+		if (coming != nullptr) {
+			this->ShowDialog();
+			for (int i = 0; i < magaz->ArrayComing->Count; i++)
+			{
+				if (magaz->ArrayComing[i]->id == id) {
+					magaz->ArrayComing[i] = coming;
+					break;
+				}
+			}
+		}
+		return this->magaz;
+	}
+
+	private: System::Void EditComing_Load(System::Object^ sender, System::EventArgs^ e) {
+		for each (Product ^ item in this->magaz->ArrayProduct)
+		{
+			comboBox1->Items->Add(item->Name);
+			if (item == coming->objProduct) {
+				comboBox1->SelectedIndex = this->magaz->ArrayProduct->IndexOf(item);
+			}
+		}
+		for each (Provider ^ item in this->magaz->ArrayProvider)
+		{
+			comboBox2->Items->Add(item->Name);
+			if (item == coming->objProvider) {
+				comboBox2->SelectedIndex = this->magaz->ArrayProvider->IndexOf(item);
+			}
+			
+		}
+		for each (Document ^ item in this->magaz->ArrayDocument)
+		{
+			comboBox3->Items->Add(item->NumberDogovor);
+			if (item == coming->objDocument) {
+				comboBox3->SelectedIndex = this->magaz->ArrayDocument->IndexOf(item);
+			}
+		}
+		textBox1->Text = coming->count.ToString();
+		textBox3->Text = coming->price.ToString();
+	}
+
+	private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (textBox1->Text != "" &&
+			textBox3->Text != "")
+		{
+			coming->objProduct = getObjProductByName(comboBox1->SelectedItem->ToString());
+			coming->objProvider = getObjProviderByName(comboBox2->SelectedItem->ToString());
+			coming->objDocument = getObjDocumentByNumberDogovor(comboBox3->SelectedItem->ToString());
+			coming->count = Convert::ToInt32(textBox1->Text);
+			coming->price = Convert::ToInt32(textBox3->Text);
+		}
+		this->Close();
+	}
+
+	private: System::Void TextBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+		try
+		{
+			unsigned long number = Convert::ToInt32(textBox1->Text);
+		}
+		catch (FormatException^ e)
+		{
+			MessageBox::Show("В поле колличество допусщена ошибка", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+
+		}
+	}
+
+	private: System::Void TextBox3_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+		try
+		{
+			unsigned long number = Convert::ToInt32(textBox3->Text);
+		}
+		catch (FormatException^ e)
+		{
+			MessageBox::Show("В поле стоимость допусщена ошибка", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+	}
+
+	private: Product^ getObjProductByName(String^ name) {
+		for each (Product ^ item in this->magaz->ArrayProduct)
+		{
+			if (item->Name == name)
+				return item;
+		}
+		return nullptr;
+	}
+
+	private: Provider^ getObjProviderByName(String^ name) {
+		for each (Provider ^ item in this->magaz->ArrayProvider)
+		{
+			if (item->Name == name)
+				return item;
+		}
+		return nullptr;
+	}
+
+	private: Document^ getObjDocumentByNumberDogovor(String^ ndog) {
+		for each (Document ^ item in this->magaz->ArrayDocument)
+		{
+			if (item->NumberDogovor == ndog)
+				return item;
+		}
+		return nullptr;
+	}
 };
 }

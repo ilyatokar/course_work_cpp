@@ -184,16 +184,39 @@ namespace Project1 {
 #pragma endregion
 	public: Coming^ cm;
 	public: Magazin^ magz;
-	public: Magazin^ Coming_Shown(Magazin^ marr) {
-		magz = marr;
+	public: Magazin^ Coming_Shown(Magazin^ magaz) {
+		if (magaz->ArrayDocument->Count == 0 ||
+			magaz->ArrayProduct->Count == 0 ||
+			magaz->ArrayProvider->Count == 0
+			) {
+			MessageBox::Show("Товары, Документы, Постащики не должны быть пустыми!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return magaz;
+		}
+		magz = magaz;
 		listView1->Items->Clear();
 		this->ShowDialog();
 		return magz;
 	}
 
+private: System::Void CreateToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	AddComing ^form = gcnew AddComing();
+	magz = form->AddComing_Shown(magz);
+	this->UpdateListView();
+}
+
 private: System::Void EditToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	EditComing^ form = gcnew EditComing();
-	//magz = form->EditComing_Shown(magz);
+	if (listView1->SelectedItems->Count > 0 &&
+		listView1->SelectedItems->Count < 2) {
+		EditComing^ form = gcnew EditComing();
+		magz = form->EditComing_Shown(this->magz, (int)Convert::ToInt32(listView1->SelectedItems[0]->SubItems[0]->Text));
+		this->UpdateListView();
+	}
+	else if (listView1->SelectedItems->Count >= 2) {
+		MessageBox::Show("Выбрано много элементов для редактирования!!!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
+	else {
+		MessageBox::Show("Не выбран элемент для редактирования!!!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
 }
 
 private: System::Void RemoveToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -210,16 +233,12 @@ private: System::Void RemoveToolStripMenuItem_Click(System::Object^ sender, Syst
 	this->UpdateListView();
 }
 
-private: System::Void CreateToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	AddComing ^form = gcnew AddComing();
-	magz = form->AddComing_Shown(magz);
-}
-
 private: System::Void Comings_Load(System::Object^ sender, System::EventArgs^ e) {
 	this->UpdateListView();
 }
 
 private: System::Void UpdateListView() {
+	listView1->Items->Clear();
 	for (int i = 0; i < this->magz->ArrayComing->Count; i++) {
 		ListViewItem^ Id = gcnew ListViewItem();
 		Id->Text = this->magz->ArrayComing[i]->id.ToString();

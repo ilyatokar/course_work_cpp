@@ -124,35 +124,37 @@ namespace Project1 {
 		}
 #pragma endregion
 
-		public: Document^ doc;
-		public: Magazin^ EditDocument_Shown(Magazin^ magz, int id) {
+	public: Document^ doc;
+	public: Magazin^ EditDocument_Shown(Magazin^ magz, int id) {
+		for (int i = 0; i < magz->ArrayDocument->Count; i++)
+		{
+			if (magz->ArrayDocument[i]->id == id) {
+				doc = magz->ArrayDocument[i];
+				break;
+			}
+		}
+		if (doc != nullptr) {
+			this->ShowDialog();
 			for (int i = 0; i < magz->ArrayDocument->Count; i++)
 			{
 				if (magz->ArrayDocument[i]->id == id) {
-					doc = magz->ArrayDocument[i];
+					magz->ArrayDocument[i] = doc;
 					break;
 				}
 			}
-			if (doc != nullptr) {
-				this->ShowDialog();
-				for (int i = 0; i < magz->ArrayDocument->Count; i++)
-				{
-					if (magz->ArrayDocument[i]->id == id) {
-						magz->ArrayDocument[i] = doc;
-						break;
-					}
-				}
-			}
-			return magz;
 		}
-private: System::Void EditdDocument_Load(System::Object^ sender, System::EventArgs^ e) {
-	textBox1->Text = doc->NumberDogovor;
-	textBox2->Text = doc->Naklodnaya;
-}
-private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	doc->NumberDogovor = textBox1->Text;
-	doc->Naklodnaya = textBox2->Text;
-	this->Close();
-}
+		return magz;
+	}
+
+	private: System::Void EditdDocument_Load(System::Object^ sender, System::EventArgs^ e) {
+		textBox1->Text = doc->NumberDogovor;
+		textBox2->Text = doc->Naklodnaya;
+	}
+
+	private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		doc->NumberDogovor = textBox1->Text;
+		doc->Naklodnaya = textBox2->Text;
+		this->Close();
+	}
 };
 }

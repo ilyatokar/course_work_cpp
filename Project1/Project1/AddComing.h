@@ -196,6 +196,7 @@ namespace Project1 {
 			this->Controls->Add(this->label1);
 			this->Name = L"AddComing";
 			this->Text = L"AddComing";
+			this->Load += gcnew System::EventHandler(this, &AddComing::AddComing_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -205,30 +206,8 @@ namespace Project1 {
 	public: Magazin^ magaz;
 
 	public:  Magazin^ AddComing_Shown(Magazin^ m) {
-		if (m->ArrayDocument->Count == 0 ||
-			m->ArrayProduct->Count == 0 ||
-			m->ArrayProvider->Count == 0
-			) {
-			MessageBox::Show("Товары, Документы, Постащики не должны быть пустыми!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
-			return m;
-		}
 		this->magaz = m;
 		//добавление элементов в combobox
-		for each (Product^ item in this->magaz->ArrayProduct)
-		{
-			comboBox1->Items->Add(item->Name);
-			comboBox1->SelectedIndex = 0;
-		}
-		for each (Provider^ item in this->magaz->ArrayProvider)
-		{
-			comboBox2->Items->Add(item->Name);
-			comboBox2->SelectedIndex = 0;
-		}
-		for each (Document^ item in this->magaz->ArrayDocument)
-		{
-			comboBox3->Items->Add(item->NumberDogovor);
-			comboBox3->SelectedIndex = 0;
-		}
 		this->ShowDialog();
 		return this->magaz;
 	}
@@ -303,6 +282,23 @@ private: System::Void TextBox1_TextChanged(System::Object^ sender, System::Event
 	{
 		MessageBox::Show("В поле колличество допусщена ошибка", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
 
+	}
+}
+private: System::Void AddComing_Load(System::Object^ sender, System::EventArgs^ e) {
+	for each (Product ^ item in this->magaz->ArrayProduct)
+	{
+		comboBox1->Items->Add(item->Name);
+		comboBox1->SelectedIndex = 0;
+	}
+	for each (Provider ^ item in this->magaz->ArrayProvider)
+	{
+		comboBox2->Items->Add(item->Name);
+		comboBox2->SelectedIndex = 0;
+	}
+	for each (Document ^ item in this->magaz->ArrayDocument)
+	{
+		comboBox3->Items->Add(item->NumberDogovor);
+		comboBox3->SelectedIndex = 0;
 	}
 }
 };
