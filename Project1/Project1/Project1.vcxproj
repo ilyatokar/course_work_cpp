@@ -146,6 +146,9 @@
     <ClInclude Include="AddComing.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="AddConsumption.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="AddDocument.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -159,6 +162,7 @@
     <ClInclude Include="Comings.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Consumption.h" />
     <ClInclude Include="Consumptions.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -167,6 +171,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="EditComing.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EditConsumption.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="EditdDocument.h">
