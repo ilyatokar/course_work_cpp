@@ -99,6 +99,7 @@ namespace Project1 {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->textBox1);
 			this->Name = L"EditProduct";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"EditProduct";
 			this->Load += gcnew System::EventHandler(this, &EditProduct::EditProduct_Load);
 			this->ResumeLayout(false);

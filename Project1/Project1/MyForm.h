@@ -53,13 +53,14 @@ namespace Project1 {
 	private: System::Windows::Forms::ToolStripMenuItem^ ProvidersToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ documentToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ ExitToolStripMenuItem;
-	private: System::Windows::Forms::ColumnHeader^ columnHeader2;
+
 	private: System::Windows::Forms::ColumnHeader^ columnHeader7;
-	private: System::Windows::Forms::ColumnHeader^ columnHeader8;
+
 	private: System::Windows::Forms::ToolStripMenuItem^ òîâàðToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ ïðèõîäToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ ðàñõîäToolStripMenuItem;
 	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
+	private: System::Windows::Forms::ColumnHeader^ columnHeader1;
 	private: System::ComponentModel::IContainer^ components;
 
 	private:
@@ -84,10 +85,9 @@ namespace Project1 {
 			this->ðàñõîäToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ExitToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->listView1 = (gcnew System::Windows::Forms::ListView());
+			this->columnHeader1 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnName = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader2 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader7 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader8 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
@@ -101,7 +101,7 @@ namespace Project1 {
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(781, 24);
+			this->menuStrip1->Size = System::Drawing::Size(391, 24);
 			this->menuStrip1->TabIndex = 2;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -138,7 +138,7 @@ namespace Project1 {
 			this->ðàñõîäToolStripMenuItem->Name = L"ðàñõîäToolStripMenuItem";
 			this->ðàñõîäToolStripMenuItem->Size = System::Drawing::Size(55, 20);
 			this->ðàñõîäToolStripMenuItem->Text = L"Ðàñõîä";
-			this->ðàñõîäToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::ÐàñõîäToolStripMenuItem_Click);
+			this->ðàñõîäToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::ConsumptionToolStripMenuItem_Click);
 			// 
 			// ExitToolStripMenuItem
 			// 
@@ -149,38 +149,33 @@ namespace Project1 {
 			// 
 			// listView1
 			// 
-			this->listView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(4) {
-				this->columnName, this->columnHeader2,
-					this->columnHeader7, this->columnHeader8
+			this->listView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(3) {
+				this->columnHeader1, this->columnName,
+					this->columnHeader7
 			});
 			this->listView1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->listView1->Location = System::Drawing::Point(0, 24);
 			this->listView1->Name = L"listView1";
-			this->listView1->Size = System::Drawing::Size(781, 318);
+			this->listView1->Size = System::Drawing::Size(391, 291);
 			this->listView1->TabIndex = 4;
 			this->listView1->UseCompatibleStateImageBehavior = false;
 			this->listView1->View = System::Windows::Forms::View::Details;
 			this->listView1->ColumnClick += gcnew System::Windows::Forms::ColumnClickEventHandler(this, &MyForm::ListView1_ColumnClick);
+			// 
+			// columnHeader1
+			// 
+			this->columnHeader1->Text = L"id";
+			this->columnHeader1->Width = 30;
 			// 
 			// columnName
 			// 
 			this->columnName->Text = L"Íàçâàíèå";
 			this->columnName->Width = 118;
 			// 
-			// columnHeader2
-			// 
-			this->columnHeader2->Text = L"Íîìåð íîìåêëàòóðû";
-			this->columnHeader2->Width = 145;
-			// 
 			// columnHeader7
 			// 
 			this->columnHeader7->Text = L"Êîëè÷åñòâî";
 			this->columnHeader7->Width = 90;
-			// 
-			// columnHeader8
-			// 
-			this->columnHeader8->Text = L"Ñòîèìîñòü";
-			this->columnHeader8->Width = 74;
 			// 
 			// contextMenuStrip1
 			// 
@@ -191,11 +186,12 @@ namespace Project1 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(781, 342);
+			this->ClientSize = System::Drawing::Size(391, 315);
 			this->Controls->Add(this->listView1);
 			this->Controls->Add(this->menuStrip1);
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"MyForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Ó÷åò òîâàðîâ â ìàãàçèíå";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->menuStrip1->ResumeLayout(false);
@@ -229,6 +225,7 @@ namespace Project1 {
 		mgz->ArrayProduct = gcnew List<Product^>();
 		mgz->ArrayComing = gcnew List<Coming^>();
 		mgz->ArrayConsumption = gcnew List<Consumption^>();
+		this->UpdateListView();
 	}
 
 	private: System::Void AddedMagazinToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -274,12 +271,13 @@ namespace Project1 {
 	private: System::Void ProvidersToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		Providers^ form = gcnew Providers();
 		mgz = form->Provider_Shown(mgz);
+		this->UpdateListView();
 	}
 
 	private: System::Void DocumentToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		Documents^ form = gcnew Documents();
 		mgz = form->Document_Shown(mgz);
-
+		this->UpdateListView();
 	}
 
 	private: System::Void ListviewToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -335,17 +333,54 @@ namespace Project1 {
 	private: System::Void ÒîâàðToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		Products^ form = gcnew Products();
 		mgz = form->Products_Shown(mgz);
+		this->UpdateListView();
 	}
 
 	private: System::Void ComingToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		Comings^ form = gcnew Comings();
 		mgz = form->Coming_Shown(mgz);
+		this->UpdateListView();
 	}
 
-	private: System::Void ÐàñõîäToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void ConsumptionToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		Consumptions^ form = gcnew Consumptions();
 		mgz = form->Consumption_Shown(mgz);
+		this->UpdateListView();
 	}
+
+	private: System::Void UpdateListView() {
+		listView1->Items->Clear();
+		for (int i = 0; i < this->mgz->ArrayProduct->Count; i++) {
+			ListViewItem^ Id = gcnew ListViewItem();
+			Id->Text = this->mgz->ArrayProduct[i]->id.ToString();
+			ListViewItem::ListViewSubItem^ Product = gcnew ListViewItem::ListViewSubItem();
+			Product->Text = this->mgz->ArrayProduct[i]->Name;
+			Id->SubItems->Add(Product);
+			ListViewItem::ListViewSubItem^ Provider = gcnew ListViewItem::ListViewSubItem();
+			Provider->Text = this->ResidualGoods(this->mgz->ArrayProduct[i]).ToString();
+			Id->SubItems->Add(Provider);
+			listView1->Items->Add(Id);
+		}
+	}
+
+	private: int ResidualGoods(Product^ product) {
+		int countComing = 0;
+		int countConsumption = 0;
+		for each (Coming^ item in this->mgz->ArrayComing)
+		{
+			if (item->objProduct == product)
+				countComing += item->count;
+		}
+
+		for each (Consumption^ item in this->mgz->ArrayConsumption)
+		{
+			if (item->objProduct == product)
+				countConsumption += item->count;
+		}
+
+		return countComing - countConsumption;
+	}
+
 };
 }
 

@@ -100,6 +100,7 @@ namespace Project1 {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->textBox1);
 			this->Name = L"AddProduct";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"AddProduct";
 			this->ResumeLayout(false);
 			this->PerformLayout();

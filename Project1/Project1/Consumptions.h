@@ -142,6 +142,7 @@ namespace Project1 {
 			this->Controls->Add(this->listView1);
 			this->Controls->Add(this->menuStrip1);
 			this->Name = L"Consumptions";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Consumptions";
 			this->Load += gcnew System::EventHandler(this, &Consumptions::Consumptions_Load);
 			this->menuStrip1->ResumeLayout(false);

@@ -116,6 +116,7 @@ namespace Project1 {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Name = L"EditdDocument";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Редактирование документа";
 			this->Load += gcnew System::EventHandler(this, &EditdDocument::EditdDocument_Load);
 			this->ResumeLayout(false);

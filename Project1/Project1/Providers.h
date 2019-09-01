@@ -148,6 +148,7 @@ namespace Project1 {
 			this->Controls->Add(this->menuStrip1);
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"Providers";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Providers";
 			this->Load += gcnew System::EventHandler(this, &Providers::Providers_Load);
 			this->menuStrip1->ResumeLayout(false);

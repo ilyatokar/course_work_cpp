@@ -81,7 +81,7 @@ namespace Project1 {
 			this->listView1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->listView1->Location = System::Drawing::Point(0, 24);
 			this->listView1->Name = L"listView1";
-			this->listView1->Size = System::Drawing::Size(468, 237);
+			this->listView1->Size = System::Drawing::Size(384, 291);
 			this->listView1->TabIndex = 0;
 			this->listView1->UseCompatibleStateImageBehavior = false;
 			this->listView1->View = System::Windows::Forms::View::Details;
@@ -103,7 +103,7 @@ namespace Project1 {
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(468, 24);
+			this->menuStrip1->Size = System::Drawing::Size(384, 24);
 			this->menuStrip1->TabIndex = 1;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -132,10 +132,11 @@ namespace Project1 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(468, 261);
+			this->ClientSize = System::Drawing::Size(384, 315);
 			this->Controls->Add(this->listView1);
 			this->Controls->Add(this->menuStrip1);
 			this->Name = L"Products";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Products";
 			this->Load += gcnew System::EventHandler(this, &Products::Products_Load);
 			this->menuStrip1->ResumeLayout(false);

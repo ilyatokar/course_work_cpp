@@ -120,6 +120,7 @@ namespace Project1 {
 			this->MaximumSize = System::Drawing::Size(300, 166);
 			this->MinimumSize = System::Drawing::Size(300, 166);
 			this->Name = L"AddConsumption";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"AddConsumption";
 			this->Load += gcnew System::EventHandler(this, &AddConsumption::AddConsumption_Load);
 			this->ResumeLayout(false);

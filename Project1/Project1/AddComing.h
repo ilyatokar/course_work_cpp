@@ -195,6 +195,7 @@ namespace Project1 {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Name = L"AddComing";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"AddComing";
 			this->Load += gcnew System::EventHandler(this, &AddComing::AddComing_Load);
 			this->ResumeLayout(false);

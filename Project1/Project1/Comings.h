@@ -130,7 +130,7 @@ namespace Project1 {
 			this->listView1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->listView1->Location = System::Drawing::Point(0, 24);
 			this->listView1->Name = L"listView1";
-			this->listView1->Size = System::Drawing::Size(429, 241);
+			this->listView1->Size = System::Drawing::Size(429, 291);
 			this->listView1->TabIndex = 2;
 			this->listView1->UseCompatibleStateImageBehavior = false;
 			this->listView1->View = System::Windows::Forms::View::Details;
@@ -168,11 +168,12 @@ namespace Project1 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(429, 265);
+			this->ClientSize = System::Drawing::Size(429, 315);
 			this->Controls->Add(this->listView1);
 			this->Controls->Add(this->menuStrip1);
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"Comings";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Comings";
 			this->Load += gcnew System::EventHandler(this, &Comings::Comings_Load);
 			this->menuStrip1->ResumeLayout(false);
