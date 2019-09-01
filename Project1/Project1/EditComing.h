@@ -249,9 +249,9 @@ namespace Project1 {
 		if (textBox1->Text != "" &&
 			textBox3->Text != "")
 		{
-			coming->objProduct = getObjProductByName(comboBox1->SelectedItem->ToString());
-			coming->objProvider = getObjProviderByName(comboBox2->SelectedItem->ToString());
-			coming->objDocument = getObjDocumentByNumberDogovor(comboBox3->SelectedItem->ToString());
+			coming->objProduct = this->magaz->getObjProductByName(comboBox1->SelectedItem->ToString());
+			coming->objProvider = this->magaz->getObjProviderByName(comboBox2->SelectedItem->ToString());
+			coming->objDocument = this->magaz->getObjDocumentByNumberDogovor(comboBox3->SelectedItem->ToString());
 			coming->count = Convert::ToInt32(textBox1->Text);
 			coming->price = Convert::ToInt32(textBox3->Text);
 		}
@@ -281,31 +281,5 @@ namespace Project1 {
 		}
 	}
 
-	private: Product^ getObjProductByName(String^ name) {
-		for each (Product ^ item in this->magaz->ArrayProduct)
-		{
-			if (item->Name == name)
-				return item;
-		}
-		return nullptr;
-	}
-
-	private: Provider^ getObjProviderByName(String^ name) {
-		for each (Provider ^ item in this->magaz->ArrayProvider)
-		{
-			if (item->Name == name)
-				return item;
-		}
-		return nullptr;
-	}
-
-	private: Document^ getObjDocumentByNumberDogovor(String^ ndog) {
-		for each (Document ^ item in this->magaz->ArrayDocument)
-		{
-			if (item->NumberDogovor == ndog)
-				return item;
-		}
-		return nullptr;
-	}
 };
 }

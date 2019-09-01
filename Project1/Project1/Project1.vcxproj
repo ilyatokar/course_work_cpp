@@ -203,6 +203,9 @@
     <EmbeddedResource Include="AddComing.resx">
       <DependentUpon>AddComing.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddConsumption.resx">
+      <DependentUpon>AddConsumption.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddDocument.resx">
       <DependentUpon>AddDocument.h</DependentUpon>
     </EmbeddedResource>
@@ -215,11 +218,17 @@
     <EmbeddedResource Include="Comings.resx">
       <DependentUpon>Comings.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Consumptions.resx">
+      <DependentUpon>Consumptions.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Documents.resx">
       <DependentUpon>Documents.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditComing.resx">
       <DependentUpon>EditComing.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditConsumption.resx">
+      <DependentUpon>EditConsumption.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditdDocument.resx">
       <DependentUpon>EditdDocument.h</DependentUpon>

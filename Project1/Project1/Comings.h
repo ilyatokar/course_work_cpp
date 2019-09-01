@@ -182,7 +182,7 @@ namespace Project1 {
 
 		}
 #pragma endregion
-	public: Coming^ cm;
+	private: Coming^ cm;
 	public: Magazin^ magz;
 	public: Magazin^ Coming_Shown(Magazin^ magaz) {
 		if (magaz->ArrayDocument->Count == 0 ||
@@ -192,73 +192,72 @@ namespace Project1 {
 			MessageBox::Show("Товары, Документы, Постащики не должны быть пустыми!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return magaz;
 		}
-		magz = magaz;
-		listView1->Items->Clear();
+		magz = magaz;	
 		this->ShowDialog();
 		return magz;
 	}
 
-private: System::Void CreateToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	AddComing ^form = gcnew AddComing();
-	magz = form->AddComing_Shown(magz);
-	this->UpdateListView();
-}
-
-private: System::Void EditToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (listView1->SelectedItems->Count > 0 &&
-		listView1->SelectedItems->Count < 2) {
-		EditComing^ form = gcnew EditComing();
-		magz = form->EditComing_Shown(this->magz, (int)Convert::ToInt32(listView1->SelectedItems[0]->SubItems[0]->Text));
+	private: System::Void CreateToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		AddComing ^form = gcnew AddComing();
+		magz = form->AddComing_Shown(magz);
 		this->UpdateListView();
 	}
-	else if (listView1->SelectedItems->Count >= 2) {
-		MessageBox::Show("Выбрано много элементов для редактирования!!!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
-	}
-	else {
-		MessageBox::Show("Не выбран элемент для редактирования!!!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
-	}
-}
 
-private: System::Void RemoveToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	for (int i = 0; i < listView1->SelectedItems->Count; i++) {
-		int id = Convert::ToInt32(listView1->SelectedItems[i]->SubItems[0]->Text);
-		for (int i = 0; i < magz->ArrayComing->Count; i++)
-		{
-			if (magz->ArrayComing[i]->id == id)
-			{
-				magz->ArrayComing->Remove(magz->ArrayComing[i]);
-			}
+	private: System::Void EditToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (listView1->SelectedItems->Count > 0 &&
+			listView1->SelectedItems->Count < 2) {
+			EditComing^ form = gcnew EditComing();
+			magz = form->EditComing_Shown(this->magz, (int)Convert::ToInt32(listView1->SelectedItems[0]->SubItems[0]->Text));
+			this->UpdateListView();
+		}
+		else if (listView1->SelectedItems->Count >= 2) {
+			MessageBox::Show("Выбрано много элементов для редактирования!!!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		else {
+			MessageBox::Show("Не выбран элемент для редактирования!!!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
-	this->UpdateListView();
-}
 
-private: System::Void Comings_Load(System::Object^ sender, System::EventArgs^ e) {
-	this->UpdateListView();
-}
-
-private: System::Void UpdateListView() {
-	listView1->Items->Clear();
-	for (int i = 0; i < this->magz->ArrayComing->Count; i++) {
-		ListViewItem^ Id = gcnew ListViewItem();
-		Id->Text = this->magz->ArrayComing[i]->id.ToString();
-		ListViewItem::ListViewSubItem^ Product = gcnew ListViewItem::ListViewSubItem();
-		Product->Text = this->magz->ArrayComing[i]->objProduct->Name;
-		Id->SubItems->Add(Product);
-		ListViewItem::ListViewSubItem^ Provider = gcnew ListViewItem::ListViewSubItem();
-		Provider->Text = this->magz->ArrayComing[i]->objProvider->Name;
-		Id->SubItems->Add(Provider);
-		ListViewItem::ListViewSubItem^ Document = gcnew ListViewItem::ListViewSubItem();
-		Document->Text = this->magz->ArrayComing[i]->objDocument->NumberDogovor->ToString();
-		Id->SubItems->Add(Document);
-		ListViewItem::ListViewSubItem^ Count = gcnew ListViewItem::ListViewSubItem();
-		Count->Text = this->magz->ArrayComing[i]->count.ToString();
-		Id->SubItems->Add(Count);
-		ListViewItem::ListViewSubItem^ Price = gcnew ListViewItem::ListViewSubItem();
-		Price->Text = this->magz->ArrayComing[i]->price.ToString();
-		Id->SubItems->Add(Price);
-		listView1->Items->Add(Id);
+	private: System::Void RemoveToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		for (int i = 0; i < listView1->SelectedItems->Count; i++) {
+			int id = Convert::ToInt32(listView1->SelectedItems[i]->SubItems[0]->Text);
+			for (int i = 0; i < magz->ArrayComing->Count; i++)
+			{
+				if (magz->ArrayComing[i]->id == id)
+				{
+					magz->ArrayComing->Remove(magz->ArrayComing[i]);
+				}
+			}
+		}
+		this->UpdateListView();
 	}
-}
+
+	private: System::Void Comings_Load(System::Object^ sender, System::EventArgs^ e) {
+		this->UpdateListView();
+	}
+
+	private: System::Void UpdateListView() {
+		listView1->Items->Clear();
+		for (int i = 0; i < this->magz->ArrayComing->Count; i++) {
+			ListViewItem^ Id = gcnew ListViewItem();
+			Id->Text = this->magz->ArrayComing[i]->id.ToString();
+			ListViewItem::ListViewSubItem^ Product = gcnew ListViewItem::ListViewSubItem();
+			Product->Text = this->magz->ArrayComing[i]->objProduct->Name;
+			Id->SubItems->Add(Product);
+			ListViewItem::ListViewSubItem^ Provider = gcnew ListViewItem::ListViewSubItem();
+			Provider->Text = this->magz->ArrayComing[i]->objProvider->Name;
+			Id->SubItems->Add(Provider);
+			ListViewItem::ListViewSubItem^ Document = gcnew ListViewItem::ListViewSubItem();
+			Document->Text = this->magz->ArrayComing[i]->objDocument->NumberDogovor->ToString();
+			Id->SubItems->Add(Document);
+			ListViewItem::ListViewSubItem^ Count = gcnew ListViewItem::ListViewSubItem();
+			Count->Text = this->magz->ArrayComing[i]->count.ToString();
+			Id->SubItems->Add(Count);
+			ListViewItem::ListViewSubItem^ Price = gcnew ListViewItem::ListViewSubItem();
+			Price->Text = this->magz->ArrayComing[i]->price.ToString();
+			Id->SubItems->Add(Price);
+			listView1->Items->Add(Id);
+		}
+	}
 };
 }
