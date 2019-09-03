@@ -12,6 +12,9 @@ namespace Project1 {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace Newtonsoft::Json;
+	using namespace Newtonsoft::Json::Linq;
+	using namespace System::IO;
 
 	/// <summary>
 	/// Сводка для Products
@@ -146,17 +149,20 @@ namespace Project1 {
 
 		}
 #pragma endregion
-		public: Product^ pr;
-		public: Magazin^ magz;
-		public: Magazin^ Products_Shown(Magazin^ m) {
-			magz = m;
-			listView1->Items->Clear();
-			this->ShowDialog();
-			return magz;
-		}
-private: System::Void Products_Load(System::Object^ sender, System::EventArgs^ e) {
-	this->UpdateListView();
-}
+	public: Product^ pr;
+	public: Magazin^ magz;
+
+
+	public: Magazin^ Products_Shown(Magazin^ m) {
+		magz = m;
+		listView1->Items->Clear();
+		this->ShowDialog();
+		return magz;
+	}
+
+	private: System::Void Products_Load(System::Object^ sender, System::EventArgs^ e) {
+		this->UpdateListView();
+	}
 	private: System::Void UpdateListView() {
 		listView1->Items->Clear();
 		for (int i = 0; i < this->magz->ArrayProduct->Count; i++) {
@@ -168,37 +174,40 @@ private: System::Void Products_Load(System::Object^ sender, System::EventArgs^ e
 			listView1->Items->Add(Id);
 		}
 	}
-private: System::Void CreateToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	AddProduct^ form = gcnew AddProduct();
-	magz = form->AddProduct_Shown(magz);
-	this->UpdateListView();
-}
-private: System::Void EditToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (listView1->SelectedItems->Count > 0 &&
-		listView1->SelectedItems->Count < 2) {
-		EditProduct^ form = gcnew EditProduct();
-		magz = form->EditProduct_Shown(this->magz, (int)Convert::ToInt32(listView1->SelectedItems[0]->SubItems[0]->Text));
+	private: System::Void CreateToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		AddProduct^ form = gcnew AddProduct();
+		magz = form->AddProduct_Shown(magz);
 		this->UpdateListView();
+		magz->WriteToFile();
 	}
-	else if (listView1->SelectedItems->Count >= 2) {
-		MessageBox::Show("Выбрано много элементов для редактирования!!!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
-	}
-	else {
-		MessageBox::Show("Не выбран элемент для редактирования!!!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
-	}
-}
-private: System::Void RemoveToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	for (int i = 0; i < listView1->SelectedItems->Count; i++) {
-		int id = Convert::ToInt32(listView1->SelectedItems[i]->SubItems[0]->Text);
-		for (int i = 0; i < magz->ArrayProduct->Count; i++)
-		{
-			if (magz->ArrayProduct[i]->id == id)
-			{
-				magz->ArrayProduct->Remove(magz->ArrayProduct[i]);
-			}
+	private: System::Void EditToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (listView1->SelectedItems->Count > 0 &&
+			listView1->SelectedItems->Count < 2) {
+			EditProduct^ form = gcnew EditProduct();
+			magz = form->EditProduct_Shown(this->magz, (int)Convert::ToInt32(listView1->SelectedItems[0]->SubItems[0]->Text));
+			this->UpdateListView();
+			magz->WriteToFile();
+		}
+		else if (listView1->SelectedItems->Count >= 2) {
+			MessageBox::Show("Выбрано много элементов для редактирования!!!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		else {
+			MessageBox::Show("Не выбран элемент для редактирования!!!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
-	this->UpdateListView();
-}
+	private: System::Void RemoveToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		for (int i = 0; i < listView1->SelectedItems->Count; i++) {
+			int id = Convert::ToInt32(listView1->SelectedItems[i]->SubItems[0]->Text);
+			for (int i = 0; i < magz->ArrayProduct->Count; i++)
+			{
+				if (magz->ArrayProduct[i]->id == id)
+				{
+					magz->ArrayProduct->Remove(magz->ArrayProduct[i]);
+				}
+			}
+		}
+		this->UpdateListView();
+		magz->WriteToFile();
+	}
 };
 }

@@ -8,9 +8,15 @@
 using namespace System;
 using namespace System::Collections;
 using namespace System::Collections::Generic;
+using namespace System::Windows::Forms;
+using namespace Newtonsoft::Json;
+using namespace Newtonsoft::Json::Linq;
+using namespace System::IO;
 
 public ref class Magazin
 {
+	private: String^ pathDB = Application::StartupPath + "/db/";
+	private: String^ fileDBName = "magazins.json";
 
 	public: List<Provider^>^ ArrayProvider;
 	public: List<Product^>^ ArrayProduct;
@@ -43,6 +49,10 @@ public ref class Magazin
 				return item;
 		}
 		return nullptr;
+	}
+
+	public: System::Void WriteToFile() {
+		File::WriteAllText(pathDB + fileDBName, JsonConvert::SerializeObject(this));
 	}
 
 };

@@ -187,6 +187,7 @@ namespace Project1 {
 		AddConsumption^ form = gcnew AddConsumption();
 		magaz = form->AddConsumption_Shown(magaz);
 		this->UpdateListView();
+		magaz->WriteToFile();
 	}
 
 	private: System::Void EditToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -195,6 +196,7 @@ namespace Project1 {
 			EditConsumption^ form = gcnew EditConsumption();
 			magaz = form->EditConsumption_Shown(this->magaz, (int)Convert::ToInt32(listView1->SelectedItems[0]->SubItems[0]->Text));
 			this->UpdateListView();
+			magaz->WriteToFile();
 		}
 		else if (listView1->SelectedItems->Count >= 2) {
 			MessageBox::Show("Выбрано много элементов для редактирования!!!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -216,6 +218,7 @@ namespace Project1 {
 			}
 		}
 		this->UpdateListView();
+		magaz->WriteToFile();
 	}
 };
 }

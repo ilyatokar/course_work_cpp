@@ -12,6 +12,7 @@ namespace Project1 {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::IO;
 
 	/// <summary>
 	/// Сводка для Comings
@@ -185,6 +186,9 @@ namespace Project1 {
 #pragma endregion
 	private: Coming^ cm;
 	public: Magazin^ magz;
+	private: String^ pathDB = Application::StartupPath + "/db/";
+	private: String^ fileDBName = "magazins.json";
+
 	public: Magazin^ Coming_Shown(Magazin^ magaz) {
 		if (magaz->ArrayDocument->Count == 0 ||
 			magaz->ArrayProduct->Count == 0 ||
@@ -201,7 +205,8 @@ namespace Project1 {
 	private: System::Void CreateToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		AddComing ^form = gcnew AddComing();
 		magz = form->AddComing_Shown(magz);
-		this->UpdateListView();
+		this->UpdateListView();	
+		magz->WriteToFile();
 	}
 
 	private: System::Void EditToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -210,6 +215,7 @@ namespace Project1 {
 			EditComing^ form = gcnew EditComing();
 			magz = form->EditComing_Shown(this->magz, (int)Convert::ToInt32(listView1->SelectedItems[0]->SubItems[0]->Text));
 			this->UpdateListView();
+			magz->WriteToFile();
 		}
 		else if (listView1->SelectedItems->Count >= 2) {
 			MessageBox::Show("Выбрано много элементов для редактирования!!!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -231,6 +237,7 @@ namespace Project1 {
 			}
 		}
 		this->UpdateListView();
+		magz->WriteToFile();
 	}
 
 	private: System::Void Comings_Load(System::Object^ sender, System::EventArgs^ e) {

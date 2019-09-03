@@ -170,6 +170,7 @@ namespace Project1 {
 		AddProvider^ form = gcnew AddProvider();
 		magz = form->AddProvider_Shown(this->magz);
 		this->UpdateListView();
+		magz->WriteToFile();
 	}
 	private: System::Void Providers_Load(System::Object^ sender, System::EventArgs^ e) {
 		this->UpdateListView();
@@ -180,6 +181,7 @@ namespace Project1 {
 			EditProvider^ form = gcnew EditProvider();
 			magz = form->EditProvider_Shown(this->magz, (int)Convert::ToInt32(listView1->SelectedItems[0]->SubItems[0]->Text));
 			this->UpdateListView();
+			magz->WriteToFile();
 		}
 		else if (listView1->SelectedItems->Count >= 2) {
 			MessageBox::Show("Выбрано много элементов для редактирования!!!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -200,6 +202,7 @@ namespace Project1 {
 			}
 		}
 		this->UpdateListView();
+		magz->WriteToFile();
 	}
 	private: System::Void UpdateListView() {
 		listView1->Items->Clear();

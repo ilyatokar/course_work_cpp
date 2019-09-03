@@ -173,6 +173,7 @@ namespace Project1 {
 		AddDocument^ form = gcnew AddDocument();
 		magz = form->AddDocument_Shown(magz);
 		this->UpdateListView();
+		magz->WriteToFile();
 	}
 
 	private: System::Void UpdateListView() {
@@ -200,6 +201,7 @@ namespace Project1 {
 			EditdDocument^ form = gcnew EditdDocument();
 			magz = form->EditDocument_Shown(this->magz, (int)Convert::ToInt32(listView1->SelectedItems[0]->SubItems[0]->Text));
 			this->UpdateListView();
+			magz->WriteToFile();
 		}
 		else if (listView1->SelectedItems->Count >= 2) {
 			MessageBox::Show("Выбрано много элементов для редактирования!!!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -221,6 +223,7 @@ namespace Project1 {
 			}
 		}
 		this->UpdateListView();
+		magz->WriteToFile();
 	}
 	};
 }

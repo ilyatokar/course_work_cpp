@@ -160,7 +160,6 @@ namespace Project1 {
 			this->listView1->TabIndex = 4;
 			this->listView1->UseCompatibleStateImageBehavior = false;
 			this->listView1->View = System::Windows::Forms::View::Details;
-			this->listView1->ColumnClick += gcnew System::Windows::Forms::ColumnClickEventHandler(this, &MyForm::ListView1_ColumnClick);
 			// 
 			// columnHeader1
 			// 
@@ -202,70 +201,33 @@ namespace Project1 {
 		}
 #pragma endregion
 
-	public: Magazin^ mgz;
+	private: Magazin^ mgz;
+	private: String^ pathDB = Application::StartupPath + "/db/";
+	private: String^ fileDBName = "magazins.json";
 
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		String^ fileName = Application::StartupPath + "/db/magazins.json";
-		List<Magazin^>^ data = JsonConvert::DeserializeObject<List<Magazin^>^>(File::ReadAllText(fileName));
-
-		//if (data != nullptr) {
-		//	for (int i = 0; i < data->Count; i++) {
-		//		ListViewItem^ Id = gcnew ListViewItem();
-		//		Id->Text = data[i]->id.ToString();
-		//		ListViewItem::ListViewSubItem^ Name = gcnew ListViewItem::ListViewSubItem();
-		//		Name->Text = data[i]->Name;
-		//		Id->SubItems->Add(Name);
-		//		listView1->Items->Add(Id);
-		//	}
-		//}
-
-		mgz = gcnew Magazin();
-		mgz->ArrayProvider = gcnew List<Provider^>();
-		mgz->ArrayDocument = gcnew List<Document^>();
-		mgz->ArrayProduct = gcnew List<Product^>();
-		mgz->ArrayComing = gcnew List<Coming^>();
-		mgz->ArrayConsumption = gcnew List<Consumption^>();
+			if (File::Exists(pathDB+fileDBName)) {
+			try
+			{
+				mgz = JsonConvert::DeserializeObject<Magazin^>(File::ReadAllText(pathDB + fileDBName));
+			}
+			catch (Exception^ e)
+			{
+				MessageBox::Show("Поврежден файл базы!!!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				Environment::Exit(0);
+			}
+			
+		}
+		else {
+			if (!Directory::Exists(pathDB)) {
+				Directory::CreateDirectory(pathDB);
+			}
+			FileStream^ fs = File::Create(pathDB + fileDBName);
+			fs->Close();
+			InitMagazin();
+			
+		}
 		this->UpdateListView();
-	}
-
-	private: System::Void AddedMagazinToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		String^ fileName = Application::StartupPath + "/db/magazins.json";
-
-		//AddClient^ f2 = gcnew AddClient();
-		//mgz = f2->Shown(mgz);
-		//Console::WriteLine(JsonConvert::SerializeObject(mgz));
-
-		//ListViewItem^ Id = gcnew ListViewItem();
-
-		//while (listView1->Items->Count > 0) {
-		//	ListViewItem^ item = listView1->Items[0];
-		//	listView1->Items->Remove(item);
-		//}
-
-		//FileStream^ fileReader = gcnew FileStream(fileName, FileMode::OpenOrCreate);
-		//StreamReader^ reader = gcnew StreamReader(fileReader);
-
-		//String^ jsonstr = reader->ReadLine();
-
-		//reader->Close();
-		//fileReader->Close();
-
-		//List<Magazin^>^ data;
-		//if (!String::IsNullOrEmpty(jsonstr))
-		//{
-		//	data = JsonConvert::DeserializeObject<List<Magazin^>^>(jsonstr);
-		//}
-
-		//for (int i = 0; i < data->Count; i++) {
-		//	ListViewItem^ Id = gcnew ListViewItem();
-		//	Id->Text = data[i]->id.ToString();
-		//	ListViewItem::ListViewSubItem^ Name = gcnew ListViewItem::ListViewSubItem();
-		//	Name->Text = data[i]->Name;
-		//	Id->SubItems->Add(Name);
-		//	listView1->Items->Add(Id);
-		//}
-
-
 	}
 
 	private: System::Void ProvidersToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -280,55 +242,15 @@ namespace Project1 {
 		this->UpdateListView();
 	}
 
-	private: System::Void ListviewToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		ListViewItem^ Id = gcnew ListViewItem();
-		Id->Text = "1";
-		ListViewItem::ListViewSubItem^ Name = gcnew ListViewItem::ListViewSubItem();
-		Name->Text = L"магазин 1";
-		Id->SubItems->Add(Name);
-		listView1->Items->Add(Id);
-	}
 
 	private: System::Void ExitToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		Application::Exit();
+		
 	}
-
-	private: System::Void RemoveItemsSelectedToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		String^ fileName = Application::StartupPath + "/db/magazins.json";
-		List<Magazin^>^ data = JsonConvert::DeserializeObject<List<Magazin^>^>(File::ReadAllText(fileName));
-
-		if (data != nullptr)
-		{
-			int id = Convert::ToInt32(listView1->SelectedItems[0]->SubItems[0]->Text);
-			//for (int i = 0; i < data->Count; i++)
-			//{
-			//	if (data[i]->id == id)
-			//	{
-			//		data->Remove(data[i]);
-			//	}
-			//}
-
-			while (listView1->Items->Count > 0) {
-				listView1->Items->Remove(listView1->Items[0]);
-			}
-
-			//for (int i = 0; i < data->Count; i++) {
-			//	ListViewItem^ Id = gcnew ListViewItem();
-			//	Id->Text = data[i]->id.ToString();
-			//	ListViewItem::ListViewSubItem^ Name = gcnew ListViewItem::ListViewSubItem();
-			//	Name->Text = data[i]->Name;
-			//	Id->SubItems->Add(Name);
-			//	listView1->Items->Add(Id);
-			//}
-
-			File::WriteAllText(fileName, JsonConvert::SerializeObject(data));
-		}
-
-	}
-
-	private: System::Void ListView1_ColumnClick(System::Object^ sender, System::Windows::Forms::ColumnClickEventArgs^ e) {
-		Console::WriteLine("click column" + " " + e->Column);//вывод номер колонки
-	}
+	
+	// column click
+	//private: System::Void ListView1_ColumnClick(System::Object^ sender, System::Windows::Forms::ColumnClickEventArgs^ e) {
+	//	Console::WriteLine("click column" + " " + e->Column);//вывод номер колонки
+	//}
 
 	private: System::Void ТоварToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		Products^ form = gcnew Products();
@@ -379,6 +301,15 @@ namespace Project1 {
 		}
 
 		return countComing - countConsumption;
+	}
+
+	private: System::Void InitMagazin() {
+		mgz = gcnew Magazin();
+		mgz->ArrayProvider = gcnew List<Provider^>();
+		mgz->ArrayDocument = gcnew List<Document^>();
+		mgz->ArrayProduct = gcnew List<Product^>();
+		mgz->ArrayComing = gcnew List<Coming^>();
+		mgz->ArrayConsumption = gcnew List<Consumption^>();
 	}
 
 };
