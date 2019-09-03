@@ -224,9 +224,9 @@ namespace Project1 {
 			}
 			coming = gcnew Coming();
 			coming->id = id;
-			coming->objProduct	= this->magaz->getObjProductByName(comboBox1->SelectedItem->ToString());
-			coming->objProvider = this->magaz->getObjProviderByName(comboBox2->SelectedItem->ToString());
-			coming->objDocument = this->magaz->getObjDocumentByNumberDogovor(comboBox3->SelectedItem->ToString());
+			coming->productId	= this->magaz->getIdProductByName(comboBox1->SelectedItem->ToString());
+			coming->providerId = this->magaz->getIdProviderByName(comboBox2->SelectedItem->ToString());
+			coming->documentId = this->magaz->getIdDocumentByNumberDogovor(comboBox3->SelectedItem->ToString());
 			coming->count = Convert::ToInt32(textBox1->Text);
 			coming->price = Convert::ToInt32(textBox3->Text);
 			magaz->ArrayComing->Add(coming);

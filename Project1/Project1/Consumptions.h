@@ -170,7 +170,7 @@ namespace Project1 {
 			ListViewItem^ Id = gcnew ListViewItem();
 			Id->Text = this->magaz->ArrayConsumption[i]->id.ToString();
 			ListViewItem::ListViewSubItem^ Product = gcnew ListViewItem::ListViewSubItem();
-			Product->Text = this->magaz->ArrayConsumption[i]->objProduct->Name;
+			Product->Text = this->magaz->getNameProductById(this->magaz->ArrayConsumption[i]->productId);
 			Id->SubItems->Add(Product);
 			ListViewItem::ListViewSubItem^ Count = gcnew ListViewItem::ListViewSubItem();
 			Count->Text = this->magaz->ArrayConsumption[i]->count.ToString();

@@ -6,10 +6,10 @@
 using namespace System;
 ref class Coming
 {
-public: unsigned long id;
-public: Product^ objProduct;
-public: Provider^ objProvider;
-public: Document^ objDocument;
+public: unsigned int id;
+public: unsigned int productId;
+public: unsigned int providerId;
+public: unsigned int documentId;
 public: int count;
 public: long price;
 };

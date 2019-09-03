@@ -244,7 +244,7 @@ namespace Project1 {
 
 
 	private: System::Void ExitToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		
+		Application::Exit();
 	}
 	
 	// column click
@@ -290,13 +290,13 @@ namespace Project1 {
 		int countConsumption = 0;
 		for each (Coming^ item in this->mgz->ArrayComing)
 		{
-			if (item->objProduct == product)
+			if (item->productId == product->id)
 				countComing += item->count;
 		}
 
 		for each (Consumption^ item in this->mgz->ArrayConsumption)
 		{
-			if (item->objProduct == product)
+			if (item->productId == product->id)
 				countConsumption += item->count;
 		}
 

@@ -163,7 +163,7 @@ namespace Project1 {
 		for each (Product ^ item in this->magaz->ArrayProduct)
 		{
 			comboBox1->Items->Add(item->Name);
-			if (item == consumption->objProduct) {
+			if (item->id == consumption->productId) {
 				comboBox1->SelectedIndex = this->magaz->ArrayProduct->IndexOf(item);
 			}
 		}
@@ -173,7 +173,7 @@ namespace Project1 {
 	private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (textBox1->Text != "")
 		{
-			consumption->objProduct = this->magaz->getObjProductByName(comboBox1->SelectedItem->ToString());
+			consumption->productId = this->magaz->getIdProductByName(comboBox1->SelectedItem->ToString());
 			consumption->count = Convert::ToInt32(textBox1->Text);
 		}
 		this->Close();

@@ -223,14 +223,14 @@ namespace Project1 {
 		for each (Product ^ item in this->magaz->ArrayProduct)
 		{
 			comboBox1->Items->Add(item->Name);
-			if (item == coming->objProduct) {
+			if (item->id == coming->productId) {
 				comboBox1->SelectedIndex = this->magaz->ArrayProduct->IndexOf(item);
 			}
 		}
 		for each (Provider ^ item in this->magaz->ArrayProvider)
 		{
 			comboBox2->Items->Add(item->Name);
-			if (item == coming->objProvider) {
+			if (item->id == coming->providerId) {
 				comboBox2->SelectedIndex = this->magaz->ArrayProvider->IndexOf(item);
 			}
 			
@@ -238,7 +238,7 @@ namespace Project1 {
 		for each (Document ^ item in this->magaz->ArrayDocument)
 		{
 			comboBox3->Items->Add(item->NumberDogovor);
-			if (item == coming->objDocument) {
+			if (item->id == coming->documentId) {
 				comboBox3->SelectedIndex = this->magaz->ArrayDocument->IndexOf(item);
 			}
 		}
@@ -250,9 +250,9 @@ namespace Project1 {
 		if (textBox1->Text != "" &&
 			textBox3->Text != "")
 		{
-			coming->objProduct = this->magaz->getObjProductByName(comboBox1->SelectedItem->ToString());
-			coming->objProvider = this->magaz->getObjProviderByName(comboBox2->SelectedItem->ToString());
-			coming->objDocument = this->magaz->getObjDocumentByNumberDogovor(comboBox3->SelectedItem->ToString());
+			coming->productId = this->magaz->getIdProductByName(comboBox1->SelectedItem->ToString());
+			coming->providerId = this->magaz->getIdProviderByName(comboBox2->SelectedItem->ToString());
+			coming->documentId = this->magaz->getIdDocumentByNumberDogovor(comboBox3->SelectedItem->ToString());
 			coming->count = Convert::ToInt32(textBox1->Text);
 			coming->price = Convert::ToInt32(textBox3->Text);
 		}

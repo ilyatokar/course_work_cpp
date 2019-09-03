@@ -24,32 +24,60 @@ public ref class Magazin
 	public: List<Coming^>^ ArrayComing;
 	public: List<Consumption^>^ ArrayConsumption;
 
-	public: Product^ getObjProductByName(String^ name) {
+	public: unsigned int getIdProductByName(String^ name) {
 		for each (Product ^ item in this->ArrayProduct)
 		{
 			if (item->Name == name)
-				return item;
+				return item->id;
 		}
-		return nullptr;
+		return 0;
 	}
 
-	public: Provider^ getObjProviderByName(String^ name) {
+	public: String^ getNameProductById(unsigned int id) {
+		for each (Product ^ item in this->ArrayProduct)
+		{
+			if (item->id == id)
+				return item->Name;
+
+			return "";
+		}
+	}
+
+	public: unsigned int getIdProviderByName(String^ name) {
 		for each (Provider ^ item in this->ArrayProvider)
 		{
 			if (item->Name == name)
-				return item;
+				return item->id;
 		}
-		return nullptr;
+		return 0;
 	}
 
-	public: Document^ getObjDocumentByNumberDogovor(String^ ndog) {
+	public: String^ getNameProviderById(unsigned int id) {
+		for each (Provider ^ item in this->ArrayProvider)
+		{
+			if (item->id == id)
+				return item->Name;
+		}
+		return "";
+	}
+
+
+	public: unsigned int getIdDocumentByNumberDogovor(String^ ndog) {
 		for each (Document ^ item in this->ArrayDocument)
 		{
 			if (item->NumberDogovor == ndog)
-				return item;
+				return item->id;
 		}
-		return nullptr;
+		return 0;
 	}
+public: String^ getNumberDogovorById(unsigned int id) {
+	for each (Document ^ item in this->ArrayDocument)
+	{
+		if (item->id == id)
+			return item->NumberDogovor;
+	}
+	return "";
+}
 
 	public: System::Void WriteToFile() {
 		File::WriteAllText(pathDB + fileDBName, JsonConvert::SerializeObject(this));

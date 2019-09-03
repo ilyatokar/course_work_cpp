@@ -5,8 +5,8 @@ using namespace System;
 
 ref class Consumption
 {
-public: int id;
-public: Product^ objProduct;
+public: unsigned int id;
+public: unsigned int productId;
 public: int count;
 };
 

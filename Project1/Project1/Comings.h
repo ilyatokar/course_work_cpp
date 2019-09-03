@@ -250,13 +250,13 @@ namespace Project1 {
 			ListViewItem^ Id = gcnew ListViewItem();
 			Id->Text = this->magz->ArrayComing[i]->id.ToString();
 			ListViewItem::ListViewSubItem^ Product = gcnew ListViewItem::ListViewSubItem();
-			Product->Text = this->magz->ArrayComing[i]->objProduct->Name;
+			Product->Text = this->magz->getNameProductById(this->magz->ArrayComing[i]->productId);
 			Id->SubItems->Add(Product);
 			ListViewItem::ListViewSubItem^ Provider = gcnew ListViewItem::ListViewSubItem();
-			Provider->Text = this->magz->ArrayComing[i]->objProvider->Name;
+			Provider->Text = this->magz->getNameProviderById(this->magz->ArrayComing[i]->providerId);
 			Id->SubItems->Add(Provider);
 			ListViewItem::ListViewSubItem^ Document = gcnew ListViewItem::ListViewSubItem();
-			Document->Text = this->magz->ArrayComing[i]->objDocument->NumberDogovor->ToString();
+			Document->Text = this->magz->getNumberDogovorById(this->magz->ArrayComing[i]->documentId);
 			Id->SubItems->Add(Document);
 			ListViewItem::ListViewSubItem^ Count = gcnew ListViewItem::ListViewSubItem();
 			Count->Text = this->magz->ArrayComing[i]->count.ToString();

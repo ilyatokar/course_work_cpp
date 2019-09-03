@@ -153,7 +153,7 @@ namespace Project1 {
 			}
 			consumption = gcnew Consumption();
 			consumption->id = id;
-			consumption->objProduct = magaz->getObjProductByName(comboBox1->SelectedItem->ToString());
+			consumption->productId = magaz->getIdProductByName(comboBox1->SelectedItem->ToString());
 			consumption->count = Convert::ToInt32(textBox1->Text);
 			magaz->ArrayConsumption->Add(consumption);
 			this->Close();
