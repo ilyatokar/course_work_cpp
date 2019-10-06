@@ -38,9 +38,8 @@ public ref class Magazin
 		{
 			if (item->id == id)
 				return item->Name;
-
-			return "";
 		}
+		return "";
 	}
 
 	public: unsigned int getIdProviderByName(String^ name) {

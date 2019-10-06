@@ -83,6 +83,7 @@ namespace Project1 {
 			this->button1->TabIndex = 20;
 			this->button1->Text = L"Сохранить";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &EditProvider::Button1_Click);
 			// 
 			// label3
 			// 
@@ -184,11 +185,10 @@ namespace Project1 {
 		textBox3->Text = Prov->Comment;
 	}
 	private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		//сделать проверку введенных данных	
 		Prov->Name = textBox1->Text;
 		Prov->Addres = textBox2->Text;
 		Prov->Comment = textBox3->Text;
 		this->Close();
 	}
-	};
+};
 }
