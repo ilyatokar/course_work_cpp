@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "Document.h"
 #include "Magazin.h"
 
@@ -12,7 +12,7 @@ namespace Project1 {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Сводка для EditdDocument
+	/// РЎРІРѕРґРєР° РґР»СЏ EditdDocument
 	/// </summary>
 	public ref class EditdDocument : public System::Windows::Forms::Form
 	{
@@ -21,13 +21,13 @@ namespace Project1 {
 		{
 			InitializeComponent();
 			//
-			//TODO: добавьте код конструктора
+			//TODO: РґРѕР±Р°РІСЊС‚Рµ РєРѕРґ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
 			//
 		}
 
 	protected:
 		/// <summary>
-		/// Освободить все используемые ресурсы.
+		/// РћСЃРІРѕР±РѕРґРёС‚СЊ РІСЃРµ РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ СЂРµСЃСѓСЂСЃС‹.
 		/// </summary>
 		~EditdDocument()
 		{
@@ -45,14 +45,14 @@ namespace Project1 {
 
 	private:
 		/// <summary>
-		/// Обязательная переменная конструктора.
+		/// РћР±СЏР·Р°С‚РµР»СЊРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°.
 		/// </summary>
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Требуемый метод для поддержки конструктора — не изменяйте 
-		/// содержимое этого метода с помощью редактора кода.
+		/// РўСЂРµР±СѓРµРјС‹Р№ РјРµС‚РѕРґ РґР»СЏ РїРѕРґРґРµСЂР¶РєРё РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° вЂ” РЅРµ РёР·РјРµРЅСЏР№С‚Рµ 
+		/// СЃРѕРґРµСЂР¶РёРјРѕРµ СЌС‚РѕРіРѕ РјРµС‚РѕРґР° СЃ РїРѕРјРѕС‰СЊСЋ СЂРµРґР°РєС‚РѕСЂР° РєРѕРґР°.
 		/// </summary>
 		void InitializeComponent(void)
 		{
@@ -69,7 +69,7 @@ namespace Project1 {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 9;
-			this->button1->Text = L"Сохранить";
+			this->button1->Text = L"РЎРѕС…СЂР°РЅРёС‚СЊ";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &EditdDocument::Button1_Click);
 			// 
@@ -94,7 +94,7 @@ namespace Project1 {
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(98, 13);
 			this->label2->TabIndex = 6;
-			this->label2->Text = L"Номер накладной";
+			this->label2->Text = L"РќРѕРјРµСЂ РЅР°РєР»Р°РґРЅРѕР№";
 			// 
 			// label1
 			// 
@@ -103,7 +103,7 @@ namespace Project1 {
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(91, 13);
 			this->label1->TabIndex = 5;
-			this->label1->Text = L"Номер договора";
+			this->label1->Text = L"РќРѕРјРµСЂ РґРѕРіРѕРІРѕСЂР°";
 			// 
 			// EditdDocument
 			// 
@@ -117,7 +117,7 @@ namespace Project1 {
 			this->Controls->Add(this->label1);
 			this->Name = L"EditdDocument";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"Редактирование документа";
+			this->Text = L"Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РґРѕРєСѓРјРµРЅС‚Р°";
 			this->Load += gcnew System::EventHandler(this, &EditdDocument::EditdDocument_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();

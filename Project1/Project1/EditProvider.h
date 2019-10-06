@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "Provider.h"
 #include "Magazin.h"
 
@@ -12,7 +12,7 @@ namespace Project1 {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Сводка для EditProvider
+	/// РЎРІРѕРґРєР° РґР»СЏ EditProvider
 	/// </summary>
 	public ref class EditProvider : public System::Windows::Forms::Form
 	{
@@ -21,13 +21,13 @@ namespace Project1 {
 		{
 			InitializeComponent();
 			//
-			//TODO: добавьте код конструктора
+			//TODO: РґРѕР±Р°РІСЊС‚Рµ РєРѕРґ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
 			//
 		}
 
 	protected:
 		/// <summary>
-		/// Освободить все используемые ресурсы.
+		/// РћСЃРІРѕР±РѕРґРёС‚СЊ РІСЃРµ РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ СЂРµСЃСѓСЂСЃС‹.
 		/// </summary>
 		~EditProvider()
 		{
@@ -55,14 +55,14 @@ namespace Project1 {
 
 	private:
 		/// <summary>
-		/// Обязательная переменная конструктора.
+		/// РћР±СЏР·Р°С‚РµР»СЊРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°.
 		/// </summary>
 		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Требуемый метод для поддержки конструктора — не изменяйте 
-		/// содержимое этого метода с помощью редактора кода.
+		/// РўСЂРµР±СѓРµРјС‹Р№ РјРµС‚РѕРґ РґР»СЏ РїРѕРґРґРµСЂР¶РєРё РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° вЂ” РЅРµ РёР·РјРµРЅСЏР№С‚Рµ 
+		/// СЃРѕРґРµСЂР¶РёРјРѕРµ СЌС‚РѕРіРѕ РјРµС‚РѕРґР° СЃ РїРѕРјРѕС‰СЊСЋ СЂРµРґР°РєС‚РѕСЂР° РєРѕРґР°.
 		/// </summary>
 		void InitializeComponent(void)
 		{
@@ -81,7 +81,7 @@ namespace Project1 {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 20;
-			this->button1->Text = L"Сохранить";
+			this->button1->Text = L"РЎРѕС…СЂР°РЅРёС‚СЊ";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &EditProvider::Button1_Click);
 			// 
@@ -92,7 +92,7 @@ namespace Project1 {
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(77, 13);
 			this->label3->TabIndex = 19;
-			this->label3->Text = L"Комментарий";
+			this->label3->Text = L"РљРѕРјРјРµРЅС‚Р°СЂРёР№";
 			// 
 			// label2
 			// 
@@ -101,7 +101,7 @@ namespace Project1 {
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(38, 13);
 			this->label2->TabIndex = 18;
-			this->label2->Text = L"Адрес";
+			this->label2->Text = L"РђРґСЂРµСЃ";
 			// 
 			// label1
 			// 
@@ -110,7 +110,7 @@ namespace Project1 {
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(83, 13);
 			this->label1->TabIndex = 17;
-			this->label1->Text = L"Наименование";
+			this->label1->Text = L"РќР°РёРјРµРЅРѕРІР°РЅРёРµ";
 			// 
 			// textBox3
 			// 

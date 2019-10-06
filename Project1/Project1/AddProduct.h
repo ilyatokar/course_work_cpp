@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "Product.h"
 #include "Magazin.h"
 
@@ -12,7 +12,7 @@ namespace Project1 {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Сводка для AddProduct
+	/// РЎРІРѕРґРєР° РґР»СЏ AddProduct
 	/// </summary>
 	public ref class AddProduct : public System::Windows::Forms::Form
 	{
@@ -21,13 +21,13 @@ namespace Project1 {
 		{
 			InitializeComponent();
 			//
-			//TODO: добавьте код конструктора
+			//TODO: РґРѕР±Р°РІСЊС‚Рµ РєРѕРґ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
 			//
 		}
 
 	protected:
 		/// <summary>
-		/// Освободить все используемые ресурсы.
+		/// РћСЃРІРѕР±РѕРґРёС‚СЊ РІСЃРµ РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ СЂРµСЃСѓСЂСЃС‹.
 		/// </summary>
 		~AddProduct()
 		{
@@ -49,14 +49,14 @@ namespace Project1 {
 
 	private:
 		/// <summary>
-		/// Обязательная переменная конструктора.
+		/// РћР±СЏР·Р°С‚РµР»СЊРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°.
 		/// </summary>
 		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Требуемый метод для поддержки конструктора — не изменяйте 
-		/// содержимое этого метода с помощью редактора кода.
+		/// РўСЂРµР±СѓРµРјС‹Р№ РјРµС‚РѕРґ РґР»СЏ РїРѕРґРґРµСЂР¶РєРё РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° вЂ” РЅРµ РёР·РјРµРЅСЏР№С‚Рµ 
+		/// СЃРѕРґРµСЂР¶РёРјРѕРµ СЌС‚РѕРіРѕ РјРµС‚РѕРґР° СЃ РїРѕРјРѕС‰СЊСЋ СЂРµРґР°РєС‚РѕСЂР° РєРѕРґР°.
 		/// </summary>
 		void InitializeComponent(void)
 		{
@@ -79,7 +79,7 @@ namespace Project1 {
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(83, 13);
 			this->label1->TabIndex = 4;
-			this->label1->Text = L"Наименование";
+			this->label1->Text = L"РќР°РёРјРµРЅРѕРІР°РЅРёРµ";
 			// 
 			// button1
 			// 
@@ -87,7 +87,7 @@ namespace Project1 {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 8;
-			this->button1->Text = L"Добавить";
+			this->button1->Text = L"Р”РѕР±Р°РІРёС‚СЊ";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &AddProduct::Button1_Click);
 			// 
@@ -112,7 +112,7 @@ namespace Project1 {
 	public: Magazin^ AddProduct_Shown(Magazin^ arr) {
 		this->magz = arr;
 		this->ShowDialog();
-		//сделать проверку на cуществующий элемент
+		//СЃРґРµР»Р°С‚СЊ РїСЂРѕРІРµСЂРєСѓ РЅР° cСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ СЌР»РµРјРµРЅС‚
 		return this->magz;
 	}
 
@@ -123,7 +123,7 @@ namespace Project1 {
 				id = (int)magz->ArrayProduct[magz->ArrayProduct->Count - 1]->id;
 				id = id + 1;
 			}
-			//сделать проверку на введенные данные
+			//СЃРґРµР»Р°С‚СЊ РїСЂРѕРІРµСЂРєСѓ РЅР° РІРІРµРґРµРЅРЅС‹Рµ РґР°РЅРЅС‹Рµ
 			pd = gcnew Product();	
 			pd->id = id;
 			pd->Name = textBox1->Text;
@@ -131,7 +131,7 @@ namespace Project1 {
 			this->Close();
 		}
 		else {
-			MessageBox::Show("Неправильно введены данные", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			MessageBox::Show("РќРµРїСЂР°РІРёР»СЊРЅРѕ РІРІРµРґРµРЅС‹ РґР°РЅРЅС‹Рµ", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 		
 	}

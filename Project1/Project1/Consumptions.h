@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "AddConsumption.h"
 #include "EditConsumption.h"
 #include "Magazin.h"
@@ -14,7 +14,7 @@ namespace Project1 {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Сводка для Consumptions
+	/// РЎРІРѕРґРєР° РґР»СЏ Consumptions
 	/// </summary>
 	public ref class Consumptions : public System::Windows::Forms::Form
 	{
@@ -23,13 +23,13 @@ namespace Project1 {
 		{
 			InitializeComponent();
 			//
-			//TODO: добавьте код конструктора
+			//TODO: РґРѕР±Р°РІСЊС‚Рµ РєРѕРґ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
 			//
 		}
 
 	protected:
 		/// <summary>
-		/// Освободить все используемые ресурсы.
+		/// РћСЃРІРѕР±РѕРґРёС‚СЊ РІСЃРµ РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ СЂРµСЃСѓСЂСЃС‹.
 		/// </summary>
 		~Consumptions()
 		{
@@ -44,20 +44,20 @@ namespace Project1 {
 	private: System::Windows::Forms::ColumnHeader^ columnHeader2;
 	private: System::Windows::Forms::ColumnHeader^ columnHeader3;
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
-	private: System::Windows::Forms::ToolStripMenuItem^ добавитьToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ редактироватьToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ удалитьToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ РґРѕР±Р°РІРёС‚СЊToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ СѓРґР°Р»РёС‚СЊToolStripMenuItem;
 
 	private:
 		/// <summary>
-		/// Обязательная переменная конструктора.
+		/// РћР±СЏР·Р°С‚РµР»СЊРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°.
 		/// </summary>
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Требуемый метод для поддержки конструктора — не изменяйте 
-		/// содержимое этого метода с помощью редактора кода.
+		/// РўСЂРµР±СѓРµРјС‹Р№ РјРµС‚РѕРґ РґР»СЏ РїРѕРґРґРµСЂР¶РєРё РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° вЂ” РЅРµ РёР·РјРµРЅСЏР№С‚Рµ 
+		/// СЃРѕРґРµСЂР¶РёРјРѕРµ СЌС‚РѕРіРѕ РјРµС‚РѕРґР° СЃ РїРѕРјРѕС‰СЊСЋ СЂРµРґР°РєС‚РѕСЂР° РєРѕРґР°.
 		/// </summary>
 		void InitializeComponent(void)
 		{
@@ -66,9 +66,9 @@ namespace Project1 {
 			this->columnHeader2 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader3 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
-			this->добавитьToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->редактироватьToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->удалитьToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->РґРѕР±Р°РІРёС‚СЊToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->СѓРґР°Р»РёС‚СЊToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -93,19 +93,19 @@ namespace Project1 {
 			// 
 			// columnHeader2
 			// 
-			this->columnHeader2->Text = L"Продукт";
+			this->columnHeader2->Text = L"РџСЂРѕРґСѓРєС‚";
 			this->columnHeader2->Width = 120;
 			// 
 			// columnHeader3
 			// 
-			this->columnHeader3->Text = L"Колличество";
+			this->columnHeader3->Text = L"РљРѕР»Р»РёС‡РµСЃС‚РІРѕ";
 			this->columnHeader3->Width = 80;
 			// 
 			// menuStrip1
 			// 
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
-				this->добавитьToolStripMenuItem,
-					this->редактироватьToolStripMenuItem, this->удалитьToolStripMenuItem
+				this->РґРѕР±Р°РІРёС‚СЊToolStripMenuItem,
+					this->СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊToolStripMenuItem, this->СѓРґР°Р»РёС‚СЊToolStripMenuItem
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
@@ -113,26 +113,26 @@ namespace Project1 {
 			this->menuStrip1->TabIndex = 2;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
-			// добавитьToolStripMenuItem
+			// РґРѕР±Р°РІРёС‚СЊToolStripMenuItem
 			// 
-			this->добавитьToolStripMenuItem->Name = L"добавитьToolStripMenuItem";
-			this->добавитьToolStripMenuItem->Size = System::Drawing::Size(69, 20);
-			this->добавитьToolStripMenuItem->Text = L"Добавить";
-			this->добавитьToolStripMenuItem->Click += gcnew System::EventHandler(this, &Consumptions::CreateToolStripMenuItem_Click);
+			this->РґРѕР±Р°РІРёС‚СЊToolStripMenuItem->Name = L"РґРѕР±Р°РІРёС‚СЊToolStripMenuItem";
+			this->РґРѕР±Р°РІРёС‚СЊToolStripMenuItem->Size = System::Drawing::Size(69, 20);
+			this->РґРѕР±Р°РІРёС‚СЊToolStripMenuItem->Text = L"Р”РѕР±Р°РІРёС‚СЊ";
+			this->РґРѕР±Р°РІРёС‚СЊToolStripMenuItem->Click += gcnew System::EventHandler(this, &Consumptions::CreateToolStripMenuItem_Click);
 			// 
-			// редактироватьToolStripMenuItem
+			// СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊToolStripMenuItem
 			// 
-			this->редактироватьToolStripMenuItem->Name = L"редактироватьToolStripMenuItem";
-			this->редактироватьToolStripMenuItem->Size = System::Drawing::Size(98, 20);
-			this->редактироватьToolStripMenuItem->Text = L"Редактировать";
-			this->редактироватьToolStripMenuItem->Click += gcnew System::EventHandler(this, &Consumptions::EditToolStripMenuItem_Click);
+			this->СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊToolStripMenuItem->Name = L"СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊToolStripMenuItem";
+			this->СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊToolStripMenuItem->Size = System::Drawing::Size(98, 20);
+			this->СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊToolStripMenuItem->Text = L"Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ";
+			this->СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊToolStripMenuItem->Click += gcnew System::EventHandler(this, &Consumptions::EditToolStripMenuItem_Click);
 			// 
-			// удалитьToolStripMenuItem
+			// СѓРґР°Р»РёС‚СЊToolStripMenuItem
 			// 
-			this->удалитьToolStripMenuItem->Name = L"удалитьToolStripMenuItem";
-			this->удалитьToolStripMenuItem->Size = System::Drawing::Size(63, 20);
-			this->удалитьToolStripMenuItem->Text = L"Удалить";
-			this->удалитьToolStripMenuItem->Click += gcnew System::EventHandler(this, &Consumptions::RemoveToolStripMenuItem_Click);
+			this->СѓРґР°Р»РёС‚СЊToolStripMenuItem->Name = L"СѓРґР°Р»РёС‚СЊToolStripMenuItem";
+			this->СѓРґР°Р»РёС‚СЊToolStripMenuItem->Size = System::Drawing::Size(63, 20);
+			this->СѓРґР°Р»РёС‚СЊToolStripMenuItem->Text = L"РЈРґР°Р»РёС‚СЊ";
+			this->СѓРґР°Р»РёС‚СЊToolStripMenuItem->Click += gcnew System::EventHandler(this, &Consumptions::RemoveToolStripMenuItem_Click);
 			// 
 			// Consumptions
 			// 
@@ -156,7 +156,7 @@ namespace Project1 {
 	private: Magazin^ magaz;
 	public: Magazin^ Consumption_Shown(Magazin^ magaz) {
 		if (magaz->ArrayComing->Count == 0) {
-			MessageBox::Show("Таблица прихода не должна быть пустой!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			MessageBox::Show("РўР°Р±Р»РёС†Р° РїСЂРёС…РѕРґР° РЅРµ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РїСѓСЃС‚РѕР№!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return magaz;
 		}
 		this->magaz = magaz;
@@ -199,10 +199,10 @@ namespace Project1 {
 			magaz->WriteToFile();
 		}
 		else if (listView1->SelectedItems->Count >= 2) {
-			MessageBox::Show("Выбрано много элементов для редактирования!!!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			MessageBox::Show("Р’С‹Р±СЂР°РЅРѕ РјРЅРѕРіРѕ СЌР»РµРјРµРЅС‚РѕРІ РґР»СЏ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ!!!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 		else {
-			MessageBox::Show("Не выбран элемент для редактирования!!!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			MessageBox::Show("РќРµ РІС‹Р±СЂР°РЅ СЌР»РµРјРµРЅС‚ РґР»СЏ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ!!!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
 

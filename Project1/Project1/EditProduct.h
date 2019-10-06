@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "Product.h"
 
 namespace Project1 {
@@ -11,7 +11,7 @@ namespace Project1 {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Сводка для EditProduct
+	/// РЎРІРѕРґРєР° РґР»СЏ EditProduct
 	/// </summary>
 	public ref class EditProduct : public System::Windows::Forms::Form
 	{
@@ -20,13 +20,13 @@ namespace Project1 {
 		{
 			InitializeComponent();
 			//
-			//TODO: добавьте код конструктора
+			//TODO: РґРѕР±Р°РІСЊС‚Рµ РєРѕРґ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
 			//
 		}
 
 	protected:
 		/// <summary>
-		/// Освободить все используемые ресурсы.
+		/// РћСЃРІРѕР±РѕРґРёС‚СЊ РІСЃРµ РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ СЂРµСЃСѓСЂСЃС‹.
 		/// </summary>
 		~EditProduct()
 		{
@@ -48,14 +48,14 @@ namespace Project1 {
 
 	private:
 		/// <summary>
-		/// Обязательная переменная конструктора.
+		/// РћР±СЏР·Р°С‚РµР»СЊРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°.
 		/// </summary>
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Требуемый метод для поддержки конструктора — не изменяйте 
-		/// содержимое этого метода с помощью редактора кода.
+		/// РўСЂРµР±СѓРµРјС‹Р№ РјРµС‚РѕРґ РґР»СЏ РїРѕРґРґРµСЂР¶РєРё РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° вЂ” РЅРµ РёР·РјРµРЅСЏР№С‚Рµ 
+		/// СЃРѕРґРµСЂР¶РёРјРѕРµ СЌС‚РѕРіРѕ РјРµС‚РѕРґР° СЃ РїРѕРјРѕС‰СЊСЋ СЂРµРґР°РєС‚РѕСЂР° РєРѕРґР°.
 		/// </summary>
 		void InitializeComponent(void)
 		{
@@ -70,7 +70,7 @@ namespace Project1 {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 17;
-			this->button1->Text = L"Сохранить";
+			this->button1->Text = L"РЎРѕС…СЂР°РЅРёС‚СЊ";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &EditProduct::Button1_Click);
 			// 
@@ -81,7 +81,7 @@ namespace Project1 {
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(83, 13);
 			this->label1->TabIndex = 13;
-			this->label1->Text = L"Наименование";
+			this->label1->Text = L"РќР°РёРјРµРЅРѕРІР°РЅРёРµ";
 			// 
 			// textBox1
 			// 
@@ -137,7 +137,7 @@ namespace Project1 {
 		textBox1->Text = pd->Name;
 	}
 	private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		//сделать проверку введенных данных	
+		//СЃРґРµР»Р°С‚СЊ РїСЂРѕРІРµСЂРєСѓ РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…	
 		pd->Name = textBox1->Text;
 		this->Close();
 	}
