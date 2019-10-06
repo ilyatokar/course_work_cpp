@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <windows.h>
 #include "Magazin.h"
 #include "Providers.h"
@@ -22,7 +22,7 @@ namespace Project1 {
 	using namespace System::IO;
 
 	/// <summary>
-	/// Сводка для MyForm
+	/// РЎРІРѕРґРєР° РґР»СЏ MyForm
 	/// </summary>
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
@@ -34,7 +34,7 @@ namespace Project1 {
 
 	protected:
 		/// <summary>
-		/// Освободить все используемые ресурсы.
+		/// РћСЃРІРѕР±РѕРґРёС‚СЊ РІСЃРµ РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ СЂРµСЃСѓСЂСЃС‹.
 		/// </summary>
 		~MyForm()
 		{
@@ -56,33 +56,33 @@ namespace Project1 {
 
 	private: System::Windows::Forms::ColumnHeader^ columnHeader7;
 
-	private: System::Windows::Forms::ToolStripMenuItem^ товарToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ приходToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ расходToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ С‚РѕРІР°СЂToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ РїСЂРёС…РѕРґToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ СЂР°СЃС…РѕРґToolStripMenuItem;
 	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
 	private: System::Windows::Forms::ColumnHeader^ columnHeader1;
 	private: System::ComponentModel::IContainer^ components;
 
 	private:
 		/// <summary>
-		/// Обязательная переменная конструктора.
+		/// РћР±СЏР·Р°С‚РµР»СЊРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°.
 		/// </summary>
 
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Требуемый метод для поддержки конструктора — не изменяйте 
-		/// содержимое этого метода с помощью редактора кода.
+		/// РўСЂРµР±СѓРµРјС‹Р№ РјРµС‚РѕРґ РґР»СЏ РїРѕРґРґРµСЂР¶РєРё РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° вЂ” РЅРµ РёР·РјРµРЅСЏР№С‚Рµ 
+		/// СЃРѕРґРµСЂР¶РёРјРѕРµ СЌС‚РѕРіРѕ РјРµС‚РѕРґР° СЃ РїРѕРјРѕС‰СЊСЋ СЂРµРґР°РєС‚РѕСЂР° РєРѕРґР°.
 		/// </summary>
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
-			this->товарToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->С‚РѕРІР°СЂToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ProvidersToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->documentToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->приходToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->расходToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->РїСЂРёС…РѕРґToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->СЂР°СЃС…РѕРґToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ExitToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->listView1 = (gcnew System::Windows::Forms::ListView());
 			this->columnHeader1 = (gcnew System::Windows::Forms::ColumnHeader());
@@ -95,8 +95,8 @@ namespace Project1 {
 			// menuStrip1
 			// 
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(6) {
-				this->товарToolStripMenuItem,
-					this->ProvidersToolStripMenuItem, this->documentToolStripMenuItem, this->приходToolStripMenuItem, this->расходToolStripMenuItem,
+				this->С‚РѕРІР°СЂToolStripMenuItem,
+					this->ProvidersToolStripMenuItem, this->documentToolStripMenuItem, this->РїСЂРёС…РѕРґToolStripMenuItem, this->СЂР°СЃС…РѕРґToolStripMenuItem,
 					this->ExitToolStripMenuItem
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
@@ -105,46 +105,46 @@ namespace Project1 {
 			this->menuStrip1->TabIndex = 2;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
-			// товарToolStripMenuItem
+			// С‚РѕРІР°СЂToolStripMenuItem
 			// 
-			this->товарToolStripMenuItem->Name = L"товарToolStripMenuItem";
-			this->товарToolStripMenuItem->Size = System::Drawing::Size(57, 20);
-			this->товарToolStripMenuItem->Text = L"Товары";
-			this->товарToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::ТоварToolStripMenuItem_Click);
+			this->С‚РѕРІР°СЂToolStripMenuItem->Name = L"С‚РѕРІР°СЂToolStripMenuItem";
+			this->С‚РѕРІР°СЂToolStripMenuItem->Size = System::Drawing::Size(57, 20);
+			this->С‚РѕРІР°СЂToolStripMenuItem->Text = L"РўРѕРІР°СЂС‹";
+			this->С‚РѕРІР°СЂToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::РўРѕРІР°СЂToolStripMenuItem_Click);
 			// 
 			// ProvidersToolStripMenuItem
 			// 
 			this->ProvidersToolStripMenuItem->Name = L"ProvidersToolStripMenuItem";
 			this->ProvidersToolStripMenuItem->Size = System::Drawing::Size(82, 20);
-			this->ProvidersToolStripMenuItem->Text = L"Поставщики";
+			this->ProvidersToolStripMenuItem->Text = L"РџРѕСЃС‚Р°РІС‰РёРєРё";
 			this->ProvidersToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::ProvidersToolStripMenuItem_Click);
 			// 
 			// documentToolStripMenuItem
 			// 
 			this->documentToolStripMenuItem->Name = L"documentToolStripMenuItem";
 			this->documentToolStripMenuItem->Size = System::Drawing::Size(77, 20);
-			this->documentToolStripMenuItem->Text = L"Документы";
+			this->documentToolStripMenuItem->Text = L"Р”РѕРєСѓРјРµРЅС‚С‹";
 			this->documentToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::DocumentToolStripMenuItem_Click);
 			// 
-			// приходToolStripMenuItem
+			// РїСЂРёС…РѕРґToolStripMenuItem
 			// 
-			this->приходToolStripMenuItem->Name = L"приходToolStripMenuItem";
-			this->приходToolStripMenuItem->Size = System::Drawing::Size(57, 20);
-			this->приходToolStripMenuItem->Text = L"Приход";
-			this->приходToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::ComingToolStripMenuItem_Click);
+			this->РїСЂРёС…РѕРґToolStripMenuItem->Name = L"РїСЂРёС…РѕРґToolStripMenuItem";
+			this->РїСЂРёС…РѕРґToolStripMenuItem->Size = System::Drawing::Size(57, 20);
+			this->РїСЂРёС…РѕРґToolStripMenuItem->Text = L"РџСЂРёС…РѕРґ";
+			this->РїСЂРёС…РѕРґToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::ComingToolStripMenuItem_Click);
 			// 
-			// расходToolStripMenuItem
+			// СЂР°СЃС…РѕРґToolStripMenuItem
 			// 
-			this->расходToolStripMenuItem->Name = L"расходToolStripMenuItem";
-			this->расходToolStripMenuItem->Size = System::Drawing::Size(55, 20);
-			this->расходToolStripMenuItem->Text = L"Расход";
-			this->расходToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::ConsumptionToolStripMenuItem_Click);
+			this->СЂР°СЃС…РѕРґToolStripMenuItem->Name = L"СЂР°СЃС…РѕРґToolStripMenuItem";
+			this->СЂР°СЃС…РѕРґToolStripMenuItem->Size = System::Drawing::Size(55, 20);
+			this->СЂР°СЃС…РѕРґToolStripMenuItem->Text = L"Р Р°СЃС…РѕРґ";
+			this->СЂР°СЃС…РѕРґToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::ConsumptionToolStripMenuItem_Click);
 			// 
 			// ExitToolStripMenuItem
 			// 
 			this->ExitToolStripMenuItem->Name = L"ExitToolStripMenuItem";
 			this->ExitToolStripMenuItem->Size = System::Drawing::Size(52, 20);
-			this->ExitToolStripMenuItem->Text = L"Выход";
+			this->ExitToolStripMenuItem->Text = L"Р’С‹С…РѕРґ";
 			this->ExitToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::ExitToolStripMenuItem_Click);
 			// 
 			// listView1
@@ -168,12 +168,12 @@ namespace Project1 {
 			// 
 			// columnName
 			// 
-			this->columnName->Text = L"Название";
+			this->columnName->Text = L"РќР°Р·РІР°РЅРёРµ";
 			this->columnName->Width = 118;
 			// 
 			// columnHeader7
 			// 
-			this->columnHeader7->Text = L"Количество";
+			this->columnHeader7->Text = L"РљРѕР»РёС‡РµСЃС‚РІРѕ";
 			this->columnHeader7->Width = 90;
 			// 
 			// contextMenuStrip1
@@ -191,7 +191,7 @@ namespace Project1 {
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"MyForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"Учет товаров в магазине";
+			this->Text = L"РЈС‡РµС‚ С‚РѕРІР°СЂРѕРІ РІ РјР°РіР°Р·РёРЅРµ";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
@@ -206,17 +206,17 @@ namespace Project1 {
 	private: String^ fileDBName = "magazins.json";
 
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
-			if (File::Exists(pathDB+fileDBName)) {
+		if (File::Exists(pathDB + fileDBName)) {
 			try
 			{
 				mgz = JsonConvert::DeserializeObject<Magazin^>(File::ReadAllText(pathDB + fileDBName));
 			}
 			catch (Exception^ e)
 			{
-				MessageBox::Show("Поврежден файл базы!!!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				MessageBox::Show("РџРѕРІСЂРµР¶РґРµРЅ С„Р°Р№Р» Р±Р°Р·С‹!!!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Error);
 				Environment::Exit(0);
 			}
-			
+
 		}
 		else {
 			if (!Directory::Exists(pathDB)) {
@@ -225,7 +225,7 @@ namespace Project1 {
 			FileStream^ fs = File::Create(pathDB + fileDBName);
 			fs->Close();
 			InitMagazin();
-			
+
 		}
 		this->UpdateListView();
 	}
@@ -246,13 +246,13 @@ namespace Project1 {
 	private: System::Void ExitToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		Application::Exit();
 	}
-	
-	// column click
-	//private: System::Void ListView1_ColumnClick(System::Object^ sender, System::Windows::Forms::ColumnClickEventArgs^ e) {
-	//	Console::WriteLine("click column" + " " + e->Column);//вывод номер колонки
-	//}
 
-	private: System::Void ТоварToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+			 // column click
+			 //private: System::Void ListView1_ColumnClick(System::Object^ sender, System::Windows::Forms::ColumnClickEventArgs^ e) {
+			 //	Console::WriteLine("click column" + " " + e->Column);//РІС‹РІРѕРґ РЅРѕРјРµСЂ РєРѕР»РѕРЅРєРё
+			 //}
+
+	private: System::Void РўРѕРІР°СЂToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		Products^ form = gcnew Products();
 		mgz = form->Products_Shown(mgz);
 		this->UpdateListView();
@@ -288,13 +288,13 @@ namespace Project1 {
 	private: int ResidualGoods(Product^ product) {
 		int countComing = 0;
 		int countConsumption = 0;
-		for each (Coming^ item in this->mgz->ArrayComing)
+		for each (Coming ^ item in this->mgz->ArrayComing)
 		{
 			if (item->productId == product->id)
 				countComing += item->count;
 		}
 
-		for each (Consumption^ item in this->mgz->ArrayConsumption)
+		for each (Consumption ^ item in this->mgz->ArrayConsumption)
 		{
 			if (item->productId == product->id)
 				countConsumption += item->count;
@@ -312,6 +312,5 @@ namespace Project1 {
 		mgz->ArrayConsumption = gcnew List<Consumption^>();
 	}
 
-};
+	};
 }
-
